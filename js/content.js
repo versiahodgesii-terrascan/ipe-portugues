@@ -360,6 +360,122 @@
         { en: "She left without saying anything.", a: ["Ela saiu sem dizer nada"], x: ["dizerem", "disse"] }
       ]
     }
+    ,
+    {
+      id: "u17", title: "Pronomes relativos", en: "Que, quem, cujo, onde", icon: "⌘",
+      tip: "Que does most of the work and covers people and things alike. Quem only appears after a preposition. Cujo means whose and agrees with the thing owned, never with the owner — and Brazilians avoid it in speech by rephrasing.",
+      drill: null,
+      mc: [
+        { t: "Que", s: "O filme ___ eu vi ontem é brasileiro.", o: ["que", "quem", "cujo", "onde"], e: "Que is the default relative for both people and things, as subject or object.", r: "Que covers almost everything. Reach for the others only when que cannot work." },
+        { t: "Preposição + quem", s: "A pessoa com ___ eu falei já saiu.", o: ["quem", "que", "qual", "cuja"], e: "After a preposition, use quem for people: com quem, para quem, de quem.", r: "Com quem, a quem, por quem — always people." },
+        { t: "Cujo", s: "É o escritor ___ livros eu adoro.", o: ["cujos", "cujo", "que os", "de quem os"], e: "Cujo agrees with the thing owned (livros), not the owner. Plural masculine → cujos.", r: "Cujo = whose. It never takes an article after it." },
+        { t: "Onde", s: "A cidade ___ eu nasci fica no interior.", o: ["onde", "que", "aonde", "cuja"], e: "Onde refers to a place where something is or happens.", r: "Onde = where (static). Aonde = to where, with verbs of motion." },
+        { t: "Aonde", s: "Não sei ___ ela foi.", o: ["aonde", "onde", "que", "donde"], e: "Ir implies motion toward, so aonde (a + onde).", r: "Aonde você vai? Onde você está?" },
+        { t: "Que × quem", s: "O menino ___ está ali é meu sobrinho.", o: ["que", "quem", "qual", "cujo"], e: "No preposition, so que — even though it refers to a person. Quem here would be wrong.", r: "Quem needs a preposition in front of it." },
+        { t: "O que", s: "Não entendi ___ você disse.", o: ["o que", "que", "o qual", "cujo"], e: "When there is no noun to attach to, use o que (the thing that).", r: "O que = that which. Faça o que quiser." },
+        { t: "Preposição + que", s: "Esse é o assunto ___ eu falei.", o: ["sobre o qual", "que", "cujo", "quem"], e: "With a preposition and a thing, use preposition + o qual (or simply sobre que in casual speech).", r: "Formal: o qual, a qual, os quais. Brazilians often rephrase instead." },
+        { t: "Cujo concordância", s: "A empresa ___ sede fica em Recife cresceu muito.", o: ["cuja", "cujo", "cujas", "de quem a"], e: "Sede is feminine singular, so cuja — the owner (empresa) does not decide it.", r: "Cujo agrees with what comes AFTER it." },
+        { t: "Falado", s: "Which is most natural in Brazilian speech?", o: ["O cara que eu falei com ele ontem.", "O cara com quem eu falei ontem.", "O cara cujo eu falei.", "O cara o qual falei."], e: "Both the first two are heard; the first is the very common spoken form that textbooks reject. The second is the standard one.", r: "Standard: com quem. Spoken shortcut: que ... com ele." }
+      ],
+      build: [
+        { en: "The book that I bought is great.", a: ["O livro que eu comprei é ótimo"], x: ["quem", "cujo"] },
+        { en: "The city where I was born is small.", a: ["A cidade onde eu nasci é pequena"], x: ["aonde", "que"] },
+        { en: "The friend with whom I travelled lives here.", a: ["O amigo com quem eu viajei mora aqui"], x: ["que", "cujo"] },
+        { en: "I didn't understand what she said.", a: ["Eu não entendi o que ela disse"], x: ["que", "qual"] }
+      ]
+    },
+    {
+      id: "u18", title: "Conjunções e conectivos", en: "Joining ideas together", icon: "&",
+      tip: "These are what turn short sentences into real speech. A few take the subjunctive and that is the part worth memorising: embora, para que, a menos que, caso. Apesar de takes an infinitive instead.",
+      drill: null,
+      mc: [
+        { t: "Concessiva", s: "___ esteja cansado, vou sair.", o: ["Embora eu", "Embora eu estou", "Apesar de eu", "Mesmo eu"], e: "Embora always takes the subjunctive: embora eu esteja.", r: "Embora, ainda que, mesmo que → subjuntivo." },
+        { t: "Apesar de", s: "___ cansado, ele terminou o trabalho.", o: ["Apesar de estar", "Apesar de esteja", "Embora estar", "Apesar que está"], e: "Apesar de takes an infinitive or a noun, never a conjugated verb.", r: "Apesar de + infinitivo. Embora + subjuntivo. Same meaning, different grammar." },
+        { t: "Porque × por que", s: "Não sei ___ ela não veio.", o: ["por que", "porque", "porquê", "por quê"], e: "Two words for the question (why), one word for the answer (because).", r: "Por que (pergunta) / porque (resposta) / por quê (fim de frase) / o porquê (substantivo)." },
+        { t: "Final", s: "Falei devagar ___ todos entendessem.", o: ["para que", "para", "porque", "por que"], e: "Para que expresses purpose with a different subject, and takes the subjunctive.", r: "Para que + subjuntivo. Para + infinitivo when the subject is the same." },
+        { t: "Adversativa", s: "Queria ir, ___ estou sem tempo.", o: ["mas", "porque", "portanto", "embora"], e: "Mas marks contrast. Porém and contudo are the formal equivalents.", r: "Mas = but. Mais = more. One letter, completely different word." },
+        { t: "Conclusiva", s: "Choveu muito; ___, o jogo foi cancelado.", o: ["portanto", "porque", "embora", "apesar"], e: "Portanto introduces a consequence. Por isso and logo work too.", r: "Causa → porque. Consequência → portanto, por isso." },
+        { t: "Condicional", s: "___ chover, a gente fica em casa.", o: ["Se", "Caso de", "Embora", "Apesar de"], e: "Se + future subjunctive for a real possibility: se chover.", r: "Se chover (futuro do subjuntivo). Se chovesse (hipótese)." },
+        { t: "Caso", s: "___ você precise de ajuda, me avisa.", o: ["Caso", "Caso de", "Se precisar de", "Apesar de"], e: "Caso means if and takes the subjunctive directly, with no de.", r: "Caso + subjuntivo = se + subjuntivo, slightly more formal." },
+        { t: "Temporal", s: "___ eu chegar, te ligo.", o: ["Assim que", "Assim que eu chego", "Logo que eu chego", "Enquanto eu chego"], e: "Assim que + future subjunctive for something still to happen.", r: "Quando, assim que, logo que, enquanto → futuro do subjuntivo for future events." },
+        { t: "Explicativa", s: "Leva o guarda-chuva, ___ vai chover.", o: ["que", "para que", "embora", "apesar de"], e: "In speech que alone often carries because: leva, que vai chover.", r: "Vai com calma, que a estrada tá ruim." }
+      ],
+      build: [
+        { en: "Although it's expensive, I'm going to buy it.", a: ["Embora seja caro eu vou comprar"], x: ["é", "apesar"] },
+        { en: "I want to go, but I have no time.", a: ["Eu quero ir mas não tenho tempo"], x: ["mais", "porque"] },
+        { en: "It rained, so we stayed home.", a: ["Choveu portanto a gente ficou em casa"], x: ["porque", "embora"] },
+        { en: "Call me as soon as you arrive.", a: ["Me liga assim que você chegar"], x: ["chega", "quando"] }
+      ]
+    },
+    {
+      id: "u19", title: "Comparativo e superlativo", en: "More, less, best and worst", icon: "▲",
+      tip: "Mais ... (do) que for comparisons, tão ... quanto for equality. Four adjectives refuse mais entirely: bom, mau, grande, pequeno become melhor, pior, maior, menor. Saying mais bom marks you instantly.",
+      drill: null,
+      mc: [
+        { t: "Irregular", s: "Esse restaurante é ___ que o outro.", o: ["melhor", "mais bom", "mais melhor", "o melhor"], e: "Bom becomes melhor. Mais bom does not exist.", r: "bom→melhor, mau→pior, grande→maior, pequeno→menor." },
+        { t: "Irregular", s: "O trânsito hoje está ___ do que ontem.", o: ["pior", "mais mau", "mais pior", "péssimo que"], e: "Mau and the adverb mal both become pior.", r: "Pior serves as both worse and worst." },
+        { t: "Superioridade", s: "São Paulo é ___ Curitiba.", o: ["maior do que", "mais grande que", "maior que o", "a maior de"], e: "Grande → maior, and the comparison takes do que (or just que).", r: "Do que and que are both correct; do que is a little more formal." },
+        { t: "Igualdade", s: "Ela fala inglês ___ eu.", o: ["tão bem quanto", "tão bem que", "mais bem que", "tanto bem como"], e: "Tão + adverb/adjective + quanto expresses equality.", r: "Tão + adjetivo. Tanto + substantivo ou verbo." },
+        { t: "Tanto quanto", s: "Ele trabalha ___ você.", o: ["tanto quanto", "tão quanto", "tanto que", "mais tanto que"], e: "Modifying a verb takes tanto, not tão.", r: "Tão alto, mas trabalha tanto." },
+        { t: "Superlativo relativo", s: "É ___ cidade do país.", o: ["a maior", "a mais grande", "a maior de", "mais maior"], e: "The superlative is just the article plus the comparative.", r: "O melhor, a maior, o pior, a menor." },
+        { t: "Superlativo absoluto", s: "A prova foi ___.", o: ["dificílima", "mais difícil", "muito dificílima", "a dificílima"], e: "-íssimo (here dificílima) means extremely, with no comparison.", r: "Caríssimo, facílimo, ótimo, péssimo." },
+        { t: "Formas próprias", s: "O filme não foi ruim, foi ___.", o: ["péssimo", "mais péssimo", "o pior de", "muito pior"], e: "Péssimo is the absolute superlative of mau/ruim; ótimo is bom's.", r: "bom→ótimo, mau→péssimo, grande→máximo, pequeno→mínimo." },
+        { t: "Advérbio", s: "Ele cozinha ___ que o irmão.", o: ["melhor", "mais bem", "mais melhor", "tão bem"], e: "The adverb bem also becomes melhor in comparison.", r: "Faz bem → faz melhor. Faz mal → faz pior." },
+        { t: "Do que × de", s: "Ela tem mais ___ trinta livros.", o: ["de", "do que", "que de", "than"], e: "Before a number use de, not do que.", r: "Mais de dez anos. Mais do que eu esperava." }
+      ],
+      build: [
+        { en: "This restaurant is better than that one.", a: ["Esse restaurante é melhor do que aquele", "Esse restaurante é melhor que aquele"], x: ["bom", "mais"] },
+        { en: "She speaks English as well as I do.", a: ["Ela fala inglês tão bem quanto eu"], x: ["tanto", "que"] },
+        { en: "It is the biggest city in the country.", a: ["É a maior cidade do país"], x: ["grande", "mais"] },
+        { en: "The test was extremely difficult.", a: ["A prova foi dificílima"], x: ["muito", "difícil"] }
+      ]
+    },
+    {
+      id: "u20", title: "Concordância", en: "Agreement, and the verbs that refuse it", icon: "=",
+      tip: "Most agreement is predictable. The traps are the impersonal verbs: há and faz meaning time or existence never go plural, however many things follow them. Há dois anos, faz dez minutos, havia muitas pessoas.",
+      drill: null,
+      mc: [
+        { t: "Haver impessoal", s: "___ muitas pessoas na festa ontem.", o: ["Havia", "Haviam", "Tinham", "Houveram"], e: "Haver meaning to exist has no subject, so it stays singular no matter what follows.", r: "Havia muitas pessoas. Never haviam, in this sense." },
+        { t: "Fazer impessoal", s: "___ dez anos que eu moro aqui.", o: ["Faz", "Fazem", "Fazia-se", "Fazendo"], e: "Fazer for elapsed time is also impersonal: faz dez anos.", r: "Faz dois dias, faz muito tempo. Always singular." },
+        { t: "Ter × haver", s: "Which is normal Brazilian speech?", o: ["Tem muita gente aqui.", "Hão muita gente aqui.", "Têm muita gente aqui.", "Havem muita gente aqui."], e: "In speech Brazilians use ter for existence: tem gente. In writing, há.", r: "Tem = speech. Há = writing. Both stay singular." },
+        { t: "A gente", s: "A gente ___ cedo amanhã.", o: ["sai", "saímos", "saem", "saia"], e: "A gente means we but conjugates as ele/ela.", r: "A gente vai, a gente foi, a gente é." },
+        { t: "Coletivo", s: "A maioria dos alunos ___ a prova.", o: ["passou", "passaram-se", "passamos", "passem"], e: "With a maioria de + plural, singular agreement is the safer standard; plural is also accepted.", r: "A maioria passou. A maioria dos alunos passaram is tolerated." },
+        { t: "Países no plural", s: "Os Estados Unidos ___ uma proposta.", o: ["fizeram", "fez", "faz", "fazem-se"], e: "A plural place name with an article takes a plural verb.", r: "Os Estados Unidos são. But: Minas Gerais é." },
+        { t: "Concordância nominal", s: "Comprei uma camisa e uma calça ___.", o: ["brancas", "branca", "branco", "brancos"], e: "An adjective after two feminine nouns takes the feminine plural.", r: "Mixed genders → masculine plural: camisa e short brancos." },
+        { t: "É proibido", s: "___ entrada de animais.", o: ["É proibida a", "É proibido a", "São proibidas", "É proibido"], e: "With the article present, the adjective agrees: é proibida a entrada. Without it, the fixed form stays: é proibido entrada.", r: "Same with é bom, é necessário: é bom a água / é boa a água." },
+        { t: "Mais de um", s: "Mais de um candidato ___ a proposta.", o: ["aceitou", "aceitaram", "aceitou-se", "aceitam"], e: "Mais de um takes a singular verb, despite the meaning.", r: "Mais de um aluno faltou." },
+        { t: "Porcentagem", s: "Cerca de 30% dos entrevistados ___ a ideia.", o: ["apoiaram", "apoiou", "apoia", "apoiaria-se"], e: "With a percentage the verb usually follows the noun after de — entrevistados, plural.", r: "30% dos alunos faltaram. 30% da turma faltou." }
+      ],
+      build: [
+        { en: "There were many people at the party.", a: ["Havia muitas pessoas na festa", "Tinha muita gente na festa"], x: ["haviam", "tinham"] },
+        { en: "I have lived here for ten years.", a: ["Faz dez anos que eu moro aqui"], x: ["fazem", "fazia"] },
+        { en: "We are leaving early tomorrow.", a: ["A gente sai cedo amanhã", "Nós saímos cedo amanhã"], x: ["saem", "saiam"] },
+        { en: "Most of the students passed.", a: ["A maioria dos alunos passou"], x: ["passaram", "passamos"] }
+      ]
+    },
+    {
+      id: "u21", title: "Diminutivos e aumentativos", en: "Cafezinho, jeitinho, carrão", icon: "◦",
+      tip: "The -inho ending is rarely about size. It softens, warms or hurries a sentence: um cafezinho is an invitation, rapidinho means right away, and jeitinho is an entire cultural concept. Learning this is learning to sound Brazilian.",
+      drill: null,
+      mc: [
+        { t: "-zinho", s: "Vamos tomar um ___?", o: ["cafezinho", "cafeinho", "cafézinho", "cafinho"], e: "Words ending in a stressed vowel take -zinho: café → cafezinho.", r: "Stressed ending or -r/-s/-m/-nasal → -zinho. Otherwise -inho." },
+        { t: "-inho", s: "Que ___ bonita!", o: ["casinha", "casazinha", "casinho", "caszinha"], e: "Casa ends in an unstressed vowel, which drops before -inha.", r: "casa→casinha, carro→carrinho, livro→livrinho." },
+        { t: "Nasal", s: "Comprei um ___ na padaria.", o: ["pãozinho", "pãoinho", "panzinho", "pãzinho"], e: "Pão is nasal and stressed, so -zinho, keeping the tilde.", r: "pão→pãozinho, mão→mãozinha, irmão→irmãozinho." },
+        { t: "Não é tamanho", s: "Espera só um ___, já vou.", o: ["pouquinho", "poucinho", "poucozinho", "pouquíssimo"], e: "Here the diminutive softens the wait rather than shrinking anything.", r: "Um pouquinho, rapidinho, agorinha — tone, not size." },
+        { t: "Advérbio", s: "Faço isso ___, pode deixar.", o: ["rapidinho", "rapidozinho", "rapidamentinho", "rapidinhamente"], e: "Even adverbs take the diminutive in Brazil: rapidinho, cedinho, devagarinho.", r: "Cedinho = nice and early. Devagarinho = nice and slow." },
+        { t: "Aumentativo", s: "Ele comprou um ___ novo.", o: ["carrão", "carraço", "carrinhão", "carrãozinho"], e: "-ão is the augmentative: carro → carrão, meaning big and impressive.", r: "mulherão, festão, problemão." },
+        { t: "Aumentativo irregular", s: "Levei um ___ do meu chefe.", o: ["esporro", "esporrinho", "esporrão", "esporrozinho"], e: "Some augmentatives are their own words. Not every noun takes -ão predictably.", r: "Check the word exists before inventing one." },
+        { t: "Plural", s: "As crianças ganharam dois ___.", o: ["bolinhos", "bolinhoses", "bolinzinhos", "bolosinhos"], e: "Form the diminutive, then pluralise it normally: bolinho → bolinhos.", r: "But pãozinho → pãezinhos: the base word pluralises inside." },
+        { t: "Plural irregular", s: "Comprei dois ___ na padaria.", o: ["pãezinhos", "pãozinhos", "pãesinhos", "pãozinhoes"], e: "Pão → pães, so the diminutive plural is pãezinhos.", r: "The root pluralises first, then -zinhos." },
+        { t: "Sentido", s: "What does jeitinho usually suggest?", o: ["An informal workaround", "A small direction", "A tiny road", "A polite greeting"], e: "Jeitinho names the Brazilian habit of finding an informal way around a rule.", r: "Dar um jeitinho — one of the most Brazilian phrases there is." }
+      ],
+      build: [
+        { en: "Let's have a little coffee.", a: ["Vamos tomar um cafezinho"], x: ["café", "cafeinho"] },
+        { en: "Wait just a little bit.", a: ["Espera só um pouquinho"], x: ["pouco", "poucinho"] },
+        { en: "He bought a huge car.", a: ["Ele comprou um carrão"], x: ["carrinho", "carro"] },
+        { en: "I'll do it right away.", a: ["Eu faço isso rapidinho", "Faço isso rapidinho"], x: ["rápido", "devagar"] }
+      ]
+    }
   ];
 
   U.forEach((u, i) => {
