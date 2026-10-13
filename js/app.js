@@ -47,7 +47,7 @@
   const DEFAULT = {
     v: 1, xp: 0, days: {}, streak: 0, bestStreak: 0, lastDay: null, goal: 20, lessons: 0,
     units: {}, srs: {}, onboarded: false, installDismissed: false,
-    settings: { sound: true, autoplay: true, slow: false }
+    settings: { sound: true, autoplay: true, slow: false, voiceURI: "" }
   };
   const clone = o => JSON.parse(JSON.stringify(o));
   function load() {
@@ -96,12 +96,36 @@
   const sBad = () => tone([[196, 0, 0.28, "triangle", 0.14]]);
   const sWin = () => tone([[523, 0, 0.14], [659, 0.11, 0.14], [784, 0.22, 0.14], [1047, 0.33, 0.4]]);
 
-  let voice = null;
+  let voice = null, ptVoices = [];
   const hasTTS = "speechSynthesis" in window;
+
+  /* Rank the installed pt-BR voices by how good they actually sound.
+     iOS ships a COMPACT Luciana by default, which is the robotic one. The
+     Enhanced / Premium versions (and Siri voices on iOS 17+) are a different
+     class entirely, but they only appear here once the user downloads them in
+     Settings > Accessibility > Spoken Content > Voices. The old code took the
+     first name match, so a downloaded Premium voice sitting right there would
+     lose to the compact one. Higher score wins. */
+  function voiceScore(v) {
+    const n = (v.name || "").toLowerCase();
+    let s = 0;
+    if (/siri/.test(n)) s += 50;            // iOS 17+ neural voices
+    if (/premium/.test(n)) s += 40;
+    if (/enhanced/.test(n)) s += 30;
+    if (/google/.test(n)) s += 25;          // Android/desktop Chrome
+    if (/luciana|francisca|joana/.test(n)) s += 10;
+    if (/felipe|ricardo|daniel/.test(n)) s += 8;
+    if (/compact/.test(n)) s -= 20;
+    if (v.localService) s += 2;             // on-device: no network stall
+    return s;
+  }
   function pickVoice() {
     const vs = speechSynthesis.getVoices();
-    const br = vs.filter(v => v.lang && v.lang.replace("_", "-").toLowerCase() === "pt-br");
-    voice = br.find(v => /luciana|felipe|google/i.test(v.name)) || br[0] || vs.find(v => /^pt/i.test(v.lang)) || null;
+    ptVoices = vs.filter(v => v.lang && /^pt[-_]?br/i.test(v.lang.replace("_", "-")));
+    if (!ptVoices.length) ptVoices = vs.filter(v => /^pt/i.test(v.lang || ""));
+    ptVoices.sort((a, b) => voiceScore(b) - voiceScore(a) || a.name.localeCompare(b.name));
+    const saved = S.settings.voiceURI && ptVoices.find(v => v.voiceURI === S.settings.voiceURI);
+    voice = saved || ptVoices[0] || null;
   }
   if (hasTTS) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
   function speak(text) {
@@ -110,7 +134,10 @@
       speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
       u.lang = "pt-BR"; if (voice) u.voice = voice;
-      u.rate = S.settings.slow ? 0.7 : 0.95;
+      // 0.92 rather than 0.95: the compact iOS voice runs its syllables together
+      // at full speed, which is the single biggest thing making it hard to hear.
+      u.rate = S.settings.slow ? 0.7 : 0.92;
+      u.pitch = 1;
       speechSynthesis.speak(u);
     } catch (e) { /* ignore */ }
   }
@@ -370,6 +397,19 @@
           ${sw("autoplay", "Read answers aloud", hasTTS ? "Uses your iPhone's Portuguese (Brasil) voice" : "Not supported in this browser")}
           ${sw("slow", "Slower speech")}
         </div>
+        ${hasTTS ? `<div style="margin-top:12px">
+          <h3 style="margin-bottom:4px">Voice</h3>
+          <p class="muted" style="margin:0 0 8px;font-size:14px">
+            ${ptVoices.length > 1
+              ? "Pick the one that sounds best to you."
+              : "Only one Brazilian voice is installed. For a much better one, open iOS Settings &rarr; Accessibility &rarr; Spoken Content &rarr; Voices &rarr; Portuguese (Brazil) and download the Enhanced or Premium voice, then reopen this app."}
+          </p>
+          ${ptVoices.length ? `<div class="seg" role="group" aria-label="Voice" style="flex-wrap:wrap">
+            ${ptVoices.map(v => `<button data-act="voice" data-v="${esc(v.voiceURI)}" aria-pressed="${voice && voice.voiceURI === v.voiceURI}">${esc(v.name.replace(/\s*\(.*\)/, ""))}</button>`).join("")}
+          </div>
+          <button class="btn small ghost" style="margin-top:8px" data-act="say" data-t="Bom dia! Hoje eu vou estudar português.">Hear it</button>`
+          : `<p class="muted" style="margin:0;font-size:14px">No Portuguese voice found on this device.</p>`}
+        </div>` : ""}
       </div>
       <div class="card">
         <h3 style="margin-bottom:4px">Your data</h3>
@@ -432,6 +472,10 @@
     else if (a === "verb") { G.verb = b.dataset.v; render(); const h = $(".vhead"); h && h.scrollIntoView({ behavior: "smooth", block: "start" }); }
     else if (a === "say") speak(b.dataset.t);
     else if (a === "goal") { S.goal = +b.dataset.g; save(); render(); }
+    else if (a === "voice") {
+      S.settings.voiceURI = b.dataset.v; save(); pickVoice(); render();
+      speak("Bom dia! Hoje eu vou estudar português.");
+    }
     else if (a === "toggle") { S.settings[b.dataset.k] = !S.settings[b.dataset.k]; save(); render(); if (b.dataset.k === "sound" && S.settings.sound) sOk(); }
     else if (a === "backup") {
       const data = JSON.stringify(S);
