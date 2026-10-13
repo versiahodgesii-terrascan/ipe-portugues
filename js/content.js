@@ -215,6 +215,12 @@
         { t: "Sem crase", s: "Ano que vem vou ___ São Paulo.", o: ["a", "à", "ao", "na"], e: "São Paulo takes no article (venho de São Paulo), so there's no crase.", r: "Venho da Bahia → vou à Bahia. Venho de Recife → vou a Recife." },
         { t: "Crase", s: "Estou ___ sua disposição.", o: ["à", "a", "há", "na"], e: "Estar à disposição: a + a disposição.", r: "Fixed expressions: às vezes, à noite, à vontade." },
         { t: "Crase · horas", s: "A aula começa ___ oito horas.", o: ["às", "as", "há", "nas"], e: "Specific times take crase: a + as oito horas → às oito.", r: "À uma hora, às duas, ao meio-dia." }
+        ,{ t: "Crase", s: "Entreguei o relatório ___ diretora.", o: ["à", "a", "há", "as"], e: "Entregar a + a diretora. Preposition a meets feminine article a, so crase.", r: "Masculine? No crase: entreguei ao diretor." },
+        { t: "Sem crase", s: "Vou ___ Portugal em maio.", o: ["a", "à", "na", "há"], e: "Portugal takes no article, so there is nothing for a to merge with.", r: "Vou a Portugal, but vou à França. Test: voltei DA França → à. Voltei DE Portugal → a." },
+        { t: "Crase antes de pronome", s: "Falei sobre isso ___ ela ontem.", o: ["a", "à", "há", "pra"], e: "Crase never happens before a personal pronoun.", r: "No crase before ela, você, mim, Vossa Senhoria." },
+        { t: "Por × para", s: "Fiz isso ___ você, não por obrigação.", o: ["por", "para", "pelo", "pra o"], e: "Por here means on your behalf / for your sake. Para would mark a destination or purpose.", r: "Fiz por você (for your sake). Comprei para você (to give you)." },
+        { t: "Em + demonstrativo", s: "Moro ___ prédio ali.", o: ["naquele", "em aquele", "no aquele", "àquele"], e: "Em contracts with demonstratives: em + aquele = naquele.", r: "neste, nesse, naquele, nisso." },
+        { t: "A + aquele", s: "Vou ___ restaurante que você indicou.", o: ["àquele", "aquele", "naquele", "a aquele"], e: "Ir a + aquele contracts and takes the grave accent: àquele.", r: "àquele, àquela, àquilo — crase survives on demonstratives." }
       ],
       build: [
         { en: "I'm going to the market by bus.", a: ["Vou ao mercado de ônibus"], x: ["no", "à"] },
@@ -306,6 +312,12 @@
         { t: "Para eu × para mim", s: "Ela trouxe o contrato para ___ assinar.", o: ["eu", "mim", "me", "comigo"], e: "When a verb follows, the pronoun is the subject of that verb: para eu assinar.", r: "Para mim + noun. Para eu + verb." },
         { t: "Posição", s: "Não ___ preocupe com isso.", o: ["se", "te", "lhe", "o"], e: "The reflexive matches você → se, and it sits between não and the verb.", r: "Não se preocupe. Não me diga!" },
         { t: "Reflexivo recíproco", s: "Nós ___ conhecemos na faculdade.", o: ["nos", "se", "nós", "lhe"], e: "Nós takes nos. Each one knew the other — a reciprocal action.", r: "Nós nos vimos, eles se falaram." }
+        ,{ t: "Objeto direto na 3ª", s: "Pedi o arquivo e ela já ___ enviou.", o: ["o", "lhe", "ele", "se"], e: "Enviar WHAT — direct object, so o.", r: "In speech Brazilians would just say: ela já enviou." },
+        { t: "Contração", s: "Entregaram o prêmio e ___ no mesmo dia.", o: ["deram-no", "deram-o", "deram-lhe", "deram ele"], e: "After a verb ending in -m, o becomes -no. Formal written Portuguese only.", r: "deram-no, fizeram-na, põem-nos." },
+        { t: "Com infinitivo", s: "Ela veio ___ ontem à noite.", o: ["me ver", "ver-me", "me vendo", "ver eu"], e: "Brazilians put the pronoun before the infinitive.", r: "Veio me ver, quero te falar, vou me arrumar." },
+        { t: "Se impessoal", s: "___ muito bem naquele restaurante.", o: ["Come-se", "Se come", "Comem-se", "Come-se o"], e: "Se with no stated subject means one eats / people eat.", r: "Vive-se bem aqui. Fala-se português." },
+        { t: "Te × lhe", s: "Which is normal Brazilian speech?", o: ["Eu te falei isso ontem.", "Eu lhe falei isso ontem.", "Eu falei-te isso ontem.", "Eu te falei-lhe ontem."], e: "Brazilians mix você with te freely. Lhe sounds formal or regional.", r: "Te amo, te ligo, te vejo — standard spoken Brazilian." },
+        { t: "Consigo", s: "Ele levou o documento ___.", o: ["consigo", "com si", "com se", "consigo mesmo o"], e: "Com + si contracts to consigo, used reflexively.", r: "comigo, contigo, consigo, conosco." }
       ],
       build: [
         { en: "I'll see you tomorrow.", a: ["Te vejo amanhã", "Eu te vejo amanhã"], x: ["vejo-te", "ontem"] },
@@ -329,6 +341,12 @@
         { t: "Casar", s: "Ela casou ___ um amigo meu.", o: ["com", "a", "de", "para"], e: "Casar com, like English marry... to? No: Portuguese uses com.", r: "Casei com ela. Namorar, though, takes no preposition." },
         { t: "Depender", s: "Tudo depende ___ tempo que a gente tiver.", o: ["do", "no", "ao", "pelo"], e: "Depender de. De + o contracts to do.", r: "Depende de você. Depende do clima." },
         { t: "Pagar", s: "Já paguei ___ conta.", o: ["a", "na", "pela a", "da"], e: "Pagar a conta — the thing paid takes no preposition. Pagar por means to pay in exchange for.", r: "Paguei a conta. Paguei pelo erro." }
+        ,{ t: "Obedecer", s: "As crianças obedecem ___ pais.", o: ["aos", "os", "nos", "com os"], e: "Obedecer takes a — a + os contracts to aos.", r: "Obedecer a, desobedecer a." },
+        { t: "Responder", s: "Ainda não respondi ___ e-mail dela.", o: ["ao", "o", "no", "pelo"], e: "Responder a alguma coisa. Responder o e-mail is common in speech but non-standard.", r: "Responder a uma pergunta, a uma carta." },
+        { t: "Namorar", s: "Ele namora ___ há dois anos.", o: ["ela", "com ela", "de ela", "a ela"], e: "Namorar takes a direct object — no preposition, unlike English date with.", r: "Namorar alguém. But casar COM alguém." },
+        { t: "Simpatizar", s: "Não simpatizei ___ ele desde o começo.", o: ["com", "a", "de", "em"], e: "Simpatizar com, antipatizar com. Never reflexive: not me simpatizei.", r: "Simpatizo com ela." },
+        { t: "Implicar", s: "A mudança implica ___ novos custos.", o: ["—", "em", "a", "com"], e: "Implicar meaning to entail takes a direct object. Implicar com means to pick on someone.", r: "Implica mudanças. But: ele implica comigo." },
+        { t: "Visar", s: "A medida visa ___ reduzir o trânsito.", o: ["a", "—", "em", "para"], e: "Visar meaning to aim at takes a. Visar with no preposition means to stamp or sign.", r: "Visa ao lucro. Visou o passaporte." }
       ],
       build: [
         { en: "I watched a movie yesterday.", a: ["Eu assisti a um filme ontem", "Assisti a um filme ontem"], x: ["em", "de"] },
@@ -376,6 +394,12 @@
         { t: "Preposição + que", s: "Esse é o assunto ___ eu falei.", o: ["sobre o qual", "que", "cujo", "quem"], e: "With a preposition and a thing, use preposition + o qual (or simply sobre que in casual speech).", r: "Formal: o qual, a qual, os quais. Brazilians often rephrase instead." },
         { t: "Cujo concordância", s: "A empresa ___ sede fica em Recife cresceu muito.", o: ["cuja", "cujo", "cujas", "de quem a"], e: "Sede is feminine singular, so cuja — the owner (empresa) does not decide it.", r: "Cujo agrees with what comes AFTER it." },
         { t: "Falado", s: "Which is most natural in Brazilian speech?", o: ["O cara que eu falei com ele ontem.", "O cara com quem eu falei ontem.", "O cara cujo eu falei.", "O cara o qual falei."], e: "Both the first two are heard; the first is the very common spoken form that textbooks reject. The second is the standard one.", r: "Standard: com quem. Spoken shortcut: que ... com ele." }
+        ,{ t: "Quantos", s: "Tenho três amigos, dois ___ moram fora.", o: ["dos quais", "que", "dos que", "cujos"], e: "After a quantity you need de + o qual: dois dos quais.", r: "Muitos dos quais, alguns dos quais." },
+        { t: "Em que", s: "O dia ___ a gente se conheceu foi chuvoso.", o: ["em que", "que", "onde", "cujo"], e: "Time expressions take em que, not onde.", r: "O ano em que, o momento em que." },
+        { t: "Quanto", s: "Leve ___ você quiser.", o: ["quanto", "que", "o qual", "cujo"], e: "Quanto works as a relative after tudo or on its own, meaning as much as.", r: "Tudo quanto você precisar." },
+        { t: "O qual depois de preposição longa", s: "Esse é o motivo ___ ela saiu.", o: ["pelo qual", "que", "pelo que", "cujo"], e: "With a two-syllable preposition, standard Portuguese prefers o qual.", r: "pelo qual, para o qual, sem o qual." },
+        { t: "Cujo com preposição", s: "O autor ___ obra eu falei chega amanhã.", o: ["de cuja", "cuja", "da cuja", "de que a"], e: "Falar DE, so the preposition sits before cuja: de cuja obra.", r: "The preposition belongs to the main verb, not to cujo." },
+        { t: "Erro comum", s: "Which is standard?", o: ["A casa onde eu moro é azul.", "A casa aonde eu moro é azul.", "A casa que eu moro é azul.", "A casa cuja eu moro é azul."], e: "Morar is static, so onde. Aonde needs motion, and que without em is non-standard here.", r: "Onde = em que." }
       ],
       build: [
         { en: "The book that I bought is great.", a: ["O livro que eu comprei é ótimo"], x: ["quem", "cujo"] },
@@ -399,6 +423,12 @@
         { t: "Caso", s: "___ você precise de ajuda, me avisa.", o: ["Caso", "Caso de", "Se precisar de", "Apesar de"], e: "Caso means if and takes the subjunctive directly, with no de.", r: "Caso + subjuntivo = se + subjuntivo, slightly more formal." },
         { t: "Temporal", s: "___ eu chegar, te ligo.", o: ["Assim que", "Assim que eu chego", "Logo que eu chego", "Enquanto eu chego"], e: "Assim que + future subjunctive for something still to happen.", r: "Quando, assim que, logo que, enquanto → futuro do subjuntivo for future events." },
         { t: "Explicativa", s: "Leva o guarda-chuva, ___ vai chover.", o: ["que", "para que", "embora", "apesar de"], e: "In speech que alone often carries because: leva, que vai chover.", r: "Vai com calma, que a estrada tá ruim." }
+        ,{ t: "Proporcional", s: "___ o tempo passava, ficava mais fácil.", o: ["À medida que", "Na medida em que", "A medida que", "Na medida que"], e: "À medida que marks two things changing together. Na medida em que means because.", r: "À medida que = as. Na medida em que = insofar as." },
+        { t: "Alternativa", s: "___ você vem, ___ me avisa.", o: ["Ou … ou", "Nem … nem", "Seja … ou", "Ou … nem"], e: "Ou ... ou presents two alternatives.", r: "Nem ... nem is the negative pair: nem veio nem avisou." },
+        { t: "Comparativa", s: "Ele fala ___ se soubesse tudo.", o: ["como", "que", "assim", "conforme"], e: "Como se + imperfect subjunctive for a hypothetical comparison.", r: "Como se fosse, como se tivesse — always the past subjunctive." },
+        { t: "Enquanto", s: "___ você cozinha, eu arrumo a mesa.", o: ["Enquanto", "Assim que", "Até que", "Desde que"], e: "Enquanto marks two things happening at once, with the indicative here.", r: "Enquanto + indicativo for simultaneity." },
+        { t: "Desde que", s: "Eu vou, ___ você me dê carona.", o: ["desde que", "desde", "já que", "porque"], e: "Desde que meaning provided that takes the subjunctive.", r: "Desde que + subjuntivo = condition. Desde que + indicativo = since (time)." },
+        { t: "Já que", s: "___ você já está aqui, me ajuda?", o: ["Já que", "Mesmo que", "Caso", "A não ser que"], e: "Já que gives a known reason and takes the indicative.", r: "Já que, uma vez que, visto que → indicativo." }
       ],
       build: [
         { en: "Although it's expensive, I'm going to buy it.", a: ["Embora seja caro eu vou comprar"], x: ["é", "apesar"] },
@@ -445,6 +475,12 @@
         { t: "É proibido", s: "___ entrada de animais.", o: ["É proibida a", "É proibido a", "São proibidas", "É proibido"], e: "With the article present, the adjective agrees: é proibida a entrada. Without it, the fixed form stays: é proibido entrada.", r: "Same with é bom, é necessário: é bom a água / é boa a água." },
         { t: "Mais de um", s: "Mais de um candidato ___ a proposta.", o: ["aceitou", "aceitaram", "aceitou-se", "aceitam"], e: "Mais de um takes a singular verb, despite the meaning.", r: "Mais de um aluno faltou." },
         { t: "Porcentagem", s: "Cerca de 30% dos entrevistados ___ a ideia.", o: ["apoiaram", "apoiou", "apoia", "apoiaria-se"], e: "With a percentage the verb usually follows the noun after de — entrevistados, plural.", r: "30% dos alunos faltaram. 30% da turma faltou." }
+        ,{ t: "Verbo antes do sujeito", s: "___ dois carros na garagem.", o: ["Existem", "Existe", "Há dois dos", "Tem dois dos"], e: "Existir is a normal verb with a real subject, so it agrees: existem carros. Haver would stay singular.", r: "Há dois carros / Existem dois carros. Both correct, different rules." },
+        { t: "Um dos que", s: "Ele é um dos que ___ mais trabalham.", o: ["—", "o que", "mais que", "aquele que"], e: "Um dos que takes a plural verb: dos que trabalham, because the group does the working.", r: "Um dos que chegaram, uma das que falaram." },
+        { t: "Sujeito composto", s: "O gerente e a equipe ___ o relatório.", o: ["aprovaram", "aprovou", "aprovaram-se", "aprova"], e: "Two subjects joined by e take a plural verb.", r: "João e Maria foram." },
+        { t: "Anexo", s: "Seguem ___ as planilhas.", o: ["anexas", "anexo", "em anexo as", "anexados"], e: "Anexo is an adjective and agrees: planilhas anexas.", r: "Segue anexo o arquivo. Seguem anexas as fotos." },
+        { t: "Meio", s: "Ela ficou ___ preocupada com isso.", o: ["meio", "meia", "meios", "a meia"], e: "Meio meaning somewhat is an adverb and never changes.", r: "Meio cansada, meio triste. But: meia hora." },
+        { t: "Bastante", s: "Tinha ___ pessoas esperando.", o: ["bastantes", "bastante", "bastantemente", "bem bastante"], e: "Before a noun, bastante is an adjective and agrees: bastantes pessoas.", r: "Bastantes livros (many). Ela é bastante alta (adverb, invariable)." }
       ],
       build: [
         { en: "There were many people at the party.", a: ["Havia muitas pessoas na festa", "Tinha muita gente na festa"], x: ["haviam", "tinham"] },
