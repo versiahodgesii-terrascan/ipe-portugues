@@ -84,6 +84,9 @@
         { t: "De repente", s: "De repente, a luz ___.", o: ["acabou", "acabava", "acaba", "acabe"], e: "De repente signals a sudden, completed event: perfeito.", r: "Acabar a luz = the power went out (very Brazilian)." },
         { t: "Contável", s: "Ele ___ três vezes para você ontem.", o: ["ligou", "ligava", "liga", "ligue"], e: "A counted number of times in a closed period is perfeito.", r: "Três vezes, duas horas, o dia todo → perfeito." },
         { t: "Cena", s: "Era domingo, o sol ___ e todo mundo estava na praia.", o: ["brilhava", "brilhou", "brilha", "brilhe"], e: "Setting the scene: imperfeito.", r: "Era, estava, havia, brilhava: scene-setting verbs." }
+        ,{ t: "Ação × cenário", s: "Eu ___ TV quando o telefone ___.", o: ["assistia … tocou", "assisti … tocava", "assistia … tocava", "assisti … tocou"], e: "The background action in progress takes the imperfeito; the single event that interrupts it takes the perfeito.", r: "Imperfeito sets the scene, perfeito breaks it." },
+        { t: "Repetido × uma vez", s: "Todo sábado a gente ___ na praia, mas naquele dia ___ em casa.", o: ["ia … ficou", "foi … ficava", "ia … ficava", "foi … ficou"], e: "Todo sábado marks a habit (imperfeito); naquele dia marks one occasion (perfeito).", r: "Todo / sempre / antigamente → imperfeito. Ontem / naquele dia → perfeito." },
+        { t: "Idade e hora", s: "Quando eu ___ dez anos, nós ___ para o Rio.", o: ["tinha … mudamos", "tive … mudávamos", "tinha … mudávamos", "tive … mudamos"], e: "Age in the past is always imperfeito. The move happened once, so perfeito.", r: "Eu tinha dez anos. Eram três horas. Both always imperfeito." }
       ],
       build: [
         { en: "I was sleeping when you called.", a: ["Eu estava dormindo quando você ligou"], x: ["dormi", "ligava"] },
@@ -262,6 +265,99 @@
         { en: "Call me later!", a: ["Me liga mais tarde", "Me liga depois"], x: ["Liga-me", "de"] },
         { en: "We're going to the beach.", a: ["A gente vai pra praia", "A gente vai à praia"], x: ["vamos", "nós"] },
         { en: "Take care!", a: ["Se cuida"], x: ["Cuida-se", "te"] }
+      ]
+    }
+    ,
+    {
+      id: "u13", title: "Imperativo", en: "Giving orders and asking for things", icon: "!",
+      tip: "Brazilians almost always use the você form for commands, and in speech they often just use the present tense: fala aí, vem cá, me liga. The negative, though, always takes the subjunctive: não fale, não venha.",
+      drill: { tenses: ["psub"], verbs: ["falar", "fazer", "ir", "vir", "ser", "ter", "dizer", "pôr", "sair", "dormir"] },
+      mc: [
+        { t: "Imperativo afirmativo", s: "___ aqui, por favor. (você)", o: ["Vem", "Vens", "Venha você", "Vir"], e: "In everyday Brazilian speech the affirmative command is just the present-tense ele/você form: vem, fala, faz.", r: "Spoken: vem cá. Written or formal: venha cá." },
+        { t: "Imperativo negativo", s: "Não ___ isso agora.", o: ["faça", "faz", "fazes", "fazer"], e: "Negative commands always use the present subjunctive, never the present indicative.", r: "Faz isso → Não faça isso. The negative flips to the subjunctive every time." },
+        { t: "Afirmativo × negativo", s: "___ com ela, mas não ___ sobre o preço.", o: ["Fala … fale", "Fale … fala", "Fala … fala", "Fale … fale"], e: "Spoken affirmative uses the indicative (fala); the negative must use the subjunctive (não fale).", r: "This split is the single most common imperative mistake." },
+        { t: "Pedido educado", s: "___ me ajudar com isso?", o: ["Você poderia", "Você poderá", "Você pudesse", "Você pode de"], e: "Poderia (conditional) is the normal polite request. Pode is fine but blunter.", r: "Conditional = politeness: poderia, gostaria, seria." },
+        { t: "Verbo irregular", s: "Não ___ embora ainda!", o: ["vá", "vai", "vais", "ir"], e: "Ir in the negative command takes the subjunctive: não vá.", r: "Vai embora → Não vá embora." },
+        { t: "Nós = vamos", s: "___ almoçar agora?", o: ["Vamos", "Vão", "Vá", "Íamos"], e: "A suggestion including yourself uses vamos + infinitive.", r: "Vamos ver, vamos lá, vamos comer." },
+        { t: "Pronome no imperativo", s: "___ o livro na mesa, por favor.", o: ["Põe", "Ponhe", "Pões", "Pondo"], e: "Pôr is irregular: the spoken command is põe; the formal one is ponha.", r: "Põe aqui. Não ponha aí." },
+        { t: "Imperativo negativo", s: "Não ___ preocupado, vai dar tudo certo.", o: ["fique", "fica", "ficas", "ficar"], e: "Negative command → subjunctive: não fique.", r: "Fica calmo → Não fique nervoso." },
+        { t: "Verbo irregular", s: "___ a verdade, por favor.", o: ["Diz", "Dize", "Dizes", "Dizer"], e: "The spoken command for dizer is diz; fala is even more common in Brazil.", r: "Formal written: diga a verdade." },
+        { t: "Imperativo negativo", s: "Não ___ tarde, a gente começa às oito.", o: ["chegue", "chega", "chegas", "chegar"], e: "Negative → subjunctive, and chegar needs the u: chegue.", r: "-car/-gar/-çar change spelling in the subjunctive: fique, chegue, comece." }
+      ],
+      build: [
+        { en: "Call me later.", a: ["Me liga mais tarde", "Liga para mim mais tarde"], x: ["ligue", "mim"] },
+        { en: "Don't forget the keys.", a: ["Não esqueça as chaves"], x: ["esquece", "os"] },
+        { en: "Let's go to the beach.", a: ["Vamos à praia", "Vamos para a praia"], x: ["vá", "na"] },
+        { en: "Please wait here.", a: ["Espera aqui por favor", "Espere aqui por favor"], x: ["esperar", "ali"] }
+      ]
+    },
+    {
+      id: "u14", title: "Pronomes oblíquos", en: "Me, te, o, lhe — and where they go", icon: "↔",
+      tip: "Brazil puts the pronoun before the verb, even at the start of a sentence: me liga, te vejo amanhã. The textbook rule that forbids this is Portuguese from Portugal, and almost nobody follows it in speech.",
+      drill: null,
+      mc: [
+        { t: "Colocação", s: "___ vejo amanhã então!", o: ["Te", "Vejo-te", "Tu", "Lhe"], e: "Brazilians start sentences with the pronoun. Vejo-te is correct in Portugal, not in Brazilian speech.", r: "Te vejo, me liga, se cuida." },
+        { t: "Objeto direto", s: "Comprei o livro e ___ li num dia.", o: ["o", "lhe", "ele", "se"], e: "A direct object (read WHAT) takes o/a/os/as.", r: "Direto: o, a. Indireto (to whom): lhe." },
+        { t: "Objeto indireto", s: "Eu ___ disse a verdade ontem.", o: ["lhe", "o", "se", "a"], e: "Dizer something TO someone — the person is the indirect object, so lhe.", r: "Dizer a alguém → lhe. But Brazilians often just say: eu disse pra ele." },
+        { t: "Falado × escrito", s: "Which is normal Brazilian speech?", o: ["Eu vi ele ontem.", "Eu vi-o ontem.", "Vi-lhe ontem.", "Eu o vi-lhe ontem."], e: "In speech Brazilians use the subject pronoun as an object: vi ele, vi ela. Vi-o is formal written Portuguese.", r: "Correct in writing: eu o vi. Normal in speech: eu vi ele." },
+        { t: "Reflexivo", s: "A gente ___ divertiu muito na festa.", o: ["se", "nos", "lhe", "o"], e: "A gente takes third-person agreement, so the reflexive is se, not nos.", r: "A gente se diverte. Nós nos divertimos." },
+        { t: "Com preposição", s: "Esse presente é para ___.", o: ["mim", "eu", "me", "migo"], e: "After a preposition Portuguese uses mim, ti, ele — never eu.", r: "Para mim, de mim, sem mim. But: para eu fazer (before a verb)." },
+        { t: "Com preposição", s: "Você quer ir ___?", o: ["comigo", "com mim", "com eu", "me com"], e: "Com + mim contracts to comigo. Likewise contigo, conosco.", r: "Comigo, contigo, com ele, conosco, com vocês." },
+        { t: "Para eu × para mim", s: "Ela trouxe o contrato para ___ assinar.", o: ["eu", "mim", "me", "comigo"], e: "When a verb follows, the pronoun is the subject of that verb: para eu assinar.", r: "Para mim + noun. Para eu + verb." },
+        { t: "Posição", s: "Não ___ preocupe com isso.", o: ["se", "te", "lhe", "o"], e: "The reflexive matches você → se, and it sits between não and the verb.", r: "Não se preocupe. Não me diga!" },
+        { t: "Reflexivo recíproco", s: "Nós ___ conhecemos na faculdade.", o: ["nos", "se", "nós", "lhe"], e: "Nós takes nos. Each one knew the other — a reciprocal action.", r: "Nós nos vimos, eles se falaram." }
+      ],
+      build: [
+        { en: "I'll see you tomorrow.", a: ["Te vejo amanhã", "Eu te vejo amanhã"], x: ["vejo-te", "ontem"] },
+        { en: "Can you call me tonight?", a: ["Você pode me ligar hoje à noite"], x: ["ligar-me", "ontem"] },
+        { en: "This gift is for me.", a: ["Esse presente é para mim"], x: ["eu", "comigo"] },
+        { en: "We met at university.", a: ["Nós nos conhecemos na faculdade", "A gente se conheceu na faculdade"], x: ["conhecemos", "no"] }
+      ]
+    },
+    {
+      id: "u15", title: "Regência", en: "Which preposition each verb takes", icon: "⇥",
+      tip: "Some verbs demand a preposition that English does not, and getting it wrong is one of the clearest learner tells. Assistir a um filme, gostar de, precisar de, ir a. Brazilians relax several of these in speech, and this unit says which.",
+      drill: null,
+      mc: [
+        { t: "Assistir", s: "Ontem eu assisti ___ um filme ótimo.", o: ["a", "—", "em", "para"], e: "Assistir meaning to watch takes a. Brazilians often drop it in speech, but it is the written standard.", r: "Assistir a um filme. Without a, assistir means to assist." },
+        { t: "Gostar", s: "Ela gosta muito ___ música brasileira.", o: ["de", "a", "—", "com"], e: "Gostar always takes de. There is no version without it.", r: "Gosto de você. Gostei do filme (de + o)." },
+        { t: "Precisar", s: "Eu preciso ___ sua ajuda.", o: ["da", "a", "em", "para"], e: "Precisar de + noun. De + a contracts to da.", r: "Preciso de tempo. Preciso de ajuda." },
+        { t: "Ir a × ir para", s: "Vou ___ Bahia nas férias.", o: ["para a", "na", "em", "a na"], e: "Ir para suggests staying a while; ir a suggests a short trip. Brazilians say vou na praia in casual speech, but para or a is standard.", r: "Vou ao mercado (quick). Vou para a Bahia (a stay)." },
+        { t: "Chegar", s: "O voo chegou ___ São Paulo às seis.", o: ["em", "a", "para", "na a"], e: "Brazilians say chegar em a city. Portugal says chegar a. Both appear in writing; em is the Brazilian norm.", r: "Cheguei em casa. Cheguei no trabalho." },
+        { t: "Preferir", s: "Prefiro café ___ chá.", o: ["a", "que", "do que", "de"], e: "Formal regência is preferir algo a algo. Do que is extremely common in speech but non-standard.", r: "Prefiro X a Y." },
+        { t: "Lembrar", s: "Você lembrou ___ trazer o documento?", o: ["de", "a", "—", "em"], e: "Lembrar de = to remember to. Lembrar alguém (no preposition) means to remind someone.", r: "Lembrei de você. Me lembra de ligar." },
+        { t: "Casar", s: "Ela casou ___ um amigo meu.", o: ["com", "a", "de", "para"], e: "Casar com, like English marry... to? No: Portuguese uses com.", r: "Casei com ela. Namorar, though, takes no preposition." },
+        { t: "Depender", s: "Tudo depende ___ tempo que a gente tiver.", o: ["do", "no", "ao", "pelo"], e: "Depender de. De + o contracts to do.", r: "Depende de você. Depende do clima." },
+        { t: "Pagar", s: "Já paguei ___ conta.", o: ["a", "na", "pela a", "da"], e: "Pagar a conta — the thing paid takes no preposition. Pagar por means to pay in exchange for.", r: "Paguei a conta. Paguei pelo erro." }
+      ],
+      build: [
+        { en: "I watched a movie yesterday.", a: ["Eu assisti a um filme ontem", "Assisti a um filme ontem"], x: ["em", "de"] },
+        { en: "She likes Brazilian music.", a: ["Ela gosta de música brasileira"], x: ["a", "com"] },
+        { en: "I need your help.", a: ["Eu preciso da sua ajuda", "Preciso da sua ajuda"], x: ["a", "para"] },
+        { en: "It depends on the weather.", a: ["Depende do tempo"], x: ["no", "pelo"] }
+      ]
+    },
+    {
+      id: "u16", title: "Infinitivo pessoal", en: "The infinitive that conjugates", icon: "∞",
+      tip: "Portuguese has something almost no other language does: an infinitive with endings. It appears when the infinitive has its own subject, different from the main verb's. É melhor vocês saírem cedo — vocês is doing the leaving, so the infinitive takes -em.",
+      drill: { tenses: ["fsub"], verbs: ["falar", "comer", "partir", "fazer", "ser", "ter", "ir", "ver", "sair", "estar"] },
+      mc: [
+        { t: "Infinitivo pessoal", s: "É melhor vocês ___ cedo amanhã.", o: ["saírem", "sair", "saem", "saiam"], e: "The infinitive has its own subject (vocês), so it takes the personal ending -em.", r: "Endings: — / — / -mos / -em." },
+        { t: "Sem sujeito próprio", s: "Eu preciso ___ mais cedo amanhã.", o: ["sair", "sairmos", "saírem", "saio"], e: "Here the subject of sair is the same eu that precisa, so the plain infinitive is correct.", r: "Same subject → plain infinitive. Different subject → personal." },
+        { t: "Nós", s: "Antes de ___, vamos revisar tudo.", o: ["sairmos", "sair", "saímos", "saiamos"], e: "Antes de + personal infinitive with nós takes -mos.", r: "Antes de sairmos, depois de chegarmos." },
+        { t: "Depois de", s: "Depois de vocês ___, a sala ficou vazia.", o: ["saírem", "sair", "saíram", "saiam"], e: "Vocês is the subject of the infinitive, so -em.", r: "Depois de eles chegarem." },
+        { t: "Para", s: "Trouxe o contrato para vocês ___.", o: ["assinarem", "assinar", "assinam", "assinem"], e: "Para + a stated subject → personal infinitive.", r: "Para eu ver, para nós vermos, para eles verem." },
+        { t: "É + adjetivo", s: "É importante nós ___ a verdade.", o: ["sabermos", "saber", "sabemos", "saibamos"], e: "É importante + nós as the subject of the infinitive → sabermos. (É importante que nós saibamos is also correct, with que.)", r: "Two ways: É importante nós sabermos / É importante que nós saibamos." },
+        { t: "Confusão com o futuro do subjuntivo", s: "Quando vocês ___ o prédio, me avisem.", o: ["virem", "ver", "verem", "vejam"], e: "After quando this is the future subjunctive of ver: virem. It looks like the personal infinitive of vir, which is why it trips people.", r: "Ver → quando virem. Vir → quando vierem." },
+        { t: "Regular -ar", s: "É bom vocês ___ com ela antes.", o: ["falarem", "falar", "falam", "falem"], e: "Vocês is the infinitive's subject → falarem.", r: "falar / falares / falar / falarmos / falarem." },
+        { t: "Sem sujeito próprio", s: "Ela saiu sem ___ nada.", o: ["dizer", "dizerem", "dizermos", "disse"], e: "Ela is the subject of both verbs, so the plain infinitive stays.", r: "Only switch when the subjects differ." },
+        { t: "Nós", s: "No caso de ___ atrasados, liga pra ela.", o: ["chegarmos", "chegar", "chegamos", "cheguemos"], e: "Nós is understood as the subject, so -mos.", r: "No caso de chegarmos, em vez de chegarmos." }
+      ],
+      build: [
+        { en: "It's better for you all to leave early.", a: ["É melhor vocês saírem cedo"], x: ["sair", "saiam"] },
+        { en: "Before we leave, let's check everything.", a: ["Antes de sairmos vamos conferir tudo"], x: ["sair", "saímos"] },
+        { en: "I brought the contract for you to sign.", a: ["Trouxe o contrato para vocês assinarem"], x: ["assinar", "assinem"] },
+        { en: "She left without saying anything.", a: ["Ela saiu sem dizer nada"], x: ["dizerem", "disse"] }
       ]
     }
   ];
