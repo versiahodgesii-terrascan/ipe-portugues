@@ -476,6 +476,99 @@
         { en: "I'll do it right away.", a: ["Eu faço isso rapidinho", "Faço isso rapidinho"], x: ["rápido", "devagar"] }
       ]
     }
+    ,
+    {
+      id: "u22", title: "Voz passiva", en: "Was written, is sold, got stolen", icon: "⊂",
+      tip: "Ser + particípio is the textbook passive and the participle agrees with the subject. But Brazilians dodge it constantly: roubaram meu celular is far more natural than meu celular foi roubado. Both belong in your head, for different registers.",
+      drill: { tenses: ["part"], verbs: ["fazer", "dizer", "ver", "escrever", "abrir", "pagar", "falar", "vender", "partir"] },
+      mc: [
+        { t: "Ser + particípio", s: "A casa ___ no ano passado.", o: ["foi vendida", "foi vendido", "era vendida", "vendeu-se a"], e: "Ser + particípio, and the participle agrees with casa: vendida.", r: "O livro foi escrito. A carta foi escrita." },
+        { t: "Concordância", s: "As propostas ___ pela diretoria.", o: ["foram aprovadas", "foi aprovada", "foram aprovado", "aprovaram-se as"], e: "Plural feminine subject → foram + aprovadas.", r: "The participle behaves like an adjective here." },
+        { t: "Passiva sintética", s: "___ casas nesta rua.", o: ["Vendem-se", "Vende-se", "Se vende", "Vendem-se as"], e: "In the -se passive the verb agrees with the thing sold: casas is plural, so vendem-se.", r: "Vende-se carro. Vendem-se carros. The classic sign-painter mistake." },
+        { t: "Passiva sintética", s: "___ um apartamento para alugar.", o: ["Procura-se", "Procuram-se", "Se procuram", "Procura-se um dos"], e: "Singular thing → singular verb: procura-se um apartamento.", r: "Agreement follows the noun, not the -se." },
+        { t: "Ser × estar", s: "A porta ___ às oito, e agora ___ fechada.", o: ["foi fechada … está", "estava fechada … foi", "foi fechada … foi", "está fechada … está"], e: "Ser + particípio is the action; estar + particípio is the resulting state.", r: "Foi fechada = someone closed it. Está fechada = it is shut." },
+        { t: "Agente da passiva", s: "O relatório foi escrito ___ equipe toda.", o: ["pela", "para a", "da", "a"], e: "The agent takes por: por + a contracts to pela.", r: "Escrito por mim, pelo João, pelas crianças." },
+        { t: "Particípio duplo", s: "Eu já tinha ___ a conta quando ela chegou.", o: ["pagado", "pago", "pagou", "pagando"], e: "With ter the regular participle is the conservative choice; with ser or estar use the short one: a conta foi paga.", r: "Tinha pagado / foi pago. In speech Brazilians say tinha pago too." },
+        { t: "Particípio duplo", s: "O prêmio foi ___ por ela.", o: ["ganho", "ganhado", "ganhou", "ganhando"], e: "With ser, use the short participle: ganho.", r: "ganhar→ganho, gastar→gasto, pagar→pago with ser/estar." },
+        { t: "Falado", s: "Which is most natural in Brazilian speech?", o: ["Roubaram meu celular.", "Meu celular foi roubado por alguém.", "Foi roubado meu celular.", "Meu celular roubou-se."], e: "Brazilians prefer an active verb with an unstated subject over the passive.", r: "Me roubaram. Quebraram a janela. Falaram que..." },
+        { t: "Tempo da passiva", s: "O resultado ___ amanhã.", o: ["será divulgado", "foi divulgado", "é divulgando", "seria divulgado"], e: "Keep the tense in ser: future → será divulgado.", r: "é feito / foi feito / será feito / seria feito." }
+      ],
+      build: [
+        { en: "The house was sold last year.", a: ["A casa foi vendida no ano passado"], x: ["vendido", "era"] },
+        { en: "Houses for sale on this street.", a: ["Vendem-se casas nesta rua"], x: ["vende-se", "casa"] },
+        { en: "The door is closed.", a: ["A porta está fechada"], x: ["foi", "fechado"] },
+        { en: "They stole my phone.", a: ["Roubaram meu celular"], x: ["foi", "roubado"] }
+      ]
+    },
+    {
+      id: "u23", title: "Pontuação", en: "Where the comma goes, and where it must not", icon: "،",
+      tip: "One rule outranks the rest: never put a comma between a subject and its verb. After that, the comma that changes meaning is the one around a relative clause — os alunos que estudaram passaram says only some passed; os alunos, que estudaram, passaram says all of them did.",
+      drill: null,
+      mc: [
+        { t: "Sujeito e verbo", s: "Which is correct?", o: ["Os alunos chegaram cedo.", "Os alunos, chegaram cedo.", "Os alunos chegaram, cedo.", "Os, alunos chegaram cedo."], e: "Never separate the subject from its verb with a comma, however long the subject is.", r: "The single most common comma error in Portuguese." },
+        { t: "Adjunto deslocado", s: "___ eu fui ao mercado.", o: ["Ontem de manhã,", "Ontem de manhã", "Ontem, de manhã", "Ontem de, manhã"], e: "A time or place phrase moved to the front is marked off with a comma.", r: "Ontem, fui. But: Fui ontem." },
+        { t: "Vocativo", s: "___ você pode me ajudar?", o: ["João,", "João", "João:", "João;"], e: "Addressing someone by name always takes a comma.", r: "Oi, Maria. Obrigado, gente." },
+        { t: "Aposto", s: "São Paulo, ___, tem mais de onze milhões de habitantes.", o: ["a maior cidade do país,", "a maior cidade do país", "que a maior cidade,", "a maior cidade do país;"], e: "An explanatory apposition sits between two commas.", r: "Both commas, or neither. Never just one." },
+        { t: "Oração restritiva", s: "Meaning: only the students who studied passed.", o: ["Os alunos que estudaram passaram.", "Os alunos, que estudaram, passaram.", "Os alunos que, estudaram passaram.", "Os alunos; que estudaram; passaram."], e: "No commas restricts the meaning to that subset.", r: "No commas = only those ones." },
+        { t: "Oração explicativa", s: "Meaning: all the students studied, and all passed.", o: ["Os alunos, que estudaram, passaram.", "Os alunos que estudaram passaram.", "Os alunos que estudaram, passaram.", "Os alunos: que estudaram passaram."], e: "Commas turn the clause into extra information about all of them.", r: "Commas = an aside you could delete." },
+        { t: "Antes de mas", s: "Eu queria ir ___ não deu tempo.", o: [", mas", "mas", "; mas", ": mas"], e: "Adversative conjunctions take a comma before them.", r: "Comma before mas, porém, contudo, todavia." },
+        { t: "Enumeração", s: "Comprei pão ___ queijo e café.", o: [",", ";", ":", "e"], e: "Items in a list are separated by commas, with e before the last one.", r: "Portuguese normally omits the comma before the final e." },
+        { t: "Dois-pontos", s: "Só falta uma coisa ___ sua assinatura.", o: [":", ",", ";", "—,"], e: "A colon introduces an explanation, a list or a quotation.", r: "Dois-pontos announce what follows." },
+        { t: "Ponto e vírgula", s: "Uns preferem o mar ___ outros, a montanha.", o: [";", ",", ":", "."], e: "The semicolon separates balanced clauses, especially when commas already appear inside them.", r: "Longer than a comma, shorter than a full stop." }
+      ],
+      build: [
+        { en: "Yesterday, I went to the market.", a: ["Ontem eu fui ao mercado"], x: ["amanhã", "no"] },
+        { en: "I wanted to go, but there was no time.", a: ["Eu queria ir mas não deu tempo"], x: ["porque", "mais"] },
+        { en: "Maria, can you help me?", a: ["Maria você pode me ajudar"], x: ["ela", "ajudo"] },
+        { en: "Only one thing is missing: your signature.", a: ["Só falta uma coisa a sua assinatura"], x: ["as", "assinaturas"] }
+      ]
+    },
+    {
+      id: "u24", title: "Palavras que confundem", en: "Há or a, senão or se não", icon: "⚠",
+      tip: "These pairs sound identical and mean different things. The one that matters most day to day is há for time already passed and daqui a for time still to come: há dois anos versus daqui a dois anos.",
+      drill: null,
+      mc: [
+        { t: "Há × a", s: "Eu moro aqui ___ três anos.", o: ["há", "a", "à", "ah"], e: "Há marks elapsed time — three years ago until now.", r: "Há = past. Daqui a = future." },
+        { t: "Há × a", s: "A reunião é daqui ___ duas horas.", o: ["a", "há", "à", "as"], e: "Time still to come takes a, never há.", r: "Daqui a pouco. Daqui a uma semana." },
+        { t: "Senão × se não", s: "Corre, ___ você perde o ônibus.", o: ["senão", "se não", "se nao", "sem não"], e: "Senão as one word means otherwise.", r: "Senão = otherwise. Se não = if not." },
+        { t: "Senão × se não", s: "___ chover, a gente vai à praia.", o: ["Se não", "Senão", "Se-não", "Senão que"], e: "Here se and não are separate words: if it does not rain.", r: "Try replacing with otherwise — if it fails, use two words." },
+        { t: "A fim de × afim", s: "Estudei muito ___ passar na prova.", o: ["a fim de", "afim de", "afim", "a fim"], e: "A fim de means in order to. Afim is an adjective meaning related.", r: "Tá a fim de sair? = Do you feel like going out?" },
+        { t: "Em vez de", s: "___ reclamar, ele resolveu o problema.", o: ["Em vez de", "Ao em vez de", "Em vez que", "Invés de"], e: "Em vez de works for any substitution; ao invés de strictly means the opposite of.", r: "Em vez de is safe everywhere." },
+        { t: "Demais × de mais", s: "Ela falou ___ na reunião.", o: ["demais", "de mais", "demais de", "a mais"], e: "Demais means too much. De mais is the opposite of de menos.", r: "Comeu demais. Não vejo nada de mais nisso." },
+        { t: "Mal × mau", s: "Ele dormiu ___ essa noite.", o: ["mal", "mau", "mail", "mao"], e: "Mal is the adverb (opposite of bem); mau is the adjective (opposite of bom).", r: "Mal↔bem, mau↔bom. Swap in bem or bom to check." },
+        { t: "Onde × aonde", s: "___ você vai com essa pressa?", o: ["Aonde", "Onde", "Donde", "Em onde"], e: "Verbs of motion take aonde.", r: "Aonde vai? Onde está?" },
+        { t: "Tampouco × tão pouco", s: "Ele não veio, ___ avisou.", o: ["tampouco", "tão pouco", "tao pouco", "tampouco que"], e: "Tampouco means neither / nor did he.", r: "Tão pouco = so little. Dormi tão pouco." }
+      ],
+      build: [
+        { en: "I have lived here for three years.", a: ["Eu moro aqui há três anos"], x: ["a", "à"] },
+        { en: "The meeting is in two hours.", a: ["A reunião é daqui a duas horas"], x: ["há", "às"] },
+        { en: "Run, otherwise you'll miss the bus.", a: ["Corre senão você perde o ônibus"], x: ["se", "não"] },
+        { en: "He slept badly last night.", a: ["Ele dormiu mal essa noite"], x: ["mau", "bem"] }
+      ]
+    },
+    {
+      id: "u25", title: "Números, horas e datas", en: "Counting, telling time, writing dates", icon: "7",
+      tip: "Two numbers agree with what they count: um/uma, dois/duas, and every hundred from duzentos up. Telling the time agrees too — é uma hora but são duas horas. And only the first of the month is an ordinal.",
+      drill: null,
+      mc: [
+        { t: "Concordância", s: "Comprei ___ passagens.", o: ["duas", "dois", "duos", "duases"], e: "Dois has a feminine form: duas passagens.", r: "Um/uma and dois/duas agree. Three onwards do not." },
+        { t: "Centenas", s: "Havia ___ pessoas no evento.", o: ["duzentas", "duzentos", "dois centos", "duzenta"], e: "From duzentos up, hundreds agree in gender: duzentas pessoas.", r: "Trezentas casas, quinhentas pessoas." },
+        { t: "Cem × cento", s: "O ingresso custa ___ e vinte reais.", o: ["cento", "cem", "cens", "centos"], e: "Cem stands alone; cento appears before another number.", r: "Cem reais. Cento e dez reais." },
+        { t: "Horas", s: "Agora ___ uma hora da tarde.", o: ["é", "são", "está", "tem"], e: "One o'clock is singular: é uma hora. Everything else is são.", r: "É uma. São duas. É meio-dia. É meia-noite." },
+        { t: "Horas", s: "A aula começa ___ oito.", o: ["às", "as", "à", "a"], e: "Times take à/às — à uma, às oito.", r: "À uma hora, às duas horas." },
+        { t: "Meia", s: "Vamos sair às seis e ___.", o: ["meia", "meio", "trinta minutos de", "metade"], e: "Half past is meia, agreeing with the feminine hora.", r: "Seis e meia. Also meia = 6 when reading phone numbers." },
+        { t: "Data", s: "A festa é ___ de maio.", o: ["dia primeiro", "dia um", "dia primeira", "no um"], e: "Only the first of the month takes an ordinal: dia primeiro.", r: "Primeiro de maio, but dois de maio, quinze de maio." },
+        { t: "Data", s: "Ela nasceu ___ de setembro de 1998.", o: ["em doze", "no doze", "ao doze", "em décimo segundo"], e: "Ordinary dates use cardinal numbers: doze de setembro.", r: "Say the number plainly, except for the first." },
+        { t: "Ano", s: "Estamos em ___.", o: ["dois mil e vinte e seis", "dois mil vinte e seis", "vinte e vinte seis", "dois mil e vinte seis"], e: "Portuguese says the year in full, with e before the final part.", r: "Mil novecentos e noventa e oito." },
+        { t: "Ordinais", s: "Ele ficou em ___ lugar.", o: ["terceiro", "três", "terceira", "tercero"], e: "Rankings take ordinals, agreeing with lugar (masculine).", r: "primeiro, segundo, terceiro, quarto, quinto, sexto." }
+      ],
+      build: [
+        { en: "I bought two tickets.", a: ["Eu comprei duas passagens", "Comprei duas passagens"], x: ["dois", "passagem"] },
+        { en: "It is one o'clock.", a: ["É uma hora"], x: ["são", "horas"] },
+        { en: "The class starts at eight.", a: ["A aula começa às oito"], x: ["as", "à"] },
+        { en: "The party is on the first of May.", a: ["A festa é dia primeiro de maio"], x: ["um", "primeira"] }
+      ]
+    }
   ];
 
   U.forEach((u, i) => {
