@@ -245,6 +245,10 @@
         { t: "Por que", s: "___ você não veio à aula?", o: ["Por que", "Porque", "Por quê", "Porquê"], e: "Questions start with por que (two words, no accent).", r: "Porque = because. Por quê = at the end. O porquê = the reason." },
         { t: "Há × a", s: "Ele saiu ___ cinco minutos.", o: ["há", "a", "à", "de"], e: "Time that has passed: há.", r: "Daqui a cinco minutos = five minutes from now." },
         { t: "Acordo ortográfico", s: "Eles ___ TV todo dia.", o: ["veem", "vêem", "vem", "vêm"], e: "Since the 2009 spelling reform, veem, leem and creem lost their circumflex.", r: "Vêm (they come) keeps it." }
+        ,{ t: "Plural -ãe", s: "As ___ chegaram cedo.", o: ["mães", "mãos", "mães-", "mãs"], e: "Mãe pluralises to mães. Mão becomes mãos.", r: "Three -ão plurals: -ões (ações), -ães (pães), -ãos (mãos)." },
+        { t: "Gênero traiçoeiro", s: "Preciso resolver ___ problema.", o: ["esse", "essa", "esta", "aquela"], e: "Problema is masculine despite the -a, like tema, sistema, poema.", r: "Greek -ema / -ama words are masculine: o problema, o cinema, o telefonema." },
+        { t: "Plural composto", s: "Comprei duas ___.", o: ["couves-flores", "couve-flores", "couves-flor", "couve-flor"], e: "In a noun + noun compound, both parts pluralise.", r: "Segundas-feiras, guarda-chuvas (verb + noun: only the noun)." },
+        { t: "Acentuação", s: "Which is spelled correctly?", o: ["Ele tem três irmãos.", "Ele tem tres irmãos.", "Ele têm três irmãos.", "Ele tem tres irmaos."], e: "Três carries an accent; tem is singular here, têm would be plural.", r: "Ele tem / eles têm. Três always accented." }
       ],
       build: [
         { en: "The problem is serious.", a: ["O problema é sério"], x: ["A", "sérios"] },
@@ -266,6 +270,12 @@
         { t: "Gíria", s: "A friend says \"Valeu!\" after you help. They mean…", o: ["Thanks!", "That was expensive!", "Hurry up!", "I'm sorry."], e: "Valeu is an informal thank-you, also used as goodbye.", r: "Valeu! — De nada! / Imagina!" },
         { t: "Despedida", s: "\"A gente se vê!\" means…", o: ["See you!", "We see people.", "People see us.", "Look at us!"], e: "A gente se vê = we'll see each other: see you around.", r: "Também: até mais, até logo, falou!" },
         { t: "Você → cê", s: "\"Cê vai?\" is spoken for…", o: ["Você vai?", "Se vai?", "Quem vai?", "Ele vai?"], e: "Cê is a spoken shortening of você, very common in São Paulo and Minas.", r: "Cê tá bem? = Você está bem?" }
+        ,{ t: "Tá", s: "What does \"Tá bom\" come from?", o: ["Está bom", "Tudo bom", "Tá-se bem", "Está-bom"], e: "Está reduces to tá constantly in speech: tá bom, tá certo, tá ligado.", r: "estou→tô, está→tá, estamos→tamo." },
+        { t: "Né", s: "Você vem amanhã, ___?", o: ["né", "não é verdade", "nao", "né que"], e: "Né is não é squeezed together, used as a tag question.", r: "Legal, né? Tá frio, né?" },
+        { t: "Oxe / uai", s: "What do oxe and uai express?", o: ["Surprise", "Agreement", "Farewell", "Thanks"], e: "Regional interjections of surprise — oxe in the Northeast, uai in Minas.", r: "Both roughly mean huh? or well I never." },
+        { t: "Pois não", s: "A waiter says \"Pois não?\" — what does it mean?", o: ["How can I help you?", "No, we don't have it.", "Please don't.", "Of course not."], e: "Despite the não, pois não is an offer of help in Brazil.", r: "Pois não? = Yes? Pois sim = yeah, right (sarcastic)." },
+        { t: "Mano / cara", s: "Which is closest to \"dude\"?", o: ["cara", "carro", "coroa", "cara-de-pau"], e: "Cara and mano both work as dude or mate.", r: "E aí, cara? Fala, mano." },
+        { t: "Dar um jeito", s: "\"A gente dá um jeito\" means:", o: ["We'll figure something out", "We'll give directions", "We'll behave", "We'll give up"], e: "Dar um jeito is to find a workaround — one of the most Brazilian phrases there is.", r: "Dá um jeitinho aí." }
       ],
       build: [
         { en: "Call me later!", a: ["Me liga mais tarde", "Me liga depois"], x: ["Liga-me", "de"] },
@@ -452,6 +462,12 @@
         { t: "Formas próprias", s: "O filme não foi ruim, foi ___.", o: ["péssimo", "mais péssimo", "o pior de", "muito pior"], e: "Péssimo is the absolute superlative of mau/ruim; ótimo is bom's.", r: "bom→ótimo, mau→péssimo, grande→máximo, pequeno→mínimo." },
         { t: "Advérbio", s: "Ele cozinha ___ que o irmão.", o: ["melhor", "mais bem", "mais melhor", "tão bem"], e: "The adverb bem also becomes melhor in comparison.", r: "Faz bem → faz melhor. Faz mal → faz pior." },
         { t: "Do que × de", s: "Ela tem mais ___ trinta livros.", o: ["de", "do que", "que de", "than"], e: "Before a number use de, not do que.", r: "Mais de dez anos. Mais do que eu esperava." }
+        ,{ t: "Superlativo irregular", s: "O resultado foi ___ do que a gente esperava.", o: ["melhor", "mais bom", "o melhor", "boníssimo"], e: "Bom → melhor in any comparison, with or without do que.", r: "Never mais bom, in any context." },
+        { t: "-íssimo com mudança", s: "A viagem foi ___.", o: ["facílima", "facilíssima", "fácilíssima", "mais fácil"], e: "Fácil has an irregular absolute superlative: facílimo/facílima.", r: "fácil→facílimo, difícil→dificílimo, simples→simplíssimo." },
+        { t: "Superlativo erudito", s: "Um amigo ___ me ajudou.", o: ["fidelíssimo", "fielíssimo", "mais fiel", "fielzíssimo"], e: "Fiel takes the learned form fidelíssimo, from the Latin stem.", r: "amigo→amicíssimo, nobre→nobilíssimo." },
+        { t: "Tão × tanto", s: "Não sabia que era ___ longe.", o: ["tão", "tanto", "tamanho", "tanta"], e: "Tão modifies an adjective or adverb; tanto modifies a verb or noun.", r: "Tão longe. Anda tanto. Tanta gente." },
+        { t: "Quanto × do que", s: "Ela é tão alta ___ o irmão.", o: ["quanto", "do que", "que", "como que"], e: "Equality takes quanto or como — never do que.", r: "Tão … quanto. Mais … do que." },
+        { t: "Superlativo com de", s: "É o melhor restaurante ___ bairro.", o: ["do", "no", "pelo", "ao"], e: "A relative superlative takes de: o melhor do bairro.", r: "A maior do mundo, o pior da turma." }
       ],
       build: [
         { en: "This restaurant is better than that one.", a: ["Esse restaurante é melhor do que aquele", "Esse restaurante é melhor que aquele"], x: ["bom", "mais"] },
@@ -504,6 +520,12 @@
         { t: "Plural", s: "As crianças ganharam dois ___.", o: ["bolinhos", "bolinhoses", "bolinzinhos", "bolosinhos"], e: "Form the diminutive, then pluralise it normally: bolinho → bolinhos.", r: "But pãozinho → pãezinhos: the base word pluralises inside." },
         { t: "Plural irregular", s: "Comprei dois ___ na padaria.", o: ["pãezinhos", "pãozinhos", "pãesinhos", "pãozinhoes"], e: "Pão → pães, so the diminutive plural is pãezinhos.", r: "The root pluralises first, then -zinhos." },
         { t: "Sentido", s: "What does jeitinho usually suggest?", o: ["An informal workaround", "A small direction", "A tiny road", "A polite greeting"], e: "Jeitinho names the Brazilian habit of finding an informal way around a rule.", r: "Dar um jeitinho — one of the most Brazilian phrases there is." }
+        ,{ t: "-zinho com -r", s: "Ela me deu uma ___.", o: ["florzinha", "florinha", "flozinha", "flórzinha"], e: "Words ending in -r take -zinho: flor → florzinha.", r: "amor→amorzinho, mulher→mulherzinha." },
+        { t: "-inho com perda de vogal", s: "Que ___ lindo!", o: ["livrinho", "livrozinho", "livrinhho", "livrinhos"], e: "Livro drops the final o before -inho.", r: "carro→carrinho, gato→gatinho, bolo→bolinho." },
+        { t: "Nome próprio", s: "A gente chama ele de ___.", o: ["Joãozinho", "Joãoinho", "Joãzinho", "Joãosinho"], e: "Names take diminutives constantly in Brazil: Joãozinho, Mariazinha, Zezinho.", r: "Affection, not size." },
+        { t: "Pejorativo", s: "Chamar alguém de \"advogadozinho\" é:", o: ["Depreciativo", "Carinhoso", "Formal", "Neutro"], e: "With a profession, the diminutive usually belittles.", r: "Tone decides: amorzinho is warm, advogadozinho is a dig." },
+        { t: "-ão não aumentativo", s: "\"Ele é um gatão\" quer dizer:", o: ["Ele é muito atraente", "Ele tem um gato grande", "Ele é um gato velho", "Ele gosta de gatos"], e: "Gatão means good-looking, not a large cat.", r: "Gata/gatão = attractive. Common slang." },
+        { t: "Dupla diminutivo", s: "Which exists in normal speech?", o: ["Pertinho", "Pertinhinho", "Pertozinho", "Pertinhozinho"], e: "Perto → pertinho. Portuguese does not stack diminutives.", r: "Pertinho daqui, cedinho, devagarinho." }
       ],
       build: [
         { en: "Let's have a little coffee.", a: ["Vamos tomar um cafezinho"], x: ["café", "cafeinho"] },
@@ -551,6 +573,12 @@
         { t: "Enumeração", s: "Comprei pão ___ queijo e café.", o: [",", ";", ":", "e"], e: "Items in a list are separated by commas, with e before the last one.", r: "Portuguese normally omits the comma before the final e." },
         { t: "Dois-pontos", s: "Só falta uma coisa ___ sua assinatura.", o: [":", ",", ";", "—,"], e: "A colon introduces an explanation, a list or a quotation.", r: "Dois-pontos announce what follows." },
         { t: "Ponto e vírgula", s: "Uns preferem o mar ___ outros, a montanha.", o: [";", ",", ":", "."], e: "The semicolon separates balanced clauses, especially when commas already appear inside them.", r: "Longer than a comma, shorter than a full stop." }
+        ,{ t: "Entre verbo e objeto", s: "Which is correct?", o: ["Comprei um carro novo.", "Comprei, um carro novo.", "Comprei um, carro novo.", "Comprei um carro, novo."], e: "No comma between a verb and its object either.", r: "Subject–verb–object: no commas inside that core." },
+        { t: "Data e local", s: "___ 12 de maio de 2026.", o: ["São Paulo,", "São Paulo", "São Paulo:", "São Paulo;"], e: "A place before a date takes a comma.", r: "Recife, 3 de março de 2026." },
+        { t: "Conjunção deslocada", s: "Ele estudou muito; ___, não passou.", o: ["no entanto", "no entanto que", "porém que", "mas que"], e: "A conjunctive adverb between clauses is fenced by punctuation on both sides.", r: "; no entanto, / ; portanto, / ; contudo," },
+        { t: "Oração adverbial antes", s: "___ eu chegar, me liga.", o: ["Quando", "Quando,", ", quando", "Quando;"], e: "No comma after the conjunction itself. The comma comes after the whole clause: Quando eu chegar, me liga.", r: "The comma marks the end of the fronted clause, not the start." },
+        { t: "E com sujeitos diferentes", s: "Ela saiu ___ ele ficou.", o: [", e", "e", "; e", ": e"], e: "When e joins clauses with different subjects, a comma is usual.", r: "Normally no comma before e — this is the exception." },
+        { t: "Ponto final e abreviação", s: "Which is correct?", o: ["Chegou às 10h. Saiu às 12h.", "Chegou às 10hs. Saiu às 12hs.", "Chegou às 10 h.. Saiu", "Chegou às 10h; Saiu às 12h."], e: "Portuguese writes 10h with no plural s and no extra stop.", r: "10h, 30min, 5km — symbols never take an s." }
       ],
       build: [
         { en: "Yesterday, I went to the market.", a: ["Ontem eu fui ao mercado"], x: ["amanhã", "no"] },
@@ -574,6 +602,12 @@
         { t: "Mal × mau", s: "Ele dormiu ___ essa noite.", o: ["mal", "mau", "mail", "mao"], e: "Mal is the adverb (opposite of bem); mau is the adjective (opposite of bom).", r: "Mal↔bem, mau↔bom. Swap in bem or bom to check." },
         { t: "Onde × aonde", s: "___ você vai com essa pressa?", o: ["Aonde", "Onde", "Donde", "Em onde"], e: "Verbs of motion take aonde.", r: "Aonde vai? Onde está?" },
         { t: "Tampouco × tão pouco", s: "Ele não veio, ___ avisou.", o: ["tampouco", "tão pouco", "tao pouco", "tampouco que"], e: "Tampouco means neither / nor did he.", r: "Tão pouco = so little. Dormi tão pouco." }
+        ,{ t: "Acerca de × há cerca de", s: "Ele saiu ___ duas horas.", o: ["há cerca de", "acerca de", "a cerca de", "cerca de"], e: "Há cerca de = approximately that long ago. Acerca de = about (a topic).", r: "Falamos acerca do projeto. Saiu há cerca de duas horas." },
+        { t: "Ao encontro × de encontro", s: "A proposta veio ___ nossos interesses.", o: ["ao encontro dos", "de encontro aos", "ao encontro aos", "de encontro dos"], e: "Ao encontro de = in line with. De encontro a = against.", r: "O carro foi de encontro ao muro (crashed into)." },
+        { t: "Sessão × seção × cessão", s: "A ___ de cinema começa às oito.", o: ["sessão", "seção", "cessão", "secção"], e: "Sessão = a session or showing. Seção = a department. Cessão = a transfer.", r: "Sessão de cinema, seção de eletrônicos, cessão de direitos." },
+        { t: "Ao invés × em vez", s: "Ele subiu ___ descer.", o: ["ao invés de", "em vez que", "invés de", "ao invés que"], e: "Ao invés de is for true opposites, which up and down are.", r: "Em vez de works anywhere; ao invés de only for opposites." },
+        { t: "Haja × aja", s: "Espero que não ___ problemas.", o: ["haja", "aja", "haje", "haija"], e: "Haja is from haver (to exist); aja is from agir (to act).", r: "Haja paciência! Aja com calma." },
+        { t: "Mas × mais", s: "Queria ficar ___ tempo, ___ preciso ir.", o: ["mais … mas", "mas … mais", "mais … mais", "mas … mas"], e: "Mais = more (quantity). Mas = but (contrast).", r: "One letter apart, opposite jobs." }
       ],
       build: [
         { en: "I have lived here for three years.", a: ["Eu moro aqui há três anos"], x: ["a", "à"] },
@@ -597,6 +631,12 @@
         { t: "Data", s: "Ela nasceu ___ de setembro de 1998.", o: ["em doze", "no doze", "ao doze", "em décimo segundo"], e: "Ordinary dates use cardinal numbers: doze de setembro.", r: "Say the number plainly, except for the first." },
         { t: "Ano", s: "Estamos em ___.", o: ["dois mil e vinte e seis", "dois mil vinte e seis", "vinte e vinte seis", "dois mil e vinte seis"], e: "Portuguese says the year in full, with e before the final part.", r: "Mil novecentos e noventa e oito." },
         { t: "Ordinais", s: "Ele ficou em ___ lugar.", o: ["terceiro", "três", "terceira", "tercero"], e: "Rankings take ordinals, agreeing with lugar (masculine).", r: "primeiro, segundo, terceiro, quarto, quinto, sexto." }
+        ,{ t: "Milhão", s: "A cidade tem dois ___ de habitantes.", o: ["milhões", "milhão", "milhõs", "milhares"], e: "Milhão pluralises to milhões and keeps de before the noun.", r: "Um milhão de reais, dois milhões de pessoas." },
+        { t: "Mil", s: "O carro custou ___ reais.", o: ["trinta mil", "trinta mis", "trinta milhares", "trinta mil de"], e: "Mil never pluralises and takes no de.", r: "Dois mil reais. But: dois milhões DE reais." },
+        { t: "Meio-dia e meia", s: "A gente se encontra ao ___.", o: ["meio-dia e meia", "meio-dia e meio", "meia-dia e meia", "meio-dia e trinta de"], e: "Meia agrees with the understood hora, even after meio-dia.", r: "Meio-dia e meia. Meia-noite e meia." },
+        { t: "Percentagem", s: "Houve um aumento de ___.", o: ["dez por cento", "dez porcento", "dez percento", "dez por centos"], e: "Por cento is two words and never pluralises.", r: "10%, lido dez por cento." },
+        { t: "Numeral e substantivo", s: "Ele mora no ___ andar.", o: ["primeiro", "um", "primeira", "uno"], e: "Floors, centuries and kings take ordinals up to ten.", r: "Século XX = século vinte. Dom Pedro II = segundo." },
+        { t: "Telefone", s: "Reading 3 6 6 2 aloud, Brazilians often say:", o: ["três meia meia dois", "três seis seis dois", "três sexta sexta dois", "três seis e seis dois"], e: "Meia is short for meia dúzia and avoids confusing seis with três on the phone.", r: "Meia = 6 when reading digits aloud." }
       ],
       build: [
         { en: "I bought two tickets.", a: ["Eu comprei duas passagens", "Comprei duas passagens"], x: ["dois", "passagem"] },
