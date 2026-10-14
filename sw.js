@@ -1,6 +1,6 @@
 /* Offline support: cache the whole app on install, serve cache-first.
    Bump VERSION whenever you change any file so phones pick up the update. */
-const VERSION = "ipe-v9";
+const VERSION = "ipe-v10";
 const FILES = [
   "./",
   "./index.html",
@@ -8,6 +8,7 @@ const FILES = [
   "./css/styles.css",
   "./js/verbs.js",
   "./js/content.js",
+  "./js/termo.js",
   "./js/app.js",
   "./icons/apple-touch-icon.png",
   "./icons/icon-192.png",

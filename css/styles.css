@@ -342,3 +342,35 @@ textarea { width: 100%; min-height: 90px; font: 500 12px/1.4 var(--mono); paddin
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------------- Termo ---------------- */
+/* A letter grid is where a monospace face earns its keep: every tile is the
+   same width, so the board stays square without fighting the type. */
+.tgrid { display: flex; flex-direction: column; gap: 6px; align-items: center; margin: 4px 0 14px; }
+.trow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: 100%; max-width: 330px; }
+.tcell {
+  aspect-ratio: 1; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 4px; background: var(--surface);
+  font: 500 clamp(20px, 6.4vw, 26px)/1 var(--display); text-transform: uppercase;
+  color: var(--ink);
+}
+.tcell.filled { border-color: var(--muted); }
+.tcell.correct { background: var(--ok); border-color: var(--ok); color: #fff; }
+.tcell.present { background: var(--gold); border-color: var(--gold); color: #fff; }
+.tcell.absent  { background: var(--surface-2); border-color: var(--line); color: var(--muted); }
+
+.kb { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.krow { display: flex; gap: 4px; justify-content: center; width: 100%; }
+.key {
+  flex: 1 1 0; min-width: 0; height: 46px; border-radius: 4px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font: 500 14px/1 var(--display); text-transform: uppercase;
+}
+.key.wide { flex: 1.8 1 0; font-size: 11px; letter-spacing: .04em; }
+.key:active { background: var(--surface-2); }
+.key.correct { background: var(--ok); border-color: var(--ok); color: #fff; }
+.key.present { background: var(--gold); border-color: var(--gold); color: #fff; }
+.key.absent  { background: var(--surface-2); border-color: var(--surface-2); color: var(--muted); opacity: .55; }
+
+.drow { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font: 500 12px/1 var(--display); color: var(--muted); }
+.dbar { background: var(--surface-2); color: var(--ink); border-radius: 3px; padding: 4px 6px; text-align: right; font: 500 11px/1 var(--display); }

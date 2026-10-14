@@ -40,6 +40,7 @@
     target: sv('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>'),
     clock: sv('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
     trophy: sv('<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>'),
+    grid: sv('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
     share: sv('<path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>')
   };
 
@@ -47,7 +48,12 @@
   const DEFAULT = {
     v: 1, xp: 0, days: {}, streak: 0, bestStreak: 0, lastDay: null, goal: 20, lessons: 0,
     units: {}, srs: {}, onboarded: false, installDismissed: false,
-    settings: { sound: true, autoplay: true, slow: false, voiceURI: "" }
+    settings: { sound: true, autoplay: true, slow: false, voiceURI: "" },
+    /* Termo keeps today's board so closing the app mid-game does not lose it,
+       plus a lifetime record. `day` is the day index the board belongs to; a
+       new day resets the guesses but never the stats. */
+    termo: { day: null, guesses: [], done: false, won: false,
+             stats: { played: 0, wins: 0, streak: 0, best: 0, dist: [0, 0, 0, 0, 0, 0] } }
   };
   const clone = o => JSON.parse(JSON.stringify(o));
   function load() {
@@ -218,7 +224,7 @@
 
   /* ---------------- app chrome ---------------- */
   let tab = "learn";
-  const TABS = { learn: ["Learn", I.path], review: ["Review", I.repeat], guide: ["Guide", I.book], profile: ["Profile", I.user] };
+  const TABS = { learn: ["Learn", I.path], review: ["Review", I.repeat], termo: ["Termo", I.grid], guide: ["Guide", I.book], profile: ["Profile", I.user] };
 
   function renderChrome() {
     const st = streakNow(), doneToday = S.lastDay === today();
@@ -240,7 +246,7 @@
   function render() {
     renderChrome();
     const m = $("#main");
-    m.innerHTML = { learn: viewLearn, review: viewReview, guide: viewGuide, profile: viewProfile }[tab]();
+    m.innerHTML = { learn: viewLearn, review: viewReview, termo: viewTermo, guide: viewGuide, profile: viewProfile }[tab]();
     if (tab === "learn") {
       const cur = $(".node.current");
       if (cur && !render.scrolled) { render.scrolled = true; cur.scrollIntoView({ block: "center" }); }
@@ -325,6 +331,92 @@
 
   /* ---------------- Guide ---------------- */
   const G = { tab: "verbs", verb: "fazer", q: "" };
+  /* ---------------- Termo ---------------- */
+  const root_TERMO = window.PT_TERMO;
+  const TERMO_ROWS = 6;
+  const KEYS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+
+  /** Today's board, resetting the guesses (never the stats) on a new day. */
+  function termoState() {
+    const t = S.termo, d = today();
+    if (t.day !== d) { t.day = d; t.guesses = []; t.done = false; t.won = false; save(); }
+    return t;
+  }
+  const termoAnswer = () => root_TERMO.wordForDay(today());
+
+  function viewTermo() {
+    const t = termoState(), ans = termoAnswer(), P = root_TERMO;
+    const rows = [];
+    for (let r = 0; r < TERMO_ROWS; r++) {
+      const g = t.guesses[r];
+      const sc = g ? P.score(g, ans) : null;
+      const cells = [];
+      for (let i = 0; i < 5; i++) {
+        const ch = g ? g[i] : (r === t.guesses.length && !t.done ? (termoDraft[i] || "") : "");
+        const st = sc ? sc[i] : "";
+        cells.push(`<div class="tcell ${st}${ch && !sc ? " filled" : ""}">${esc(ch || "")}</div>`);
+      }
+      rows.push(`<div class="trow">${cells.join("")}</div>`);
+    }
+    const ks = P.keyStates(t.guesses, ans);
+    const kb = KEYS.map((row, ri) => `<div class="krow">
+      ${ri === 2 ? `<button class="key wide" data-act="tkey" data-k="enter">Enter</button>` : ""}
+      ${row.split("").map(c => `<button class="key ${ks[c] || ""}" data-act="tkey" data-k="${c}">${c}</button>`).join("")}
+      ${ri === 2 ? `<button class="key wide" data-act="tkey" data-k="back">⌫</button>` : ""}
+    </div>`).join("");
+
+    const st = t.stats, pct = st.played ? Math.round((st.wins / st.played) * 100) : 0;
+    const maxd = Math.max(1, ...st.dist);
+    const dist = st.dist.map((n, i) => `<div class="drow"><span>${i + 1}</span><div class="dbar" style="width:${Math.max(6, (n / maxd) * 100)}%">${n}</div></div>`).join("");
+
+    return `<div class="view">
+      <div class="card">
+        <span class="eyebrow">Palavra do dia</span>
+        <h3 style="margin:2px 0 6px">Termo</h3>
+        <p class="muted" style="margin:0;font-size:14px">Six tries at a five-letter Brazilian word. Type without accents — they appear for you.</p>
+      </div>
+      <div class="tgrid">${rows.join("")}</div>
+      ${t.done ? `<div class="card" style="text-align:center">
+        <h3 style="margin:0 0 4px">${t.won ? "Acertou!" : "Não foi dessa vez"}</h3>
+        <p style="margin:0 0 10px;font:500 24px/1 var(--display);letter-spacing:.08em">${esc(ans)}</p>
+        <button class="btn small ghost" data-act="say" data-t="${esc(ans)}">${I.speaker} Ouvir</button>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px">Seu histórico</h3>
+        <div class="statgrid" style="margin-bottom:10px">
+          <div class="sbox"><div><b>${st.played}</b><span>Jogos</span></div></div>
+          <div class="sbox"><div><b>${pct}%</b><span>Vitórias</span></div></div>
+          <div class="sbox"><div><b>${st.streak}</b><span>Sequência</span></div></div>
+          <div class="sbox"><div><b>${st.best}</b><span>Melhor</span></div></div>
+        </div>
+        ${dist}
+      </div>` : `<div class="kb">${kb}</div>`}
+    </div>`;
+  }
+
+  let termoDraft = "";
+
+  function termoKey(k) {
+    const t = termoState(), ans = termoAnswer(), P = root_TERMO;
+    if (t.done) return;
+    if (k === "back") { termoDraft = termoDraft.slice(0, -1); return render(); }
+    if (k === "enter") {
+      if (termoDraft.length < 5) return toast("Faltam letras.");
+      if (!P.isWord(termoDraft)) { sBad(); return toast("Palavra não encontrada."); }
+      t.guesses.push(termoDraft);
+      const won = P.plain(termoDraft) === P.plain(ans);
+      termoDraft = "";
+      if (won || t.guesses.length >= TERMO_ROWS) {
+        t.done = true; t.won = won;
+        const st = t.stats;
+        st.played++;
+        if (won) { st.wins++; st.streak++; st.best = Math.max(st.best, st.streak); st.dist[t.guesses.length - 1]++; sWin(); }
+        else { st.streak = 0; sBad(); }
+      } else sOk();
+      save(); return render();
+    }
+    if (termoDraft.length < 5 && /^[a-z]$/.test(k)) { termoDraft += k; render(); }
+  }
   function viewGuide() {
     const seg = `<div class="seg" role="group" aria-label="Guide section">${[["verbs", "Verb tables"], ["tenses", "Tenses"], ["tips", "Unit tips"]].map(([k, l]) => `<button data-act="gtab" data-k="${k}" aria-pressed="${G.tab === k}">${l}</button>`).join("")}</div>`;
     let body = "";
@@ -473,6 +565,7 @@
     else if (a === "gtab") { G.tab = b.dataset.k; render(); }
     else if (a === "verb") { G.verb = b.dataset.v; render(); const h = $(".vhead"); h && h.scrollIntoView({ behavior: "smooth", block: "start" }); }
     else if (a === "say") speak(b.dataset.t);
+    else if (a === "tkey") termoKey(b.dataset.k);
     else if (a === "goal") { S.goal = +b.dataset.g; save(); render(); }
     else if (a === "voice") {
       S.settings.voiceURI = b.dataset.v; save(); pickVoice(); render();
