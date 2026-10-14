@@ -779,10 +779,34 @@
     }
   ];
 
+  /* The tile bank for a build exercise. It has to be able to spell EVERY
+     accepted answer, not just the first — otherwise an alternate is "accepted"
+     by a check that can never receive it, which is how 23 of them sat dead.
+     Words shared between answers are counted once (the max any one answer
+     needs), and a distractor that turns out to be a real word in some answer
+     is dropped rather than printed twice. */
+  function bankFor(q) {
+    // Keyed lower-case because the answer check lower-cases too: a word that is
+    // capitalised in one answer and not in another is one tile, not two.
+    const need = {}, spell = {};
+    q.a.forEach(alt => {
+      const c = {};
+      alt.split(" ").forEach(w => {
+        const k = w.toLowerCase();
+        c[k] = (c[k] || 0) + 1;
+        if (!(k in spell)) spell[k] = w;
+      });
+      Object.keys(c).forEach(k => (need[k] = Math.max(need[k] || 0, c[k])));
+    });
+    const words = [];
+    Object.keys(need).forEach(k => { for (let i = 0; i < need[k]; i++) words.push(spell[k]); });
+    return words.concat((q.x || []).filter(w => !(w.toLowerCase() in need)));
+  }
+
   U.forEach((u, i) => {
     u.n = i + 1;
     u.mc.forEach((q, j) => (q.id = `${u.id}-m${j}`));
-    u.build.forEach((q, j) => (q.id = `${u.id}-b${j}`));
+    u.build.forEach((q, j) => { q.id = `${u.id}-b${j}`; q.bank = bankFor(q); });
   });
   root.PT_UNITS = U;
 })(typeof window !== "undefined" ? window : globalThis);

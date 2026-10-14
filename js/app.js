@@ -211,7 +211,7 @@
   /* Dictation reuses a build sentence: you hear the Portuguese and write it,
      which is the one skill the other three exercise types never test. */
   const makeDict = q => ({ kind: "dict", key: `d:${q.id}`, q, answer: q.a[0] });
-  const makeBuild = q => ({ kind: "build", key: q.id, q, tiles: shuffle([...q.a[0].split(" "), ...q.x]).map((w, i) => ({ w, i })) });
+  const makeBuild = q => ({ kind: "build", key: q.id, q, tiles: shuffle(q.bank).map((w, i) => ({ w, i })) });
 
   function exFromKey(k) {
     if (k.startsWith("v:")) { const [, verb, tense] = k.split(":"); return makeTyped(verb, tense); }
