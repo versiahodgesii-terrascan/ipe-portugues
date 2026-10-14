@@ -1,6 +1,6 @@
 /* Offline support: cache the whole app on install, serve cache-first.
    Bump VERSION whenever you change any file so phones pick up the update. */
-const VERSION = "ipe-v7";
+const VERSION = "ipe-v8";
 const FILES = [
   "./",
   "./index.html",

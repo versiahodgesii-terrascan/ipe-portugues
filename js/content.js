@@ -21,6 +21,12 @@
         { t: "Verbo irregular", s: "Eu não ___ onde ela mora.", o: ["sei", "sabo", "sabe", "saiba"], e: "Saber is irregular in the eu form: sei, sabe, sabemos, sabem.", r: "Saber = facts. Conhecer = people and places." },
         { t: "Verbo irregular", s: "Eu sempre ___ a verdade.", o: ["digo", "dizo", "diz", "diga"], e: "Dizer: digo, diz, dizemos, dizem.", r: "Fazer, dizer and trazer share the pattern: faço, digo, trago." },
         { t: "Verbo irregular", s: "Nós ___ de Minas Gerais.", o: ["somos", "estamos", "são", "sejamos"], e: "Origin is permanent, so ser. Ser: sou, é, somos, são.", r: "Ser de = to be from." }
+        ,{ t: "Verbo irregular", s: "Eu ___ do trabalho às seis.", o: ["saio", "salho", "sai", "saia"], e: "Sair: saio, sai, saímos, saem.", r: "sair, cair, trair all take -aio in the eu form." },
+        { t: "Verbo irregular", s: "Ela ___ muito bem o português.", o: ["lê", "lei", "leia", "lê-se"], e: "Ler: leio, lê, lemos, leem.", r: "ler→leio/lê, ver→vejo/vê, crer→creio/crê." },
+        { t: "Mudança de radical", s: "Eu ___ oito horas por noite.", o: ["durmo", "dormo", "dorme", "durma"], e: "Dormir changes o to u in the eu form only: durmo, dorme, dormimos, dormem.", r: "dormir→durmo, cobrir→cubro, tossir→tusso." },
+        { t: "Mudança de radical", s: "Eu sempre ___ a conta antes de sair.", o: ["peço", "pido", "pede", "peça"], e: "Pedir: peço, pede, pedimos, pedem.", r: "pedir→peço, medir→meço, ouvir→ouço." },
+        { t: "Presente para o futuro", s: "Amanhã eu ___ para o Rio.", o: ["viajo", "viajarei de", "viajando", "viajasse"], e: "Brazilians use the present for scheduled near-future events, as English does with I fly tomorrow.", r: "Amanhã eu trabalho. Semana que vem a gente conversa." },
+        { t: "Negativa", s: "Eu ___ gosto de acordar cedo.", o: ["não", "nem não", "não não", "no"], e: "Negation is simply não before the verb — there is no auxiliary like English do.", r: "Não gosto, não sei, não quero." }
       ],
       build: [
         { en: "I live in Brazil.", a: ["Eu moro no Brasil"], x: ["na", "mora"] },
@@ -44,6 +50,12 @@
         { t: "Verbo irregular", s: "Ontem nós ___ uma reunião longa.", o: ["tivemos", "tevemos", "temos", "teve"], e: "Ter: tive, teve, tivemos, tiveram.", r: "Estar follows the same pattern: estive, esteve, estivemos." },
         { t: "Vir × ver", s: "Vocês ___ de carro ou de ônibus?", o: ["vieram", "viram", "vinham", "veio"], e: "Vir (to come) in the past: vim, veio, viemos, vieram.", r: "Viram belongs to ver: they saw." },
         { t: "Ortografia", s: "Eu ___ a conta do restaurante.", o: ["paguei", "pagei", "pagou", "paguou"], e: "Verbs in -gar add u before e to keep the hard g: paguei, cheguei.", r: "-car → -quei (fiquei), -çar → -cei (comecei)." }
+        ,{ t: "Verbo irregular", s: "Nós ___ ao cinema ontem.", o: ["fomos", "fomos ir", "íamos", "formos"], e: "Ir and ser share the same perfeito: fui, foi, fomos, foram.", r: "Context decides: fui ao cinema (ir) / fui professor (ser)." },
+        { t: "Verbo irregular", s: "Eles ___ a casa no ano passado.", o: ["puseram", "ponharam", "puserem", "punham"], e: "Pôr: pus, pôs, pusemos, puseram.", r: "Compostos seguem: compus, propus, supus." },
+        { t: "Verbo irregular", s: "Eu ___ muito trabalho ontem.", o: ["tive", "teve", "tinha", "tivesse"], e: "Ter: tive, teve, tivemos, tiveram.", r: "Strong preterites stress the stem: tive, fiz, pus, quis." },
+        { t: "Ortografia", s: "Eu ___ o trabalho na semana passada.", o: ["comecei", "começei", "comecí", "comencei"], e: "Começar takes c before e: comecei.", r: "-çar→cei, -gar→guei, -car→quei." },
+        { t: "Perfeito × presente", s: "Eu ___ nessa empresa desde 2020.", o: ["trabalho", "trabalhei", "trabalhava", "trabalharei"], e: "An action still going on takes the present, not the perfeito — unlike English have worked.", r: "Moro aqui há dez anos. Not morei." },
+        { t: "Verbo irregular", s: "Ela não ___ vir à reunião.", o: ["pôde", "podeu", "podia", "pudesse"], e: "Poder: pude, pôde, pudemos, puderam. The circumflex separates pôde (past) from pode (present).", r: "Ele pode hoje / Ele pôde ontem." }
       ],
       build: [
         { en: "I went to the beach yesterday.", a: ["Ontem eu fui à praia", "Eu fui à praia ontem"], x: ["a", "ia"] },
@@ -65,6 +77,14 @@
         { t: "Ter no passado", s: "Ela ___ cabelo comprido quando era jovem.", o: ["tinha", "teve", "tem", "tenha"], e: "Ter: tinha, tinha, tínhamos, tinham. Describing how someone was.", r: "Ter in the past also gives age: eu tinha dez anos." },
         { t: "Vir no passado", s: "Quando morava aqui, ele ___ todo sábado.", o: ["vinha", "veio", "viria", "venha"], e: "Vir: vinha, vinha, vínhamos, vinham.", r: "Pôr: punha, punha, púnhamos, punham." },
         { t: "Idade", s: "Eu ___ dezoito anos quando me mudei.", o: ["tinha", "tive", "era", "estava"], e: "Age in the past: ter in the imperfeito. Portuguese has years, it doesn't \"be\" them.", r: "Quantos anos você tem? → Tenho 30 anos." }
+        ,{ t: "Ação interrompida", s: "Eu ___ quando você ligou.", o: ["dormia", "dormi", "dormirei", "dormisse"], e: "The ongoing background action takes the imperfeito.", r: "Imperfeito is the scenery; perfeito is the event." },
+        { t: "Hora no passado", s: "___ três horas quando ele chegou.", o: ["Eram", "Foram", "Era", "Foi"], e: "Clock time in the past is always imperfeito, and it agrees: eram três horas.", r: "Era uma hora. Eram duas horas." },
+        { t: "Descrição física", s: "A casa ___ grande e ___ um jardim enorme.", o: ["era … tinha", "foi … teve", "era … teve", "foi … tinha"], e: "Descriptions of how things were take the imperfeito throughout.", r: "Ela era alta, tinha cabelo curto, usava óculos." },
+        { t: "Imperfeito de cortesia", s: "___ falar com o gerente, por favor.", o: ["Queria", "Quis", "Quero que", "Quisesse"], e: "The imperfeito softens a request, much like English I wanted to.", r: "Queria um café. Podia me ajudar?" },
+        { t: "Costumava", s: "Antigamente a gente ___ todo domingo.", o: ["se reunia", "se reuniu", "se reunirá", "se reúna"], e: "Antigamente signals a past habit → imperfeito.", r: "Costumava + infinitivo says the same thing: costumava se reunir." },
+        { t: "Verbo irregular", s: "Quando eu era criança, eu ___ muito sorvete.", o: ["comia", "comi", "comerei", "comesse"], e: "Comer is regular in the imperfeito: comia, comia, comíamos, comiam.", r: "-er and -ir verbs both take -ia." },
+        { t: "Dois imperfeitos", s: "Enquanto ela ___, eu ___ o jantar.", o: ["estudava … preparava", "estudou … preparei", "estudava … preparei", "estudou … preparava"], e: "Two simultaneous ongoing actions both take the imperfeito.", r: "Enquanto is the clearest signal for a double imperfeito." },
+        { t: "Imperfeito irregular", s: "Nós ___ ao clube todo sábado.", o: ["íamos", "fomos", "iamos", "iríamos"], e: "Ir is one of only three irregular imperfeitos: ia, ia, íamos, iam.", r: "Only ser, ter... no: only ser, vir and pôr are irregular here. Ir takes ia regularly-shaped but note the accent on íamos." }
       ],
       build: [
         { en: "When I was a child, I lived in Bahia.", a: ["Quando eu era criança eu morava na Bahia", "Quando eu era criança morava na Bahia"], x: ["fui", "morei"] },
@@ -108,6 +128,12 @@
         { t: "Ficar = tornar-se", s: "Ela ___ muito feliz com a notícia.", o: ["ficou", "foi", "estava", "era"], e: "Ficar means to become, to get: a change of state caused by something.", r: "Fiquei com fome, ficou tarde, ficamos nervosos." },
         { t: "Ser", s: "Ela ___ muito simpática; todo mundo gosta dela.", o: ["é", "está", "fica", "tem"], e: "Personality is a characteristic: ser.", r: "Está simpática hoje = she's being unusually nice." },
         { t: "Estar", s: "O café ___ pronto!", o: ["está", "é", "fica", "tem"], e: "Pronto describes a state: estar.", r: "Estar pronto, estar cansado, estar com fome." }
+        ,{ t: "Ser × estar", s: "Ela ___ muito simpática hoje, não sei o que houve.", o: ["está", "é", "fica", "era"], e: "A departure from someone's usual self takes estar.", r: "Ela é simpática (always) / está simpática (today)." },
+        { t: "Estar com", s: "Eu ___ fome.", o: ["estou com", "sou com", "tenho de", "estou de"], e: "Physical states use estar com: estar com fome, sede, sono, medo, pressa.", r: "English is hungry, Portuguese is with hunger." },
+        { t: "Ficar = localização", s: "A padaria ___ na esquina.", o: ["fica", "está", "é de", "ficou"], e: "For a fixed location Brazilians prefer ficar.", r: "Onde fica o banheiro? — the standard way to ask." },
+        { t: "Ser de = material", s: "A mesa ___ madeira.", o: ["é de", "está de", "fica de", "é da"], e: "Material, origin and ownership all take ser de.", r: "É de madeira, é de São Paulo, é do João." },
+        { t: "Estar + particípio", s: "A loja ___ fechada no feriado.", o: ["estava", "era", "foi", "ficava"], e: "A temporary state takes estar; ser would describe the action of closing.", r: "Estava fechada (state) / foi fechada (someone closed it)." },
+        { t: "Ficar = reação", s: "Ela ___ brava quando soube.", o: ["ficou", "foi", "esteve", "era"], e: "Ficar marks a change of state — became angry.", r: "Fiquei feliz, fiquei triste, fiquei sem palavras." }
       ],
       build: [
         { en: "Where is the bathroom?", a: ["Onde fica o banheiro", "Onde é o banheiro", "Onde está o banheiro"], x: ["tem", "a"] },
@@ -128,6 +154,14 @@
         { t: "Discurso indireto", s: "Ele disse que ___ amanhã.", o: ["viria", "venha", "vier", "vem"], e: "Reported future from a past viewpoint uses the conditional.", r: "In casual speech: disse que vinha / disse que ia vir." },
         { t: "Condicional", s: "Eu ___ isso pra você, mas não tenho tempo.", o: ["faria", "farei", "fiz", "faço"], e: "What you would do under other conditions: futuro do pretérito.", r: "Faria, diria, traria." },
         { t: "Gostar", s: "Eu ___ de pedir a conta, por favor.", o: ["gostaria", "gostarei", "gosto", "gostava"], e: "Gostaria de… is the polite way to ask for something.", r: "Gostava de is also heard in casual speech." }
+        ,{ t: "Futuro do presente", s: "Um dia nós ___ a verdade.", o: ["saberemos", "saberá", "saberíamos", "soubermos"], e: "Saber is regular in the future: saberei, saberá, saberemos, saberão.", r: "Only fazer, dizer and trazer are irregular: farei, direi, trarei." },
+        { t: "Futuro irregular", s: "Eles ___ o relatório amanhã.", o: ["trarão", "trazerão", "trariam", "trouxeram"], e: "Trazer: trarei, trará, traremos, trarão.", r: "fazer→farei, dizer→direi, trazer→trarei." },
+        { t: "Futuro falado", s: "Which is most natural in speech?", o: ["Vou ligar pra ela depois.", "Ligarei para ela depois.", "Vou ligarei pra ela.", "Irei ligar para ela depois."], e: "Brazilians use ir + infinitive for almost all spoken future. The synthetic future sounds written or formal.", r: "Vou fazer, vou ver, vou falar." },
+        { t: "Condicional de probabilidade", s: "Ele ___ uns trinta anos na época.", o: ["teria", "terá", "tinha de", "tivesse"], e: "The conditional can express a guess about the past.", r: "Seriam umas dez horas. Ele teria uns trinta anos." },
+        { t: "Futuro do pretérito", s: "Ela disse que ___ mais tarde.", o: ["ligaria", "ligará", "ligaria de", "ligasse"], e: "Reported speech shifts a future into the conditional: future-in-the-past.", r: "Disse que viria, disse que faria." },
+        { t: "Se + condicional", s: "Se eu pudesse, ___ com você.", o: ["iria", "irei", "fosse", "vou"], e: "Imperfect subjunctive in the se-clause, conditional in the result.", r: "Se eu tivesse, compraria. Se eu fosse, falaria." },
+        { t: "Futuro composto", s: "Até dezembro eu já ___ o curso.", o: ["terei terminado", "terminarei de", "tinha terminado", "terminaria"], e: "Ter in the future + particípio for something finished by a future point.", r: "Terei feito, terá chegado." },
+        { t: "Ir no futuro", s: "Avoid the double ir: which is correct?", o: ["Vou ao Rio amanhã.", "Vou ir ao Rio amanhã.", "Irei ir ao Rio.", "Vou indo ao Rio amanhã."], e: "Never stack vou ir. Ir alone already carries the future.", r: "Vou ao Rio. Not vou ir." }
       ],
       build: [
         { en: "I would buy a house by the beach.", a: ["Eu compraria uma casa na praia"], x: ["comprarei", "em"] },
@@ -148,6 +182,14 @@
         { t: "Particípio × gerúndio", s: "Eu tenho ___ mal ultimamente.", o: ["dormido", "dormindo", "dormi", "durmido"], e: "After ter, use the particípio (-ido), not the gerúndio (-indo).", r: "Estou dormindo = I'm sleeping. Tenho dormido = I've been sleeping." },
         { t: "Particípio irregular", s: "Você já tinha ___ esse filme?", o: ["visto", "vido", "vindo", "vista"], e: "Ver → visto. Vir → vindo. Easy to mix up.", r: "Visto (seen) × vindo (come)." },
         { t: "Particípio irregular", s: "Quem tinha ___ o livro na mesa?", o: ["posto", "pondo", "pusto", "pôs"], e: "Pôr → posto. Pondo is the gerúndio.", r: "Compounds follow it too: composto, proposto." }
+        ,{ t: "Tenho feito", s: "Ultimamente eu ___ muito.", o: ["tenho trabalhado", "trabalhei", "tinha trabalhado", "trabalharia"], e: "Ter + particípio in Portuguese means a repeated recent action, not a single finished one.", r: "Tenho estudado = I have been studying lately. Not I studied." },
+        { t: "Falso amigo", s: "English \"I have already eaten\" is normally:", o: ["Eu já comi.", "Eu tenho comido.", "Eu tinha comido.", "Eu terei comido."], e: "The simple perfeito covers the English present perfect. Tenho comido would mean I have been eating repeatedly.", r: "Já vi esse filme. Nunca fui ao Japão." },
+        { t: "Mais-que-perfeito", s: "Quando cheguei, ela já ___.", o: ["tinha saído", "saiu", "tem saído", "sairia"], e: "Something finished before another past event: tinha + particípio.", r: "Tinha feito, tinha visto, já tinha ido." },
+        { t: "Particípio irregular", s: "A carta foi ___ à mão.", o: ["escrita", "escrevida", "escrevido", "escrito"], e: "Escrever→escrito, agreeing with carta: escrita.", r: "feito, dito, visto, posto, aberto, escrito." },
+        { t: "Gerúndio", s: "Ela ficou ___ a tarde toda.", o: ["estudando", "estudado", "a estudar", "estuda"], e: "Ficar + gerúndio describes a continuing action. Estudado is the participle.", r: "Brazil: estou fazendo. Portugal: estou a fazer." },
+        { t: "Mais-que-perfeito simples", s: "Which is the literary form of tinha falado?", o: ["falara", "falaria", "falava", "falasse"], e: "The simple pluperfect (falara, fizera, vira) appears in literature; speech uses tinha + particípio.", r: "Rare but worth recognising when reading." },
+        { t: "Particípio irregular", s: "A porta já estava ___ quando cheguei.", o: ["aberta", "abrida", "abrido", "aberto"], e: "Abrir→aberto, agreeing with porta: aberta.", r: "The participle agrees after ser and estar, never after ter." },
+        { t: "Com ter não concorda", s: "Elas tinham ___ o trabalho.", o: ["terminado", "terminadas", "terminada", "terminados"], e: "After ter the participle never agrees — it stays in the -ado/-ido form.", r: "Tinham terminado. But: o trabalho foi terminado." }
       ],
       build: [
         { en: "We have been studying a lot.", a: ["Nós temos estudado muito", "A gente tem estudado muito"], x: ["estudamos", "tenho"] },
