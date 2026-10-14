@@ -3,7 +3,10 @@
 (() => {
   "use strict";
   const { TENSES, TENSE_ORDER, PERSONS, conjugate, ALL_VERBS, meaning, isIrregular } = window.PT_VERBS;
-  const SLOTS = window.PT_SLOTS;
+  // Fallback so a stale cached content.js cannot take the whole app down
+  // mid-update; it only has to survive until the next reload.
+  const SLOTS = window.PT_SLOTS ||
+    { size: 10, typed: [3, 4, 5, 5], build: [1, 2, 2, 3], dictDrilled: [0, 1, 1, 1], dictPlain: [1, 1, 2, 2] };
   const LESSONS_PER_UNIT = 4;
   const LESSON_SIZE = SLOTS.size;
   const INTERVALS = [0, 1, 3, 7, 16, 35]; // days until next review, by SRS box
@@ -230,8 +233,9 @@
   }
   const seen = id => (S.srs[id] ? S.srs[id].s : 0);
 
-  function buildLesson(unit, level) {
-    if (unit.gen) return buildGenLesson(unit, level);
+  /* How one lesson's ten slots fall out. Both the lesson itself and the card
+     that describes it read this, so what the card promises is what you get. */
+  function lessonSlots(unit, level) {
     const typedN = unit.drill ? SLOTS.typed[level] : 0;
     // Dictation is drawn from the sentences this lesson is not already showing
     // as tiles, so the same sentence never appears twice in one lesson. Tiles
@@ -241,7 +245,12 @@
     const buildN = unit.build.length
       ? Math.max(1, Math.min(SLOTS.build[level], unit.build.length - want)) : 0;
     const dictN = Math.min(want, unit.build.length - buildN);
-    const mcN = LESSON_SIZE - typedN - buildN - dictN;
+    return { typedN, buildN, dictN, mcN: LESSON_SIZE - typedN - buildN - dictN };
+  }
+
+  function buildLesson(unit, level) {
+    if (unit.gen) return buildGenLesson(unit, level);
+    const { typedN, buildN, dictN, mcN } = lessonSlots(unit, level);
 
     const mcs = shuffle(unit.mc).sort((a, b) => seen(a.id) - seen(b.id)).slice(0, mcN).map(makeMC);
     const builds = shuffle(unit.build).slice(0, buildN).map(makeBuild);
@@ -657,11 +666,11 @@
 
   function lessonSheet(u, l) {
     const unit = UNITS.find(x => x.id === u);
+    const sl = unit.gen ? null : lessonSlots(unit, l);
     const kinds = unit.gen
       ? ["Conjugation typing"]
-      : [unit.drill ? "Conjugation typing" : null, "Multiple choice",
-         unit.build.length ? "Sentence building" : null,
-         hasTTS && l > 0 && unit.build.length ? "Dictation" : null].filter(Boolean);
+      : [sl.typedN ? "Conjugation typing" : null, sl.mcN ? "Multiple choice" : null,
+         sl.buildN ? "Sentence building" : null, sl.dictN ? "Dictation" : null].filter(Boolean);
     const st = unitState(u);
     sheet(`<span class="eyebrow">Unit ${unit.n} · Lesson ${l + 1} of 4</span>
       <h2>${esc(unit.title)}</h2>
