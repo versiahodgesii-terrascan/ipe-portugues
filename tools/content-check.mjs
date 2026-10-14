@@ -1,10 +1,16 @@
-/* Content invariants for Ipê. Run: node tools/content-check.mjs
+/* Content invariants for Ipê. Run from anywhere: node .../tools/content-check.mjs
    Loads the real content.js, so it checks the data the app actually ships. */
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// relative to this file, not to the shell's working directory
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const read = f => fs.readFileSync(path.join(ROOT, f), "utf8");
 
 const g = {};
-new Function("globalThis", fs.readFileSync("js/verbs.js", "utf8")).call(g, g);
-new Function("globalThis", fs.readFileSync("js/content.js", "utf8")).call(g, g);
+new Function("globalThis", read("js/verbs.js")).call(g, g);
+new Function("globalThis", read("js/content.js")).call(g, g);
 const UNITS = g.PT_UNITS;
 const { ALL_VERBS, TENSE_ORDER, isIrregular } = g.PT_VERBS;
 
