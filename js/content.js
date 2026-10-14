@@ -928,5 +928,18 @@
     u.mc.forEach((q, j) => (q.id = `${u.id}-m${j}`));
     u.build.forEach((q, j) => { q.id = `${u.id}-b${j}`; q.bank = bankFor(q); });
   });
+  /* How a lesson's ten slots are shared out, by lesson index 0-3. Units with a
+     conjugation drill spend most of the room on typing; the idiom units have
+     no drill, so that room goes to dictation instead — a fixed expression is
+     exactly the kind of thing you need to recognise by ear, not just read.
+     Exported so tools/content-check.mjs tests the same numbers the app uses. */
+  root.PT_SLOTS = {
+    size: 10,
+    typed: [3, 4, 5, 5],
+    build: [1, 2, 2, 3],
+    dictDrilled: [0, 1, 1, 1],
+    dictPlain: [1, 1, 2, 2]
+  };
+
   root.PT_UNITS = U;
 })(typeof window !== "undefined" ? window : globalThis);

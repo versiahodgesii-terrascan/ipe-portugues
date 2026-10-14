@@ -58,6 +58,29 @@ for (const u of UNITS) {
 /* The track is sized to fill the course exactly, so what has to hold is that
    the generated half is still big enough to carry its share, and that every
    verb still gets practised in every tense. */
+/* Every unit must be able to fill all ten slots of each of its four lessons
+   from its own material, with dictation never reusing a sentence the same
+   lesson is already showing as tiles. Uses the app's own slot table. */
+const SLOTS = g.PT_SLOTS;
+const dictTotal = {};
+for (const u of UNITS) {
+  for (let level = 0; level < 4; level++) {
+    const typedN = u.drill ? SLOTS.typed[level] : 0;
+    const want = (u.drill ? SLOTS.dictDrilled : SLOTS.dictPlain)[level];
+    const buildN = u.build.length ? Math.max(1, Math.min(SLOTS.build[level], u.build.length - want)) : 0;
+    const dictN = Math.min(want, u.build.length - buildN);
+    const mcN = SLOTS.size - typedN - buildN - dictN;
+    const at = `${u.id} lesson ${level + 1}`;
+    if (mcN < 1) fail.push(`${at}: ${mcN} multiple-choice slots, needs at least 1`);
+    if (mcN > u.mc.length) fail.push(`${at}: needs ${mcN} mc, unit has only ${u.mc.length}`);
+    if (buildN + dictN > u.build.length) fail.push(`${at}: needs ${buildN + dictN} sentences, unit has ${u.build.length}`);
+    if (typedN + buildN + dictN + mcN !== SLOTS.size) fail.push(`${at}: slots sum to ${typedN + buildN + dictN + mcN}, not ${SLOTS.size}`);
+    dictTotal[u.id] = (dictTotal[u.id] || 0) + dictN;
+  }
+  // a unit with sentences to spare must be heard at least once somewhere
+  if (u.build.length >= 2 && !dictTotal[u.id]) fail.push(`${u.id}: never gets a dictation in any of its 4 lessons`);
+}
+
 const LESSONS_PER_UNIT = 4, TOTAL = 500, WINDOW = 10, STEP = 3;
 const hand = UNITS.length;
 const genUnits = TOTAL / LESSONS_PER_UNIT - hand;
@@ -96,6 +119,8 @@ const total = (hand + genUnits) * LESSONS_PER_UNIT;
 const banks = UNITS.flatMap(u => u.build.map(q => q.bank.length));
 console.log(`units ${hand} hand-written + ${genUnits} generated = ${total} lessons (${per}-${per + (extra ? 1 : 0)} windows per tense)`);
 console.log(`mc ${UNITS.reduce((n, u) => n + u.mc.length, 0)} · build ${UNITS.reduce((n, u) => n + u.build.length, 0)} · tile bank ${Math.min(...banks)}–${Math.max(...banks)}`);
+const dp = UNITS.map(u => dictTotal[u.id] || 0);
+console.log(`dictation per unit ${Math.min(...dp)}\u2013${Math.max(...dp)} across its 4 lessons (idiom units ${UNITS.filter(u => +u.id.slice(1) >= 26).map(u => dictTotal[u.id]).join("/")})`);
 console.log(`verb prompts ${(ALL_VERBS.length * TENSE_ORDER.length * 4).toLocaleString("en")} (${ALL_VERBS.filter(isIrregular).length} irregular verbs)`);
 console.log(fail.length ? `\nFAIL (${fail.length})\n` + fail.join("\n") : "\nall content invariants hold");
 process.exit(fail.length ? 1 : 0);

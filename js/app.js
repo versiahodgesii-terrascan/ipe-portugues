@@ -3,8 +3,9 @@
 (() => {
   "use strict";
   const { TENSES, TENSE_ORDER, PERSONS, conjugate, ALL_VERBS, meaning, isIrregular } = window.PT_VERBS;
+  const SLOTS = window.PT_SLOTS;
   const LESSONS_PER_UNIT = 4;
-  const LESSON_SIZE = 10;
+  const LESSON_SIZE = SLOTS.size;
   const INTERVALS = [0, 1, 3, 7, 16, 35]; // days until next review, by SRS box
   const STORE_KEY = "ipe-progress-v1";
   const GOALS = [[10, "Casual"], [20, "Regular"], [30, "Serious"], [50, "Intense"]];
@@ -231,26 +232,32 @@
 
   function buildLesson(unit, level) {
     if (unit.gen) return buildGenLesson(unit, level);
-    const typedN = unit.drill ? [3, 4, 5, 5][level] : 0;
-    const buildN = Math.min(unit.build.length, [1, 2, 2, 3][level]);
-    const mcN = LESSON_SIZE - typedN - buildN;
+    const typedN = unit.drill ? SLOTS.typed[level] : 0;
+    // Dictation is drawn from the sentences this lesson is not already showing
+    // as tiles, so the same sentence never appears twice in one lesson. Tiles
+    // therefore leave room for it first — otherwise a unit with only two
+    // sentences spends both on tiles and never gets heard at all.
+    const want = hasTTS ? (unit.drill ? SLOTS.dictDrilled : SLOTS.dictPlain)[level] : 0;
+    const buildN = unit.build.length
+      ? Math.max(1, Math.min(SLOTS.build[level], unit.build.length - want)) : 0;
+    const dictN = Math.min(want, unit.build.length - buildN);
+    const mcN = LESSON_SIZE - typedN - buildN - dictN;
+
     const mcs = shuffle(unit.mc).sort((a, b) => seen(a.id) - seen(b.id)).slice(0, mcN).map(makeMC);
     const builds = shuffle(unit.build).slice(0, buildN).map(makeBuild);
+    const usedB = new Set(builds.map(b => b.q.id));
+    const dicts = shuffle(unit.build.filter(q => !usedB.has(q.id))).slice(0, dictN).map(makeDict);
     const typed = [], used = new Set();
     for (let guard = 0; typed.length < typedN && guard < 80; guard++) {
       const v = pick(unit.drill.verbs), t = pick(unit.drill.tenses);
       if (used.has(v + t)) continue;
       used.add(v + t); typed.push(makeTyped(v, t));
     }
-    // From lesson 2 on, one sentence is heard rather than read. It is drawn
-    // from the sentences this lesson is not already showing as tiles, so the
-    // same sentence never appears twice in one lesson.
-    const usedB = new Set(builds.map(b => b.q.id));
-    const freeB = unit.build.filter(q => !usedB.has(q.id));
-    const dicts = hasTTS && level > 0 && freeB.length ? [makeDict(pick(freeB))] : [];
-    const trimmed = dicts.length ? mcs.slice(0, -1) : mcs;
-    const rest = shuffle([...trimmed.slice(1), ...builds, ...typed, ...dicts]);
-    return [trimmed[0] || dicts[0], ...rest.filter(x => x !== (trimmed[0] || dicts[0]))].filter(Boolean);
+
+    const all = [...mcs, ...builds, ...typed, ...dicts];
+    // open on a multiple choice when there is one: it is the gentlest start
+    const first = mcs[0] || all[0];
+    return [first, ...shuffle(all.filter(x => x !== first))].filter(Boolean);
   }
 
   /* A generated unit's four lessons partition its prompts instead of sampling
