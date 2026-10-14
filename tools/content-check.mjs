@@ -49,14 +49,46 @@ for (const u of UNITS) {
   });
 }
 
-const LESSONS_PER_UNIT = 4, TOTAL = 500;
+/* The track is sized to fill the course exactly, so what has to hold is that
+   the generated half is still big enough to carry its share, and that every
+   verb still gets practised in every tense. */
+const LESSONS_PER_UNIT = 4, TOTAL = 500, WINDOW = 10, STEP = 3;
 const hand = UNITS.length;
-const genUnits = 12 * TENSE_ORDER.length + 1;
+const genUnits = TOTAL / LESSONS_PER_UNIT - hand;
+if (!Number.isInteger(genUnits)) fail.push(`${TOTAL} lessons does not divide into units of ${LESSONS_PER_UNIT}`);
+if (genUnits < 1) fail.push(`${hand} hand-written units already exceed the ${TOTAL}-lesson course`);
+
+const windows = genUnits - 1;
+const per = Math.floor(windows / TENSE_ORDER.length);
+const extra = windows % TENSE_ORDER.length;
+if (per < 1) fail.push(`only ${windows} windows for ${TENSE_ORDER.length} tenses`);
+
+const verbs = ALL_VERBS.slice().sort((a, b) => (isIrregular(a) - isIrregular(b)) || a.localeCompare(b, "pt"));
+const windowAt = i => Array.from({ length: WINDOW }, (_, k) => verbs[(i * STEP + k) % verbs.length]);
+TENSE_ORDER.forEach((t, ti) => {
+  const n = per + (ti < extra ? 1 : 0);
+  const covered = new Set();
+  for (let i = 0; i < n; i++) {
+    const vs = windowAt(i);
+    // the 4 lessons of a unit must partition its 40 prompts, with no repeat
+    const combos = vs.flatMap(v => [0, 1, 2, 3].map(p => v + "/" + p));
+    const all = new Set();
+    for (let level = 0; level < LESSONS_PER_UNIT; level++) {
+      const start = (level * 10) % combos.length;
+      const slice = Array.from({ length: 10 }, (_, k) => combos[(start + k) % combos.length]);
+      if (new Set(slice).size !== 10) fail.push(`g-${t}-${i} lesson ${level + 1} repeats a prompt`);
+      slice.forEach(c => all.add(c));
+    }
+    if (all.size !== combos.length) fail.push(`g-${t}-${i} covers ${all.size}/${combos.length} of its prompts`);
+    vs.forEach(v => covered.add(v));
+  }
+  const missing = verbs.filter(v => !covered.has(v));
+  if (missing.length) fail.push(`${t}: ${missing.length} verbs never practised (${missing.slice(0, 4).join(", ")})`);
+});
 const total = (hand + genUnits) * LESSONS_PER_UNIT;
-if (total !== TOTAL) fail.push(`course is ${total} lessons, expected ${TOTAL}`);
 
 const banks = UNITS.flatMap(u => u.build.map(q => q.bank.length));
-console.log(`units ${hand} hand-written + ${genUnits} generated = ${total} lessons`);
+console.log(`units ${hand} hand-written + ${genUnits} generated = ${total} lessons (${per}-${per + (extra ? 1 : 0)} windows per tense)`);
 console.log(`mc ${UNITS.reduce((n, u) => n + u.mc.length, 0)} · build ${UNITS.reduce((n, u) => n + u.build.length, 0)} · tile bank ${Math.min(...banks)}–${Math.max(...banks)}`);
 console.log(`verb prompts ${(ALL_VERBS.length * TENSE_ORDER.length * 4).toLocaleString("en")} (${ALL_VERBS.filter(isIrregular).length} irregular verbs)`);
 console.log(fail.length ? `\nFAIL (${fail.length})\n` + fail.join("\n") : "\nall content invariants hold");

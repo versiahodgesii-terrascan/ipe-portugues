@@ -10,29 +10,37 @@
   const GOALS = [[10, "Casual"], [20, "Regular"], [30, "Serious"], [50, "Intense"]];
 
   /* ---------------- the generated verb track ----------------
-     The hand-written units stop at 28. Everything after that is generated from
-     the conjugation engine, which is the only honest way to say "you will not
-     run out": 37 verbs x 8 tenses x 4 persons = 1,184 distinct prompts.
+     The hand-written units stop where they stop. Everything after them is
+     generated from the conjugation engine, which is the only honest way to
+     promise you will not run out: 37 verbs x 8 tenses x 4 persons = 1,184
+     distinct prompts.
 
      Each generated unit takes a 10-verb window over the verb list and one
-     tense, so a unit holds exactly 40 prompts and its 4 lessons partition them
-     — ten fresh prompts per lesson, nothing repeated inside a unit. The window
-     slides by 3, so a verb comes back in a later unit, spaced out, which is
-     what you want from practice anyway.
+     tense, so a unit holds exactly 40 prompts and its 4 lessons partition
+     them — ten fresh prompts per lesson, nothing repeated inside a unit. The
+     window slides by 3, so a verb returns in a later unit, spaced out.
 
-     12 windows x 8 tenses = 96 units, plus one mixed unit at the end = 97.
-     28 hand-written units (112 lessons) + 97 x 4 = 500 lessons exactly. */
-  const WINDOWS_PER_TENSE = 12, WINDOW = 10, STEP = 3;
+     The track is sized to land the course on exactly TOTAL_LESSONS, so
+     hand-written units can be added without the total drifting. Windows are
+     shared out across the eight tenses as evenly as they divide, and the
+     leftovers go to the earliest tenses — the ones you meet first. */
+  const WINDOW = 10, STEP = 3;
   const TOTAL_LESSONS = 500;
 
-  function genTrack(startN) {
-    // easy verbs first: regulars, then irregulars, alphabetical inside each
+  function genTrack(hand, startN) {
+    const count = TOTAL_LESSONS / LESSONS_PER_UNIT - hand;
+    if (count < 1) return [];
     const verbs = ALL_VERBS.slice().sort((a, b) =>
       (isIrregular(a) - isIrregular(b)) || a.localeCompare(b, "pt"));
     const windowAt = i => Array.from({ length: WINDOW }, (_, k) => verbs[(i * STEP + k) % verbs.length]);
+
+    const windows = count - 1; // the mixed unit takes the last slot
+    const per = Math.floor(windows / TENSE_ORDER.length);
+    const extra = windows % TENSE_ORDER.length;
     const out = [];
-    TENSE_ORDER.forEach(t => {
-      for (let i = 0; i < WINDOWS_PER_TENSE; i++) {
+    TENSE_ORDER.forEach((t, ti) => {
+      const n = per + (ti < extra ? 1 : 0);
+      for (let i = 0; i < n; i++) {
         const vs = windowAt(i);
         out.push({
           id: `g-${t}-${i}`, gen: true, tense: t,
@@ -52,7 +60,7 @@
     return out;
   }
 
-  const UNITS = [...window.PT_UNITS, ...genTrack(window.PT_UNITS.length + 1)];
+  const UNITS = [...window.PT_UNITS, ...genTrack(window.PT_UNITS.length, window.PT_UNITS.length + 1)];
 
   /* ---------------- utilities ---------------- */
   const $ = (s, el = document) => el.querySelector(s);

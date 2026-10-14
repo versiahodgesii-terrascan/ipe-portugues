@@ -776,6 +776,126 @@
         { en: "Stop messing with me.", a: ["Para de me zoar"], x: ["pare", "zoando"] },
         { en: "That's really cool.", a: ["Isso é mó legal"], x: ["mais", "legais"] }
       ]
+    },
+    {
+      id: "u29", title: "Expressões com o corpo", en: "When the body does the talking", icon: "^",
+      tip: "Portuguese builds an enormous number of fixed expressions out of body parts. None of them are literal — learn the whole phrase, not the word.",
+      drill: null,
+      mc: [
+        { t: "Cara de pau", s: "Ele pediu aumento no primeiro dia. Que ___ de pau!", o: ["cara", "rosto", "boca", "pé"], e: "Cara de pau = shameless, brazen — literally a wooden face.", r: "Ser cara de pau, or ter a cara de pau de fazer algo." },
+        { t: "Mão na roda", s: "Esse aplicativo é uma ___ na roda.", o: ["mão", "perna", "boca", "cabeça"], e: "Uma mão na roda = a real help, something that makes life much easier.", r: "Quebrar um galho is close: to do someone a favour." },
+        { t: "Pôr a mão na massa", s: "Chega de conversa, vamos ___ a mão na massa.", o: ["botar", "tirar", "lavar", "dar"], e: "Botar (or pôr) a mão na massa = to get down to work and do it yourself.", r: "Colocar a mão na massa works too." },
+        { t: "Custar caro", s: "Esse celular ___ os olhos da cara.", o: ["custou", "pagou", "valeu", "gastou"], e: "Custar os olhos da cara = to cost a fortune.", r: "Only custar fits — the others take a different structure." },
+        { t: "Ficar de olho", s: "Fica ___ olho na minha bolsa, por favor.", o: ["de", "no", "com", "em"], e: "Ficar/estar de olho (em algo) = to keep an eye on it.", r: "Tô de olho em você." },
+        { t: "Falar demais", s: "Ela fala pelos ___.", o: ["cotovelos", "joelhos", "ombros", "dedos"], e: "Falar pelos cotovelos = to talk nonstop, literally to talk through the elbows.", r: "Nothing to work out here — it is pure memorisation." },
+        { t: "Desconfiança", s: "Fiquei com a pulga atrás da ___.", o: ["orelha", "cabeça", "perna", "boca"], e: "Ficar com a pulga atrás da orelha = to get suspicious that something is off.", r: "A flea behind the ear: it keeps nagging at you." },
+        { t: "Sair rápido", s: "Quando a polícia chegou, todo mundo ___ o pé.", o: ["meteu", "trouxe", "fez", "pegou"], e: "Meter o pé = to take off fast, to clear out.", r: "Vazar is the slang equivalent." },
+        { t: "Pé no chão", s: "Ele é um cara de ___ no chão.", o: ["pé", "mão", "cabeça", "olho"], e: "Pé no chão = grounded, realistic, not given to fantasy.", r: "Pôr os pés no chão = to get real." },
+        { t: "Cabeça fria", s: "Decide isso com a ___ fria, amanhã.", o: ["cabeça", "mão", "boca", "cara"], e: "Cabeça fria = a cool head, calm judgement.", r: "Cabeça quente is the opposite: hot-headed." },
+        { t: "Quebrar a cabeça", s: "Quebrei a ___ pra resolver esse problema.", o: ["cabeça", "perna", "mão", "cara"], e: "Quebrar a cabeça = to rack your brain over something.", r: "Quebrar o galho is unrelated: to do someone a favour." },
+        { t: "Exagerar", s: "Era pra ser só uma cerveja, mas ele ___ o pé na jaca.", o: ["enfiou", "levou", "deu", "trouxe"], e: "Enfiar o pé na jaca = to overdo it, usually with food or drink.", r: "Jaca is jackfruit. The image makes no literal sense at all." },
+        { t: "Espanto", s: "Fiquei de ___ aberta quando vi o preço.", o: ["boca", "olho", "cara", "mão"], e: "Ficar de boca aberta = to be astonished.", r: "Ficar de queixo caído says the same thing." },
+        { t: "Mão de vaca", s: "Ele nunca paga nada, é muito ___ de vaca.", o: ["mão", "pé", "cara", "boca"], e: "Mão de vaca = stingy, tight-fisted.", r: "Pão-duro means exactly the same." },
+        { t: "Dar as costas", s: "Ele ___ as costas pra família toda.", o: ["deu", "fez", "botou", "trouxe"], e: "Dar as costas (para alguém) = to turn your back on them.", r: "Virar as costas works the same way." },
+        { t: "Atenção", s: "___ o olho, esse negócio parece golpe.", o: ["Abre", "Fecha", "Dá", "Tira"], e: "Abrir o olho = to watch out, to stay alert.", r: "Olho vivo! is the shorter warning." }
+      ],
+      build: [
+        { en: "That app is a real help.", a: ["Esse aplicativo é uma mão na roda"], x: ["pé", "volante"] },
+        { en: "Let's get to work.", a: ["Vamos botar a mão na massa", "Vamos pôr a mão na massa"], x: ["tirar", "massas"] },
+        { en: "That phone cost a fortune.", a: ["Esse celular custou os olhos da cara"], x: ["pagou", "olho"] },
+        { en: "Keep an eye on my bag.", a: ["Fica de olho na minha bolsa"], x: ["no", "olhos"] },
+        { en: "Decide it with a cool head.", a: ["Decide isso com a cabeça fria"], x: ["quente", "cabeças"] }
+      ]
+    },
+    {
+      id: "u30", title: "Bichos e comida", en: "Animals and food, doing other work", icon: "@",
+      tip: "A huge share of Brazilian idiom is built from animals and food. The phrases are fixed — swapping the animal breaks them completely.",
+      drill: null,
+      mc: [
+        { t: "Engolir sapo", s: "No trabalho a gente ___ muito sapo.", o: ["engole", "come", "bebe", "leva"], e: "Engolir sapo = to put up with something unfair without answering back.", r: "Literally, to swallow a frog." },
+        { t: "Pagar o pato", s: "No fim, quem ___ o pato fui eu.", o: ["pagou", "comprou", "levou", "deu"], e: "Pagar o pato = to take the blame for something someone else did.", r: "Levar a culpa is the plain way to say it." },
+        { t: "Chutar o balde", s: "Ele cansou e ___ o balde.", o: ["chutou", "jogou", "deu", "bateu"], e: "Chutar o balde = to give up and stop caring, or to blow up at everything.", r: "It looks like kick the bucket, but it has nothing to do with dying." },
+        { t: "Abacaxi", s: "Sobrou pra mim ___ esse abacaxi.", o: ["descascar", "comer", "cortar", "pagar"], e: "Um abacaxi is a mess someone has to deal with; descascar o abacaxi is dealing with it.", r: "Um pepino is the same kind of problem." },
+        { t: "Encher linguiça", s: "A redação tava curta, então ele ___ linguiça.", o: ["encheu", "comeu", "fez", "botou"], e: "Encher linguiça = to pad something out with filler.", r: "Said about writing and speeches, never about food." },
+        { t: "Deu tudo errado", s: "Quando o sócio saiu, a ___ foi pro brejo.", o: ["vaca", "galinha", "cabra", "ovelha"], e: "A vaca foi pro brejo = the whole thing fell apart.", r: "Brejo is a swamp. The cow is not coming back." },
+        { t: "Mala sem alça", s: "Não convida ele, é uma ___ sem alça.", o: ["mala", "bolsa", "caixa", "sacola"], e: "Mala sem alça = an unbearable, clingy person. Mala on its own works too.", r: "Que mala! = What a pain that person is." },
+        { t: "Barata tonta", s: "Ele passou o dia correndo feito ___ tonta.", o: ["barata", "galinha", "formiga", "abelha"], e: "Feito barata tonta = rushing around with no direction.", r: "Feito and como both set up the comparison." },
+        { t: "Cada macaco", s: "Cada ___ no seu galho.", o: ["macaco", "passarinho", "gato", "cachorro"], e: "Cada macaco no seu galho = everyone should mind their own business.", r: "Said to tell someone to stay in their lane." },
+        { t: "Gato por lebre", s: "Comprei ___ por lebre nesse site.", o: ["gato", "cachorro", "peixe", "boi"], e: "Comprar gato por lebre = to be sold a fake.", r: "You paid for hare and went home with cat." },
+        { t: "Dois coelhos", s: "Assim eu ___ dois coelhos com uma cajadada só.", o: ["mato", "pego", "compro", "levo"], e: "Matar dois coelhos com uma cajadada só = to kill two birds with one stone.", r: "English uses birds and a stone; Portuguese uses rabbits and a club." },
+        { t: "Fracassar", s: "O plano ___ com os burros n'água.", o: ["deu", "foi", "bateu", "caiu"], e: "Dar com os burros n'água = to fail completely after all that effort.", r: "Always plural: os burros." },
+        { t: "Com sede ao pote", s: "Calma, não vai com ___ ao pote.", o: ["sede", "fome", "pressa", "vontade"], e: "Ir com sede ao pote = to rush at something so eagerly that you spoil it.", r: "Almost always said as a warning." },
+        { t: "Desistir disso", s: "Pode ___ o cavalo da chuva, não vou emprestar.", o: ["tirar", "botar", "levar", "deixar"], e: "Tirar o cavalo da chuva = forget that idea, it is not going to happen.", r: "Often said as o cavalinho da chuva." },
+        { t: "Laranja", s: "Ele era só o ___ do esquema.", o: ["laranja", "limão", "abacaxi", "tomate"], e: "Um laranja is a front — a name used to hide who really owns something.", r: "You will meet this one constantly in the news." },
+        { t: "Arroz de festa", s: "Ele aparece em tudo, é ___ de festa.", o: ["arroz", "feijão", "bolo", "pão"], e: "Arroz de festa = someone who turns up at every single event.", r: "Teasing, but not an insult." }
+      ],
+      build: [
+        { en: "In the end I took the blame.", a: ["No fim quem pagou o pato fui eu"], x: ["levou", "patos"] },
+        { en: "I got ripped off on that site.", a: ["Comprei gato por lebre nesse site"], x: ["lebres", "pelo"] },
+        { en: "That way I kill two birds with one stone.", a: ["Assim eu mato dois coelhos com uma cajadada só"], x: ["pego", "coelho"] },
+        { en: "You can forget it.", a: ["Pode tirar o cavalo da chuva"], x: ["botar", "chuvas"] },
+        { en: "Don't rush it.", a: ["Não vai com sede ao pote"], x: ["fome", "potes"] }
+      ]
+    },
+    {
+      id: "u31", title: "Tempo e frequência", en: "Saying when, and how often", icon: "#",
+      tip: "Time expressions are fixed phrases with fixed prepositions. Choosing the wrong preposition is far and away the most common mistake in this area.",
+      drill: null,
+      mc: [
+        { t: "De vez em quando", s: "Eu vou ao cinema ___ vez em quando.", o: ["de", "da", "na", "por"], e: "De vez em quando = once in a while.", r: "The whole phrase is frozen: never de vez em vez." },
+        { t: "O tempo todo", s: "Ele reclama ___ tempo todo.", o: ["o", "no", "do", "ao"], e: "O tempo todo = all the time. It takes no preposition at all.", r: "Todo o tempo exists too, with the same meaning." },
+        { t: "Em cima da hora", s: "Ele sempre chega ___ cima da hora.", o: ["em", "na", "de", "por"], e: "Em cima da hora = at the very last minute.", r: "De última hora says the same thing." },
+        { t: "Toda hora", s: "Ele me liga ___ hora, não para.", o: ["toda", "cada", "em", "na"], e: "Toda hora = constantly, every five minutes.", r: "Cada hora is literal: each hour." },
+        { t: "Dia sim, dia não", s: "Eu treino ___ sim, dia não.", o: ["dia", "no dia", "um dia", "de dia"], e: "Dia sim, dia não = every other day.", r: "Fixed phrase, no articles anywhere in it." },
+        { t: "Cedo ou tarde", s: "___ ou tarde ele vai descobrir.", o: ["Cedo", "Antes", "Já", "Logo"], e: "Cedo ou tarde = sooner or later.", r: "Mais cedo ou mais tarde is the longer version." },
+        { t: "Num piscar de olhos", s: "O ano passou ___ piscar de olhos.", o: ["num", "no", "em", "dum"], e: "Num piscar de olhos = in the blink of an eye.", r: "Num is simply em + um." },
+        { t: "Há + tempo", s: "Eu moro aqui ___ dez anos.", o: ["há", "a", "à", "em"], e: "Há + a period looks backwards: for ten years, or ten years ago. Plenty of Brazilians write a, but há is the correct form.", r: "Daqui a dez anos looks forward instead." },
+        { t: "Faz impessoal", s: "___ dois meses que não vejo ela.", o: ["Faz", "Fazem", "Fez", "Fazia"], e: "Faz + time is impersonal and never becomes plural.", r: "Faz dois meses. Never fazem dois meses." },
+        { t: "De manhã", s: "Eu estudo ___ manhã.", o: ["de", "em", "a", "para"], e: "De manhã, de tarde, de noite. Attach a specific day and it becomes na: na segunda de manhã.", r: "Pela manhã is the more formal option." },
+        { t: "Crase fixa", s: "___ vezes eu durmo tarde.", o: ["Às", "As", "Á", "A"], e: "Às vezes = sometimes, and it always carries the crase.", r: "As vezes without the accent means the times, a different thing entirely." },
+        { t: "Lá pelas tantas", s: "___ pelas tantas ele resolveu ir embora.", o: ["Lá", "Já", "Ali", "Aí"], e: "Lá pelas tantas = at some late point, eventually.", r: "A storytelling phrase, informal." },
+        { t: "O quanto antes", s: "Me avisa ___ quanto antes.", o: ["o", "do", "no", "ao"], e: "O quanto antes = as soon as possible.", r: "Quanto antes, melhor = the sooner the better." },
+        { t: "Daqui em diante", s: "___ em diante vai ser diferente.", o: ["Daqui", "Aqui", "Desde", "Para"], e: "Daqui em diante = from now on.", r: "Dali em diante shifts it into the past: from that point on." },
+        { t: "Naquela época", s: "___ época eu nem trabalhava aqui.", o: ["Naquela", "Naquele", "Em aquela", "Na aquele"], e: "Naquela época = back then. Época is feminine, and em + aquela contracts to naquela.", r: "Em aquela is never written." },
+        { t: "O dia inteiro", s: "Fiquei em casa o dia ___.", o: ["inteiro", "inteira", "todos", "inteiros"], e: "O dia inteiro / o dia todo = all day. Dia is masculine singular, so inteiro agrees with it.", r: "A semana inteira, o mês inteiro, o ano inteiro." }
+      ],
+      build: [
+        { en: "I go to the movies once in a while.", a: ["Eu vou ao cinema de vez em quando"], x: ["na", "vezes"] },
+        { en: "He always arrives at the last minute.", a: ["Ele sempre chega em cima da hora"], x: ["na", "horas"] },
+        { en: "I've lived here for ten years.", a: ["Eu moro aqui há dez anos"], x: ["morei", "a"] },
+        { en: "Let me know as soon as possible.", a: ["Me avisa o quanto antes"], x: ["do", "depois"] },
+        { en: "Sometimes I go to bed late.", a: ["Às vezes eu durmo tarde"], x: ["As", "cedo"] }
+      ]
+    },
+    {
+      id: "u32", title: "Conectivos da fala", en: "The small words that hold speech together", icon: "$",
+      tip: "These connectors carry almost no meaning on their own, and leaving them out is exactly what makes a learner sound stiff. Brazilians drop them into nearly every sentence.",
+      drill: null,
+      mc: [
+        { t: "Tipo assim", s: "É ___ assim: eu não concordo, mas tudo bem.", o: ["tipo", "forma", "modo", "jeito"], e: "Tipo (assim) = like, you know. A filler that softens whatever follows.", r: "Extremely informal and extremely frequent." },
+        { t: "Quer dizer", s: "Ele chegou tarde, ___ dizer, perdeu tudo.", o: ["quer", "quis", "queira", "querendo"], e: "Quer dizer = I mean, that is to say. It introduces a correction.", r: "Always third person singular, whoever is speaking." },
+        { t: "Ou seja", s: "Ninguém apareceu, ___ seja, cancelamos.", o: ["ou", "o", "e", "que"], e: "Ou seja = in other words. A little more formal than quer dizer.", r: "Seja is a subjunctive, frozen into the phrase." },
+        { t: "No fim das contas", s: "___ fim das contas, deu tudo certo.", o: ["No", "Ao", "Em", "Do"], e: "No fim das contas = at the end of the day, when all is said and done.", r: "No final das contas is equally common." },
+        { t: "De qualquer forma", s: "___ qualquer forma, eu te aviso.", o: ["De", "Em", "Por", "Na"], e: "De qualquer forma / de qualquer jeito = anyway, either way.", r: "Em todo caso is the neutral version." },
+        { t: "Pelo visto", s: "___ visto, ninguém leu o email.", o: ["Pelo", "Para o", "No", "Com o"], e: "Pelo visto = apparently, from the look of things.", r: "Pelo jeito means the same." },
+        { t: "Vai ver", s: "___ ver ele nem recebeu a mensagem.", o: ["Vai", "Vá", "Vou", "Vamos"], e: "Vai ver = maybe, I bet. Frozen in the third person.", r: "Do not confuse it with vai que, which means just in case." },
+        { t: "Aliás", s: "Ele é ótimo. ___, foi ele que me indicou.", o: ["Aliás", "Alias", "Além", "Aliar"], e: "Aliás = by the way, in fact. It adds a relevant afterthought.", r: "It takes an accent on the final a." },
+        { t: "Por sinal", s: "Conheci a irmã dele, muito simpática ___ sinal.", o: ["por", "pelo", "de", "com"], e: "Por sinal = by the way, incidentally.", r: "Very close to aliás in use." },
+        { t: "Afinal", s: "___, você vai ou não vai?", o: ["Afinal", "A final", "Ao final", "Enfim que"], e: "Afinal = so, after all. It presses for a conclusion.", r: "Afinal de contas is the longer form." },
+        { t: "Enfim", s: "Tentei de tudo. ___, desisti.", o: ["Enfim", "Em fim", "Afim", "A fim"], e: "Enfim = anyway, in short. It wraps a story up.", r: "A fim de is unrelated: in order to, or to be up for something." },
+        { t: "Então", s: "Tava chovendo, ___ a gente ficou em casa.", o: ["então", "entanto", "tanto", "portanto que"], e: "Então = so, then. The workhorse connector of spoken Brazilian.", r: "E aí does the same job in a narrative." },
+        { t: "Inclusive", s: "Todo mundo foi, ___ o chefe.", o: ["inclusive", "incluso", "inclusivo", "incluindo que"], e: "Inclusive = including, even. Brazilians use it far more than English uses even.", r: "Inclusive ele = even him." },
+        { t: "Só que", s: "Eu queria ir, ___ que não deu.", o: ["só", "mas", "porém", "senão"], e: "Só que = but, except that. The spoken alternative to mas.", r: "Só que não is a whole sarcastic phrase on its own." },
+        { t: "Até porque", s: "Não vou reclamar, ___ porque a culpa foi minha.", o: ["até", "já", "mesmo", "nem"], e: "Até porque = especially because, given that.", r: "It introduces the strongest reason, and comes last." },
+        { t: "Daí", s: "Ele chegou, ___ começou a reclamar.", o: ["daí", "dali", "daqui", "lá"], e: "Daí = and then. It strings the steps of a story together.", r: "E daí? on its own means So what?" }
+      ],
+      build: [
+        { en: "Nobody showed up, so we cancelled.", a: ["Ninguém apareceu ou seja cancelamos"], x: ["e", "cancelou"] },
+        { en: "At the end of the day it all worked out.", a: ["No fim das contas deu tudo certo"], x: ["Ao", "certa"] },
+        { en: "Apparently nobody read the email.", a: ["Pelo visto ninguém leu o email"], x: ["Pela", "leram"] },
+        { en: "Everyone went, even the boss.", a: ["Todo mundo foi inclusive o chefe"], x: ["incluso", "chefes"] },
+        { en: "I wanted to go, but it didn't work out.", a: ["Eu queria ir só que não deu"], x: ["mais", "dava"] }
+      ]
     }
   ];
 
