@@ -1,6 +1,6 @@
 /* Offline support: cache the whole app on install, serve cache-first.
    Bump VERSION whenever you change any file so phones pick up the update. */
-const VERSION = "ipe-v8";
+const VERSION = "ipe-v9";
 const FILES = [
   "./",
   "./index.html",
@@ -13,8 +13,6 @@ const FILES = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-512.png",
-  "./fonts/bricolage-grotesque-latin-600-normal.woff2",
-  "./fonts/bricolage-grotesque-latin-800-normal.woff2",
   "./fonts/figtree-latin-400-normal.woff2",
   "./fonts/figtree-latin-500-normal.woff2",
   "./fonts/figtree-latin-600-normal.woff2",

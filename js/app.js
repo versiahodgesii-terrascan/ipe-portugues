@@ -260,7 +260,9 @@
   function viewLearn() {
     const pos = currentPos();
     const showInstall = !isStandalone() && !S.installDismissed;
-    const offsets = [0, 52, 0, -52];
+    /* The zigzag is gone. Offsetting four lessons left and right made an
+       ordered syllabus harder to scan and was the most borrowed thing on the
+       screen. They sit in a row now, in order, left to right. */
     let reachedCurrent = false;
     const units = UNITS.map(u => {
       const st = unitState(u.id);
@@ -271,9 +273,9 @@
         const done = i < st.done, cur = isCur && i === st.done;
         const c = done ? "done" : cur ? "current" : "";
         const label = `Unit ${u.n}, lesson ${i + 1}${done ? ", completed" : cur ? ", up next" : ""}`;
-        return `<div class="node-wrap" style="transform:translateX(${offsets[i]}px)">
+        return `<div class="node-wrap">
+          <button class="node ${c}" data-act="lesson" data-u="${u.id}" data-l="${i}" aria-label="${label}">${done ? I.check : i + 1}</button>
           ${cur ? `<div class="bubble">Start</div>` : ""}
-          <button class="node ${c}" data-act="lesson" data-u="${u.id}" data-l="${i}" aria-label="${label}">${done ? I.check : cur ? I.star : i + 1}</button>
         </div>`;
       }).join("");
       return `<section class="unit ${cls}" aria-label="Unit ${u.n}: ${esc(u.title)}">
