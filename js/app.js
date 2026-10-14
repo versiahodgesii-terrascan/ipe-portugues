@@ -417,6 +417,18 @@
     }
     if (termoDraft.length < 5 && /^[a-z]$/.test(k)) { termoDraft += k; render(); }
   }
+
+  /* Physical keyboard, for desktop. Guarded so it never steals keystrokes from
+     the answer box in a lesson, and bare() lets an accented key still count. */
+  document.addEventListener("keydown", e => {
+    if (tab !== "termo" || e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = document.activeElement;
+    if (el && /^(INPUT|TEXTAREA)$/.test(el.tagName)) return;
+    if (e.key === "Enter") { e.preventDefault(); return termoKey("enter"); }
+    if (e.key === "Backspace") { e.preventDefault(); return termoKey("back"); }
+    const c = bare(e.key.toLowerCase());
+    if (/^[a-z]$/.test(c)) { e.preventDefault(); termoKey(c); }
+  });
   function viewGuide() {
     const seg = `<div class="seg" role="group" aria-label="Guide section">${[["verbs", "Verb tables"], ["tenses", "Tenses"], ["tips", "Unit tips"]].map(([k, l]) => `<button data-act="gtab" data-k="${k}" aria-pressed="${G.tab === k}">${l}</button>`).join("")}</div>`;
     let body = "";
