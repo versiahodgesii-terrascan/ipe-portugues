@@ -1,6 +1,6 @@
 /* Offline support: cache the whole app on install, serve cache-first.
    Bump VERSION whenever you change any file so phones pick up the update. */
-const VERSION = "ipe-v10";
+const VERSION = "ipe-v11";
 const FILES = [
   "./",
   "./index.html",
@@ -21,8 +21,17 @@ const FILES = [
   "./fonts/ibm-plex-mono-latin-500-normal.woff2"
 ];
 
+/* addAll() reads through the HTTP cache, so a VERSION bump could fill the new
+   cache with the files it was meant to replace. Fetch each one from the network. */
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(VERSION).then(c => Promise.all(FILES.map(u =>
+      fetch(new Request(u, { cache: "reload" })).then(res => {
+        if (!res.ok) throw new Error("install failed for " + u + ": " + res.status);
+        return c.put(u, res);
+      })
+    ))).then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", e => {
