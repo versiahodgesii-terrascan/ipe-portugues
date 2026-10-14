@@ -3,12 +3,56 @@
 (() => {
   "use strict";
   const { TENSES, TENSE_ORDER, PERSONS, conjugate, ALL_VERBS, meaning, isIrregular } = window.PT_VERBS;
-  const UNITS = window.PT_UNITS;
   const LESSONS_PER_UNIT = 4;
   const LESSON_SIZE = 10;
   const INTERVALS = [0, 1, 3, 7, 16, 35]; // days until next review, by SRS box
   const STORE_KEY = "ipe-progress-v1";
   const GOALS = [[10, "Casual"], [20, "Regular"], [30, "Serious"], [50, "Intense"]];
+
+  /* ---------------- the generated verb track ----------------
+     The hand-written units stop at 28. Everything after that is generated from
+     the conjugation engine, which is the only honest way to say "you will not
+     run out": 37 verbs x 8 tenses x 4 persons = 1,184 distinct prompts.
+
+     Each generated unit takes a 10-verb window over the verb list and one
+     tense, so a unit holds exactly 40 prompts and its 4 lessons partition them
+     — ten fresh prompts per lesson, nothing repeated inside a unit. The window
+     slides by 3, so a verb comes back in a later unit, spaced out, which is
+     what you want from practice anyway.
+
+     12 windows x 8 tenses = 96 units, plus one mixed unit at the end = 97.
+     28 hand-written units (112 lessons) + 97 x 4 = 500 lessons exactly. */
+  const WINDOWS_PER_TENSE = 12, WINDOW = 10, STEP = 3;
+  const TOTAL_LESSONS = 500;
+
+  function genTrack(startN) {
+    // easy verbs first: regulars, then irregulars, alphabetical inside each
+    const verbs = ALL_VERBS.slice().sort((a, b) =>
+      (isIrregular(a) - isIrregular(b)) || a.localeCompare(b, "pt"));
+    const windowAt = i => Array.from({ length: WINDOW }, (_, k) => verbs[(i * STEP + k) % verbs.length]);
+    const out = [];
+    TENSE_ORDER.forEach(t => {
+      for (let i = 0; i < WINDOWS_PER_TENSE; i++) {
+        const vs = windowAt(i);
+        out.push({
+          id: `g-${t}-${i}`, gen: true, tense: t,
+          title: `${TENSES[t].short} ${i + 1}`, en: `${TENSES[t].en} · ${vs[0]} → ${vs[WINDOW - 1]}`,
+          icon: "\u2023", tip: TENSES[t].use,
+          drill: { tenses: [t], verbs: vs }, mc: [], build: []
+        });
+      }
+    });
+    out.push({
+      id: "g-mix", gen: true, tense: null,
+      title: "Revisão geral", en: "Every verb, every tense", icon: "\u2023",
+      tip: "No new ground — this is the whole engine at once, drawn at random.",
+      drill: { tenses: TENSE_ORDER.slice(), verbs }, mc: [], build: []
+    });
+    out.forEach((u, i) => (u.n = startN + i));
+    return out;
+  }
+
+  const UNITS = [...window.PT_UNITS, ...genTrack(window.PT_UNITS.length + 1)];
 
   /* ---------------- utilities ---------------- */
   const $ = (s, el = document) => el.querySelector(s);
@@ -164,16 +208,21 @@
     return { kind: "type", key: `v:${verb}:${tense}`, verb, tense, p, before, after, answer: c[tense][p], row };
   }
   const makeMC = q => ({ kind: "mc", key: q.id, q, opts: shuffle(q.o) });
+  /* Dictation reuses a build sentence: you hear the Portuguese and write it,
+     which is the one skill the other three exercise types never test. */
+  const makeDict = q => ({ kind: "dict", key: `d:${q.id}`, q, answer: q.a[0] });
   const makeBuild = q => ({ kind: "build", key: q.id, q, tiles: shuffle([...q.a[0].split(" "), ...q.x]).map((w, i) => ({ w, i })) });
 
   function exFromKey(k) {
     if (k.startsWith("v:")) { const [, verb, tense] = k.split(":"); return makeTyped(verb, tense); }
+    if (k.startsWith("d:")) { const e = INDEX[k.slice(2)]; return e && hasTTS ? makeDict(e.q) : null; }
     const e = INDEX[k]; if (!e) return null;
     return e.kind === "mc" ? makeMC(e.q) : makeBuild(e.q);
   }
   const seen = id => (S.srs[id] ? S.srs[id].s : 0);
 
   function buildLesson(unit, level) {
+    if (unit.gen) return buildGenLesson(unit, level);
     const typedN = unit.drill ? [3, 4, 5, 5][level] : 0;
     const buildN = Math.min(unit.build.length, [1, 2, 2, 3][level]);
     const mcN = LESSON_SIZE - typedN - buildN;
@@ -185,13 +234,40 @@
       if (used.has(v + t)) continue;
       used.add(v + t); typed.push(makeTyped(v, t));
     }
-    const rest = shuffle([...mcs.slice(1), ...builds, ...typed]);
-    return [mcs[0], ...rest].filter(Boolean);
+    // From lesson 2 on, one sentence is heard rather than read. It is drawn
+    // from the sentences this lesson is not already showing as tiles, so the
+    // same sentence never appears twice in one lesson.
+    const usedB = new Set(builds.map(b => b.q.id));
+    const freeB = unit.build.filter(q => !usedB.has(q.id));
+    const dicts = hasTTS && level > 0 && freeB.length ? [makeDict(pick(freeB))] : [];
+    const trimmed = dicts.length ? mcs.slice(0, -1) : mcs;
+    const rest = shuffle([...trimmed.slice(1), ...builds, ...typed, ...dicts]);
+    return [trimmed[0] || dicts[0], ...rest.filter(x => x !== (trimmed[0] || dicts[0]))].filter(Boolean);
+  }
+
+  /* A generated unit's four lessons partition its prompts instead of sampling
+     them, so no prompt repeats inside the unit. The mixed unit is too big to
+     partition, so it samples the least-practised verbs instead. */
+  function buildGenLesson(unit, level) {
+    const { verbs, tenses } = unit.drill;
+    if (tenses.length > 1) {
+      const combos = [];
+      for (const v of verbs) for (const t of tenses) combos.push([v, t]);
+      return shuffle(combos)
+        .sort((a, b) => seen(`v:${a[0]}:${a[1]}`) - seen(`v:${b[0]}:${b[1]}`))
+        .slice(0, LESSON_SIZE)
+        .map(([v, t]) => makeTyped(v, t));
+    }
+    const t = tenses[0], combos = [];
+    for (const v of verbs) for (let p = 0; p < 4; p++) combos.push([v, p]);
+    const start = (level * LESSON_SIZE) % combos.length;
+    const slice = Array.from({ length: LESSON_SIZE }, (_, k) => combos[(start + k) % combos.length]);
+    return shuffle(slice).map(([v, p]) => makeTyped(v, t, p));
   }
 
   function dueKeys() {
     const t = today();
-    return Object.entries(S.srs).filter(([k, r]) => r.d <= t && (k.startsWith("v:") || INDEX[k]))
+    return Object.entries(S.srs).filter(([k, r]) => r.d <= t && (k.startsWith("v:") || INDEX[k] || (k.startsWith("d:") && hasTTS && INDEX[k.slice(2)])))
       .sort((a, b) => a[1].b - b[1].b || b[1].w - a[1].w).map(([k]) => k);
   }
   function buildReview() {
@@ -269,8 +345,18 @@
     /* The zigzag is gone. Offsetting four lessons left and right made an
        ordered syllabus harder to scan and was the most borrowed thing on the
        screen. They sit in a row now, in order, left to right. */
+    /* All 28 hand-written units are listed. The 97 generated ones are not —
+       that would be a thousand nodes to scroll past. Only a band around where
+       you actually are gets drawn, and it moves with you. */
+    const genStart = UNITS.findIndex(u => u.gen);
+    const curIdx = pos.u === null ? UNITS.length - 1 : UNITS.findIndex(u => u.id === pos.u);
+    const bandFrom = Math.max(genStart, Math.min(curIdx - 1, UNITS.length - 7));
+    const bandTo = bandFrom + 6;
+    const doneLessons = UNITS.reduce((n, u) => n + Math.min(unitState(u.id).done, LESSONS_PER_UNIT), 0);
+
     let reachedCurrent = false;
-    const units = UNITS.map(u => {
+    const units = UNITS.map((u, idx) => {
+      if (u.gen && (idx < bandFrom || idx > bandTo)) return "";
       const st = unitState(u.id);
       const isCur = pos.u === u.id;
       const cls = st.done >= LESSONS_PER_UNIT ? "done" : isCur ? "" : reachedCurrent || pos.u === null ? "later" : "later";
@@ -284,7 +370,12 @@
           ${cur ? `<div class="bubble">Start</div>` : ""}
         </div>`;
       }).join("");
-      return `<section class="unit ${cls}" aria-label="Unit ${u.n}: ${esc(u.title)}">
+      const intro = idx === bandFrom ? `<div class="card trackcard">
+        <span class="eyebrow">A partir daqui</span>
+        <h3 style="margin:2px 0 6px">The verb track</h3>
+        <p class="muted" style="margin:0;font-size:14px">Past unit 28 the course is generated from the conjugation engine — every verb in every tense, ${(ALL_VERBS.length * TENSE_ORDER.length * 4).toLocaleString("en")} prompts in all. It is drawn a few units at a time so the list stays readable.</p>
+      </div>` : "";
+      return intro + `<section class="unit ${cls}" aria-label="Unit ${u.n}: ${esc(u.title)}">
         <div class="banner">
           <div class="txt"><span class="eyebrow">Unit ${u.n} · ${Math.min(st.done, 4)}/4</span><h3>${esc(u.title)}</h3><small>${esc(u.en)}</small></div>
           <button class="tipbtn" data-act="tip" data-u="${u.id}">${I.bulb}Tips</button>
@@ -294,7 +385,8 @@
     }).join("");
     return `<div class="view">
       ${showInstall ? `<div class="install">${I.share}<p><b>Install on your iPhone.</b> In Safari, tap the Share button, then <b>Add to Home Screen</b>. It works offline after that.</p><button data-act="dismiss-install" aria-label="Dismiss">${I.close}</button></div>` : ""}
-      ${pos.u === null ? `<div class="card"><h3>Course complete. Parabéns!</h3><p class="muted" style="margin:6px 0 0">Keep your streak with daily reviews, or replay any lesson.</p></div>` : ""}
+      ${pos.u === null ? `<div class="card"><h3>Course complete. Parabéns!</h3><p class="muted" style="margin:6px 0 0">All ${TOTAL_LESSONS} lessons done. Keep your streak with daily reviews, or replay any lesson.</p></div>`
+        : `<div class="progline"><span>Lesson ${doneLessons + 1} of ${TOTAL_LESSONS}</span><div class="m"><i style="width:${(doneLessons / TOTAL_LESSONS) * 100}%"></i></div></div>`}
       ${units}
     </div>`;
   }
@@ -550,7 +642,11 @@
 
   function lessonSheet(u, l) {
     const unit = UNITS.find(x => x.id === u);
-    const kinds = [unit.drill ? "Conjugation typing" : null, "Multiple choice", unit.build.length ? "Sentence building" : null].filter(Boolean);
+    const kinds = unit.gen
+      ? ["Conjugation typing"]
+      : [unit.drill ? "Conjugation typing" : null, "Multiple choice",
+         unit.build.length ? "Sentence building" : null,
+         hasTTS && l > 0 && unit.build.length ? "Dictation" : null].filter(Boolean);
     const st = unitState(u);
     sheet(`<span class="eyebrow">Unit ${unit.n} · Lesson ${l + 1} of 4</span>
       <h2>${esc(unit.title)}</h2>
@@ -670,6 +766,13 @@
         <input class="answer-input" id="ans" type="text" inputmode="text" lang="pt-BR" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Type in Portuguese">
         <div class="accents" aria-label="Accented letters">${"á à â ã é ê í ó ô õ ú ç".split(" ").map(c => `<button type="button" data-ch="${c}">${c}</button>`).join("")}</div>
         <button class="linkbtn" id="idk" type="button">I don't know this one</button>`;
+    } else if (x.kind === "dict") {
+      body = `<div class="kind">Listen and write ${retry}</div>
+        <button class="playbig" id="playBtn" type="button" aria-label="Play the sentence">${I.speaker}<span>Tap to hear it</span></button>
+        <label class="sr" for="ans">What you heard</label>
+        <input class="answer-input" id="ans" type="text" inputmode="text" lang="pt-BR" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Type what you hear">
+        <div class="accents" aria-label="Accented letters">${"á à â ã é ê í ó ô õ ú ç".split(" ").map(c => `<button type="button" data-ch="${c}">${c}</button>`).join("")}</div>
+        <button class="linkbtn" id="idk" type="button">I don't know this one</button>`;
     } else {
       body = `<div class="kind">Build the sentence ${retry}</div>
         <p class="prompt en" id="prompt">${esc(x.q.en)}</p>
@@ -711,6 +814,23 @@
       });
       $("#idk").addEventListener("click", () => { if (!L.checked) { inp.value = ""; check(true); } });
       setTimeout(() => inp.focus({ preventScroll: true }), 60);
+    } else if (x.kind === "dict") {
+      const inp = $("#ans");
+      const say = () => speak(x.answer);
+      $("#playBtn").addEventListener("click", say);
+      inp.addEventListener("input", () => enableCheck(inp.value.trim().length > 0));
+      inp.addEventListener("keydown", e => { if (e.key === "Enter" && inp.value.trim()) { e.preventDefault(); check(); } });
+      $("#lbody").querySelectorAll(".accents button").forEach(b => {
+        b.addEventListener("pointerdown", e => e.preventDefault());
+        b.addEventListener("click", () => {
+          if (L.checked) return;
+          const a = inp.selectionStart ?? inp.value.length, z = inp.selectionEnd ?? inp.value.length;
+          inp.value = inp.value.slice(0, a) + b.dataset.ch + inp.value.slice(z);
+          inp.setSelectionRange(a + 1, a + 1); inp.focus(); enableCheck(true);
+        });
+      });
+      $("#idk").addEventListener("click", () => { if (!L.checked) { inp.value = ""; check(true); } });
+      setTimeout(say, 220);
     } else {
       const ans = $("#tAns"), bank = $("#tBank");
       const draw = () => {
@@ -732,6 +852,7 @@
   function spokenText(x) {
     if (x.kind === "mc") return x.q.s.includes("___") ? x.q.s.replace("___", x.q.o[0]) : x.q.long ? x.q.o[0] : "";
     if (x.kind === "type") return x.before + x.answer + x.after.replace("…", "");
+    if (x.kind === "dict") return x.answer;
     return x.q.a[0];
   }
 
@@ -748,6 +869,12 @@
       const g = norm(given), a = norm(x.answer);
       if (g === a) ok = true;
       else if (g && bare(g) === bare(a)) { ok = true; note = `Watch the accents: <b>${esc(x.answer)}</b>`; }
+    } else if (x.kind === "dict") {
+      given = $("#ans").value;
+      if (!gaveUp && !given.trim()) return;
+      const g = norm(given);
+      if (x.q.a.some(a => norm(a) === g)) ok = true;
+      else if (g && x.q.a.some(a => bare(norm(a)) === bare(g))) { ok = true; note = `Watch the accents: <b>${esc(x.answer)}</b>`; }
     } else {
       if (!L.picked.length) return;
       given = L.picked.map(i => x.tiles.find(t => t.i === i).w).join(" ");
@@ -761,7 +888,8 @@
       L.attempted.add(x.key);
       recordSRS(x.key, ok);
       if (ok) L.firstOk++;
-      const unitId = x.kind === "type" ? (L.unit ? L.unit.id : null) : (INDEX[x.key] && INDEX[x.key].u.id);
+      const idxKey = x.kind === "dict" ? x.key.slice(2) : x.key;
+      const unitId = x.kind === "type" ? (L.unit ? L.unit.id : null) : (INDEX[idxKey] && INDEX[idxKey].u.id);
       if (unitId) { const s = unitState(unitId); s.n++; if (ok) s.c++; }
     }
     if (ok) { L.finished++; }
@@ -780,6 +908,9 @@
       const inp = $("#ans"); inp.readOnly = true; inp.classList.add(ok ? "right" : "wrong"); inp.blur();
       $("#prompt").innerHTML = `${esc(x.before)}<span class="blank">${esc(x.answer)}</span>${esc(x.after)}`;
       $("#idk").hidden = true;
+    } else if (x.kind === "dict") {
+      const inp = $("#ans"); inp.readOnly = true; inp.classList.add(ok ? "right" : "wrong"); inp.blur();
+      $("#idk").hidden = true;
     } else {
       $("#lbody").querySelectorAll(".tile").forEach(b => (b.disabled = true));
     }
@@ -793,6 +924,10 @@
       const T = TENSES[x.tense];
       fb = `${ok ? (note ? `<p>${note}</p>` : "") : `<p class="ans">Answer: ${esc(x.answer)}</p>${given.trim() ? `<p class="rule">You wrote “${esc(given.trim())}”.</p>` : ""}`}
         <p class="row">${esc(x.verb)} · ${esc(T.pt)}: ${x.row}</p>${ok ? "" : `<p class="rule">${esc(T.use)}</p>`}`;
+    } else if (x.kind === "dict") {
+      fb = `${ok ? (note ? `<p>${note}</p>` : `<p class="ans">${esc(x.answer)}</p>`)
+        : `<p class="ans">${esc(x.answer)}</p>${given.trim() ? `<p class="rule">You wrote “${esc(given.trim())}”.</p>` : ""}`}
+        <p class="rule">${esc(x.q.en)}</p>`;
     } else {
       const same = norm(given) === norm(x.q.a[0]);
       fb = ok ? (same ? "" : `<p class="rule">Also correct: ${esc(x.q.a[0])}</p>`) : `<p class="ans">Answer: ${esc(x.q.a[0])}</p>`;

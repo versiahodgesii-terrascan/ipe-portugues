@@ -686,6 +686,96 @@
         { en: "The class starts at eight.", a: ["A aula começa às oito"], x: ["as", "à"] },
         { en: "The party is on the first of May.", a: ["A festa é dia primeiro de maio"], x: ["um", "primeira"] }
       ]
+    },
+    {
+      id: "u26", title: "Expressões do dia a dia", en: "What Brazilians say all day", icon: "~",
+      tip: "These are fixed phrases. Learn them whole — translating them word by word tells you nothing about what they mean.",
+      drill: null,
+      mc: [
+        { t: "Dar um jeito", s: "Não temos tudo o que precisamos, mas a gente ___ um jeito.", o: ["dá", "faz", "toma", "leva"], e: "Dar um jeito = to find a way, to sort something out. It is probably the most Brazilian phrase in the language.", r: "Dou um jeito nisso = I'll sort it out." },
+        { t: "Agradecer", s: "— Te empresto o carro amanhã. — ___, cara!", o: ["Valeu", "Valor", "Vale", "Valia"], e: "Valeu is an informal thank you. It also means deal or got it.", r: "Obrigado is neutral; valeu is for friends." },
+        { t: "Cumprimento", s: "— E aí, ___? — Tudo certo!", o: ["beleza", "bonito", "belo", "beldade"], e: "Beleza? = All good? It answers itself: Beleza. It has nothing to do with beauty here.", r: "E aí, beleza? / Tudo bem? / Tudo joia? all do the same job." },
+        { t: "Concordar", s: "— O trânsito hoje tá impossível. — ___, nem me fale.", o: ["Pois é", "Pois não", "Por isso", "Pois sim"], e: "Pois é agrees and sighs at the same time — yeah, tell me about it.", r: "Pois não means how can I help you, in a shop. Opposite register." },
+        { t: "Surpresa", s: "___! Não sabia que você estava no Brasil!", o: ["Nossa", "Nosso", "Nossas", "Nós"], e: "Nossa is a fixed exclamation, shortened from Nossa Senhora. It never changes form.", r: "Nossa, que legal! / Nossa, que pena!" },
+        { t: "Pergunta curta", s: "Você vem amanhã, ___?", o: ["né", "nê", "nei", "nem"], e: "Né is não é squeezed into one syllable. It turns a statement into a question, like English right?", r: "Written informally it carries the accent: né." },
+        { t: "Marcador", s: "É complicado, ___? Mas a gente resolve.", o: ["tá ligado", "tá ligando", "é ligado", "ligado tá"], e: "Tá ligado? = you know? It checks the other person is following. Tá ligada? to a woman.", r: "Very informal. Leave it out at work." },
+        { t: "Não saber", s: "— Por que ele saiu? — ___, ninguém me contou.", o: ["Sei lá", "Lá sei", "Sei não lá", "Não sei lá"], e: "Sei lá = I have no idea, with a shrug built in.", r: "Sei lá is casual; não faço ideia is neutral." },
+        { t: "Resposta cortês", s: "— Desculpa pelo incômodo. — ___, não foi nada.", o: ["Imagina", "Imagine", "Imaginando", "Imaginar"], e: "Imagina brushes off thanks or an apology — don't mention it.", r: "Que isso! works exactly the same way." },
+        { t: "Tempo", s: "Ele chega ___ pouco, espera aí.", o: ["daqui a", "daqui há", "daqui de", "aqui a"], e: "Daqui a + time looks forward. It takes a, never há.", r: "Há dois dias = two days ago. Daqui a dois dias = in two days." },
+        { t: "Sem aviso", s: "Ela pediu demissão ___.", o: ["do nada", "de nada", "no nada", "à nada"], e: "Do nada = out of nowhere, with no warning at all.", r: "De nada is the answer to obrigado. A different phrase entirely." },
+        { t: "Pergunta indireta", s: "Você ___ sabe que horas são?", o: ["por acaso", "por caso", "ao acaso", "de acaso"], e: "Por acaso softens a question — by any chance.", r: "Ao acaso means at random. Not interchangeable." },
+        { t: "Alívio", s: "___ você chegou, eu já estava preocupada.", o: ["Ainda bem que", "Ainda bom que", "Mesmo bem que", "Já bem que"], e: "Ainda bem que = thank goodness that.", r: "Ainda bem! stands alone too." },
+        { t: "Desejo + subjuntivo", s: "___ que não chova amanhã.", o: ["Tomara", "Tomará", "Tomar", "Tomaria"], e: "Tomara que always pulls the subjunctive: tomara que dê certo, tomara que venha.", r: "Never tomara que chove." },
+        { t: "Precaução", s: "Leva o guarda-chuva, ___ chova.", o: ["vai que", "vai se", "vá que", "vai como"], e: "Vai que + subjunctive = just in case, what if.", r: "Vai que dá certo = you never know, it might work." },
+        { t: "De repente", s: "___ a gente se encontra no sábado, quem sabe.", o: ["De repente", "Do repente", "Em repente", "Por repente"], e: "Besides suddenly, de repente in Brazil very often means maybe.", r: "De repente ele vem = maybe he'll come." }
+      ],
+      build: [
+        { en: "I'll sort it out.", a: ["Eu dou um jeito", "Dou um jeito"], x: ["faço", "jeitinho"] },
+        { en: "Thanks for the ride.", a: ["Valeu pela carona"], x: ["obrigado", "pelo"] },
+        { en: "She quit out of nowhere.", a: ["Ela pediu demissão do nada"], x: ["de", "sem"] },
+        { en: "Thank goodness you came.", a: ["Ainda bem que você veio"], x: ["bom", "vem"] },
+        { en: "Hopefully it works out.", a: ["Tomara que dê certo"], x: ["dá", "certa"] }
+      ]
+    },
+    {
+      id: "u27", title: "Dar, ficar, pegar e levar", en: "Four verbs that build a hundred phrases", icon: "*",
+      tip: "These four verbs carry an enormous amount of everyday meaning. The verb on its own tells you almost nothing — learn the whole phrase.",
+      drill: null,
+      mc: [
+        { t: "Dar certo", s: "Eu acho que esse plano vai ___ certo.", o: ["dar", "fazer", "ficar", "levar"], e: "Dar certo = to work out, to go well.", r: "Deu certo! = It worked. Não deu certo = it fell through." },
+        { t: "Dar ruim", s: "A festa ___ ruim: choveu a noite inteira.", o: ["deu", "fez", "ficou", "levou"], e: "Dar ruim = to go wrong. Newer slang, everywhere among younger Brazilians.", r: "Deu ruim is the exact opposite of deu certo." },
+        { t: "Dar conta", s: "São três projetos ao mesmo tempo — eu não ___ conta.", o: ["dou", "faço", "levo", "pego"], e: "Dar conta (de) = to manage, to handle, to cope with.", r: "Dá conta? = Can you handle it?" },
+        { t: "Dar uma olhada", s: "Você pode ___ uma olhada no meu texto?", o: ["dar", "fazer", "pegar", "levar"], e: "Dar uma olhada = to take a look. Dar uma + noun makes any action quick and light.", r: "Dar uma volta, dar uma passada, dar uma olhada." },
+        { t: "Dar em cima", s: "Ele ficou ___ em cima dela a noite toda.", o: ["dando", "fazendo", "pegando", "levando"], e: "Dar em cima de alguém = to hit on someone.", r: "Informal, but not rude." },
+        { t: "Ficar de boa", s: "Hoje eu quero só ___ de boa em casa.", o: ["ficar", "dar", "pegar", "levar"], e: "Ficar de boa = to chill, to take it easy.", r: "Tô de boa = I'm good, nothing wrong." },
+        { t: "Ficar sabendo", s: "Eu ___ sabendo que você vai se mudar.", o: ["fiquei", "dei", "peguei", "levei"], e: "Ficar sabendo = to find out, to hear about something.", r: "Como você ficou sabendo? = How did you hear?" },
+        { t: "Ficar com", s: "Eles ___ na festa, mas não estão namorando.", o: ["ficaram", "deram", "pegaram", "levaram"], e: "Ficar com alguém = to hook up, short of dating. Ficar is a whole relationship stage in Brazil.", r: "ficar → namorar → casar." },
+        { t: "Crase fixa", s: "Entra e ___ à vontade.", o: ["fica", "dá", "pega", "leva"], e: "Ficar à vontade = to make yourself comfortable. À vontade always carries the crase.", r: "Fique à vontade is the formal version." },
+        { t: "Pegar leve", s: "___ leve com ele, é o primeiro dia.", o: ["Pega", "Dá", "Fica", "Leva"], e: "Pegar leve = to go easy on someone.", r: "Pega leve! = Take it easy!" },
+        { t: "Pegar no pé", s: "Minha mãe vive ___ no meu pé por causa do quarto.", o: ["pegando", "dando", "ficando", "levando"], e: "Pegar no pé = to nag, to keep on at someone.", r: "Para de pegar no meu pé." },
+        { t: "Pegar o jeito", s: "No começo é difícil, mas você ___ o jeito rápido.", o: ["pega", "dá", "fica", "leva"], e: "Pegar o jeito = to get the hang of it.", r: "Já peguei o jeito = I've got it now." },
+        { t: "Pegar mal", s: "Chegar atrasado na entrevista ___ muito mal.", o: ["pega", "dá", "fica", "leva"], e: "Pegar mal = to look bad, to give a bad impression.", r: "Pega mal falar isso na frente dele." },
+        { t: "Levar a sério", s: "Ele ___ o trabalho muito a sério.", o: ["leva", "dá", "fica", "pega"], e: "Levar a sério = to take seriously.", r: "Não leva a mal = don't take it the wrong way." },
+        { t: "Levar um fora", s: "Ele se declarou e ___ um fora.", o: ["levou", "deu", "ficou", "pegou"], e: "Levar um fora = to get rejected, to be turned down.", r: "Dar um fora em alguém = to be the one doing the rejecting." },
+        { t: "Numa boa", s: "Ela ___ a crítica numa boa.", o: ["levou", "deu", "pegou", "ficou"], e: "Levar numa boa = to take something well, without drama.", r: "Numa boa also means honestly: numa boa, não gostei." }
+      ],
+      build: [
+        { en: "I think it'll work out.", a: ["Eu acho que vai dar certo"], x: ["ficar", "certa"] },
+        { en: "Go easy on him.", a: ["Pega leve com ele"], x: ["leva", "nele"] },
+        { en: "I found out yesterday.", a: ["Eu fiquei sabendo ontem"], x: ["soube", "hoje"] },
+        { en: "Make yourself at home.", a: ["Fica à vontade"], x: ["a", "vontades"] },
+        { en: "He takes work very seriously.", a: ["Ele leva o trabalho muito a sério"], x: ["pega", "serio"] }
+      ]
+    },
+    {
+      id: "u28", title: "Gíria e informalidade", en: "Slang, and when not to use it", icon: "+",
+      tip: "Slang is how friends talk. All of this is right with friends and wrong in a job interview — each item says which register it belongs to.",
+      drill: null,
+      mc: [
+        { t: "Tratamento", s: "___, você não vai acreditar no que aconteceu.", o: ["Cara", "Cabeça", "Rosto", "Face"], e: "Cara literally means face, but as a form of address it is dude or man — used to and about anyone.", r: "Um cara = a guy. Friends only." },
+        { t: "Tratamento", s: "Valeu, ___! Te devo essa.", o: ["mano", "mão", "manho", "manso"], e: "Mano = bro; mana is the feminine. Strongly associated with São Paulo.", r: "mano, mana, parça — all informal address." },
+        { t: "Sair", s: "Vamos dar um ___ no centro no sábado?", o: ["rolê", "role", "rolo", "rolinho"], e: "Dar um rolê = to go out, to wander around. The circumflex matters.", r: "Um rolo is a mess or a fling — not the same word." },
+        { t: "Dinheiro", s: "Esse mês eu tô sem ___ nenhuma.", o: ["grana", "granada", "grão", "granito"], e: "Grana = money, cash. Informal but not rude, and extremely common.", r: "Grana curta = short on cash." },
+        { t: "Reação", s: "Quando ela contou, eu ___.", o: ["pirei", "pirrei", "piro", "pirava"], e: "Pirar = to freak out, to lose it — good or bad, context decides.", r: "Pirei! = I lost it / I loved it." },
+        { t: "Intensidade", s: "O show foi ___, nunca vi nada parecido.", o: ["sinistro", "sinistre", "sinistral", "sinistroso"], e: "Sinistro means sinister in the dictionary; in slang it means wild, or amazing.", r: "Only context tells you whether it is praise." },
+        { t: "Intensidade", s: "Tô com ___ vontade de viajar.", o: ["mó", "mô", "mor", "mais"], e: "Mó is maior clipped short, used for a big or so much.", r: "Mó legal = really cool. Rio and São Paulo, very informal." },
+        { t: "Brincadeira", s: "Eles ficaram me ___ o dia inteiro.", o: ["zoando", "zuando", "zoeando", "zoado"], e: "Zoar = to tease, to mess with someone. Zoeira is the teasing itself.", r: "Tô zoando = I'm kidding." },
+        { t: "Invariável", s: "Que ideia ___! Vamos fazer isso.", o: ["massa", "massuda", "massal", "massada"], e: "Massa = cool, great. It never agrees — que ideia massa, que filme massa.", r: "Invariable. There is no massas or masso." },
+        { t: "Crítica", s: "Ele vive ___ o saco do chefe.", o: ["puxando", "empurrando", "pegando", "levando"], e: "Puxar o saco = to suck up, to flatter for advantage.", r: "Puxa-saco names the person. It is an insult." },
+        { t: "Dividir a conta", s: "Vamos fazer uma ___ para o presente dela.", o: ["vaquinha", "vaca", "vaquita", "vaqueira"], e: "Fazer uma vaquinha = to chip in together for something.", r: "Entrar na vaquinha = to pitch in." },
+        { t: "Irritação", s: "Para de ___ o meu saco!", o: ["encher", "esvaziar", "puxar", "pegar"], e: "Encher o saco = to annoy, to be a pain. Mildly crude.", r: "Que saco! = What a pain! Not for work." },
+        { t: "Dificuldade", s: "Esse ano ___ osso para todo mundo.", o: ["tá", "tão", "tar", "taí"], e: "Tá osso = it's tough, it's rough going.", r: "Osso duro de roer = a hard nut to crack." },
+        { t: "Fala reduzida", s: "___ chegando, me espera cinco minutos.", o: ["Tô", "To", "Tou", "Tôu"], e: "Tô is estou as it is actually spoken. Written only in messages between friends.", r: "estou→tô, está→tá, você→cê, para→pra." },
+        { t: "Registro", s: "Numa entrevista de emprego, é melhor dizer ___.", o: ["muito obrigado", "valeu", "falou", "tamo junto"], e: "Valeu, falou and tamo junto are friends-only. An interview takes the neutral form.", r: "When in doubt, pick the neutral word." },
+        { t: "Despedida", s: "— Te vejo amanhã. — ___, até!", o: ["Falou", "Falado", "Falar", "Falarei"], e: "Falou closes a conversation between friends — later, got it.", r: "falou, valeu, até, tchau — all casual goodbyes." }
+      ],
+      build: [
+        { en: "Let's go out downtown on Saturday.", a: ["Vamos dar um rolê no centro no sábado"], x: ["rolo", "fazer"] },
+        { en: "I'm broke this month.", a: ["Esse mês eu tô sem grana"], x: ["estou", "grano"] },
+        { en: "Let's chip in for her present.", a: ["Vamos fazer uma vaquinha para o presente dela"], x: ["vaca", "dele"] },
+        { en: "Stop messing with me.", a: ["Para de me zoar"], x: ["pare", "zoando"] },
+        { en: "That's really cool.", a: ["Isso é mó legal"], x: ["mais", "legais"] }
+      ]
     }
   ];
 
