@@ -6,6 +6,10 @@
 - Vite + React + TypeScript + Dexie. There IS a build step now, unlike before.
 - **GitHub Pages serves `docs/`, not the root.** Run `npm run build` and commit
   `docs/` or the live site does not change.
+- `public/.nojekyll` must survive. Without it GitHub Pages runs the files
+  through Jekyll, which quietly 404s `manifest.webmanifest`, `sw.js` and the
+  icons while still serving `index.html` — the app loads and silently stops
+  being installable. It lives in `public/` so every build copies it.
 - After changing anything, bump `VERSION` in `public/sw.js`, or installed
   iPhones keep serving the old cache. This is still the rule that bites.
 - Scheduling lives in `src/scheduler.ts` and is covered by `npm test`
