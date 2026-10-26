@@ -311,3 +311,27 @@ button {
   padding: 10px var(--s4); border-radius: var(--r-pill);
   font-size: 14px; z-index: 20;
 }
+
+/* ── Stats: the one screen you read at arm's length ───────────────────
+ *
+ * This is a glance screen, not a reading screen — you open it to see one
+ * number and close it. So the type is set far larger than the rest of the
+ * app rather than matching it: the row label and its value are the content,
+ * and at body size they were being squinted at.
+ */
+
+.stats .display { font-size: 108px; letter-spacing: -4px; }
+.stats .display-caption { font-size: 24px; margin-top: var(--s3); }
+
+.stats h2.section { font-size: 30px; margin-top: var(--s7); }
+
+.stats .row { padding: var(--s4) 0; }
+.stats .row-label { font-size: 26px; }
+.stats .row-value { font-size: 34px; }
+
+@media (max-width: 420px) {
+  /* Keep the longest label on one line on a phone. */
+  .stats .display { font-size: 88px; letter-spacing: -3px; }
+  .stats .row-label { font-size: 22px; }
+  .stats .row-value { font-size: 28px; }
+}

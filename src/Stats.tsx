@@ -23,12 +23,12 @@ export function Stats() {
   }, []);
 
   return (
-    <div className="page">
+    <div className="page stats">
       <div className="eyebrow">Where you are</div>
       <h1 className="title">Stats</h1>
 
       <div className="display">{s.today}</div>
-      <p className="muted" style={{ marginTop: 4 }}>
+      <p className="muted display-caption">
         reviews today{s.streak > 0 && ` · ${s.streak}-day streak`}
       </p>
 

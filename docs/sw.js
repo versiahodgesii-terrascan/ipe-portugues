@@ -10,7 +10,7 @@
  * Your words live in IndexedDB, not here; clearing this cache costs you
  * nothing but a reload.
  */
-const VERSION = "ipe-cards-v2";
+const VERSION = "ipe-cards-v3";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
