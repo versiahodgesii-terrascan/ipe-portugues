@@ -1,19 +1,108 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#121214" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Ipê Cards" />
-    <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-    <title>Ipê Cards</title>
-    <script type="module" crossorigin src="./assets/index-8o4IN9rP.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-bOkTJYy_.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#121214" />
+<title>Ipê Cards</title>
+<style>
+  :root {
+    --accent: #449dd1;
+    --bg: #fff; --ink: #111113; --muted: rgba(17,17,19,.56);
+    --border: rgba(17,17,19,.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0d0d0f; --ink:#f4f4f6; --muted:rgba(244,244,246,.58); --border:rgba(244,244,246,.16); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.5 -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  main { max-width:560px; margin:0 auto; padding:48px 20px; }
+  .eyebrow {
+    font-size:12px; font-weight:600; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--muted); margin-bottom:4px;
+  }
+  h1 {
+    font-family:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+    font-size:37px; font-weight:700; letter-spacing:-.5px; margin:0 0 24px;
+  }
+  p { color:var(--muted); }
+  p.lead { color:var(--ink); }
+  button {
+    font:inherit; font-weight:600; cursor:pointer;
+    background:var(--accent); color:#fff; border:0;
+    border-radius:999px; padding:14px 24px; width:100%;
+  }
+  #rescue { display:none; margin-top:32px; padding-top:24px; border-top:1px solid var(--border); }
+  code { font-size:15px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Retired</div>
+  <h1>Ipê Cards moved</h1>
+  <p class="lead">This is now a native iOS app, built in Xcode and installed from there. Nothing runs at this address any more.</p>
+  <p>You can remove the Ipê icon from your home screen — it points here.</p>
+
+  <section id="rescue">
+    <p class="lead"><strong>There are still cards saved in this browser.</strong></p>
+    <p>Download them before you delete the icon, then restore the file from <strong>More → Restore from a backup</strong> in the native app.</p>
+    <button id="download">Download my cards</button>
+  </section>
+</main>
+
+<script>
+// Kill the old service worker and its caches. Without this an installed phone
+// keeps serving the cached app from before, and nothing here is ever seen.
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations()
+    .then(rs => Promise.all(rs.map(r => r.unregister())))
+    .catch(() => {});
+}
+if (window.caches) {
+  caches.keys().then(ks => Promise.all(ks.map(k => caches.delete(k)))).catch(() => {});
+}
+
+// The app stored everything in IndexedDB, which the UI being gone makes
+// unreachable. Read it directly and hand it back in the format the native
+// app restores from, rather than stranding it.
+const open = indexedDB.open("ipe-cards");
+open.onsuccess = () => {
+  const db = open.result;
+  const names = Array.from(db.objectStoreNames);
+  if (!names.includes("entries")) return;
+  const tx = db.transaction(names, "readonly");
+  const out = {};
+  let pending = names.length;
+  names.forEach(name => {
+    const req = tx.objectStore(name).getAll();
+    req.onsuccess = () => {
+      out[name] = req.result || [];
+      if (--pending === 0 && (out.entries || []).length > 0) {
+        document.getElementById("rescue").style.display = "block";
+        document.getElementById("download").onclick = () => {
+          const payload = {
+            format: "ipe-cards", version: 1,
+            exported: new Date().toISOString(),
+            entries: out.entries || [], cards: out.cards || [],
+            reviews: out.reviews || [], settings: out.settings || [],
+          };
+          const url = URL.createObjectURL(
+            new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" }));
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "ipe-cards-rescued.json";
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+      }
+    };
+    req.onerror = () => { pending--; };
+  });
+};
+</script>
+</body>
 </html>

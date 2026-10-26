@@ -1,20 +1,18 @@
 # Notes for Claude Code
 
-- This repo was the 500-lesson Ipê study app. On 2026-10-26 it was replaced by
-  **Ipê Cards**, a spaced-repetition flashcard app. The lessons app is tagged
-  `lessons-app-v1` — `git checkout lessons-app-v1` brings it all back.
-- Vite + React + TypeScript + Dexie. There IS a build step now, unlike before.
-- **GitHub Pages serves `docs/`, not the root.** Run `npm run build` and commit
-  `docs/` or the live site does not change.
-- `public/.nojekyll` must survive. Without it GitHub Pages runs the files
-  through Jekyll, which quietly 404s `manifest.webmanifest`, `sw.js` and the
-  icons while still serving `index.html` — the app loads and silently stops
-  being installable. It lives in `public/` so every build copies it.
-- After changing anything, bump `VERSION` in `public/sw.js`, or installed
-  iPhones keep serving the old cache. This is still the rule that bites.
-- Scheduling lives in `src/scheduler.ts` and is covered by `npm test`
-  (23 checks against Anki's defaults). Change the scheduler and the tests tell
-  you what you broke.
-- Data is in IndexedDB (Dexie, database `ipe-cards`). The old lesson progress in
-  `localStorage` under `ipe-progress-v1` is untouched but nothing reads it.
-- Local test: `npm run dev`.
+- **This site is retired.** `docs/` holds a single page saying the app moved,
+  plus a self-destructing service worker. Nothing here is built any more.
+- The app this repo used to serve is now native, in `~/Downloads/IpeCards`
+  (SwiftUI, xcodegen). Changes go there, not here.
+- History, in tags:
+  - `lessons-app-v1` — the original 500-lesson study app.
+  - `pwa-v1` — the React/Dexie flashcard PWA that replaced it.
+  Either is restorable with `git checkout <tag>`.
+- The Vite source for the PWA is still at the repo root. It is no longer
+  built or deployed; `npm run build` would overwrite the retirement page in
+  `docs/`, so do not run it unless you mean to bring the PWA back.
+- `docs/sw.js` must keep unregistering itself. An installed phone serves the
+  OLD cached app until a worker it has never seen takes over and clears the
+  caches — delete that file and anyone who installed the PWA is stuck on it
+  forever with no way to see that it moved.
+- `docs/.nojekyll` must stay, or Pages 404s anything it does not recognise.

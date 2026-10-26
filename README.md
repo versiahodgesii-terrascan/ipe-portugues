@@ -1,4 +1,15 @@
-# Ipê Cards
+# Ipê Cards — retired web version
+
+**This app is now native iOS.** It lives in `~/Downloads/IpeCards` and installs
+from Xcode. This address serves a page saying so, and hands back any cards
+still saved in the browser so they can be restored into the native app.
+
+The web app is tagged `pwa-v1`; the 500-lesson study app before it is tagged
+`lessons-app-v1`. Both restore with `git checkout <tag>`.
+
+---
+
+## What it was
 
 Spaced repetition for Brazilian Portuguese, on Anki's schedule.
 
