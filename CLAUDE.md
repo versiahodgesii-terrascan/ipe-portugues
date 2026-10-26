@@ -1,9 +1,16 @@
 # Notes for Claude Code
 
-- Static PWA, no build step, no dependencies. Serve the folder as-is (GitHub Pages, Netlify, any HTTPS static host).
-- All paths are relative, so the app works from a sub-path such as `https://user.github.io/ipe-portugues/`.
-- After changing any file, bump `VERSION` in `sw.js`, or installed iPhones will keep serving the old cache.
-- If you add a file the app needs offline, add it to the `FILES` list in `sw.js`.
-- Content lives in `js/content.js`. Conjugations are in `js/verbs.js`. See README.md for the formats.
-- Progress is stored in `localStorage` under the key `ipe-progress-v1`. Don't rename it, or users lose their progress.
-- Quick local test: `python3 -m http.server 8000`.
+- This repo was the 500-lesson Ipê study app. On 2026-10-26 it was replaced by
+  **Ipê Cards**, a spaced-repetition flashcard app. The lessons app is tagged
+  `lessons-app-v1` — `git checkout lessons-app-v1` brings it all back.
+- Vite + React + TypeScript + Dexie. There IS a build step now, unlike before.
+- **GitHub Pages serves `docs/`, not the root.** Run `npm run build` and commit
+  `docs/` or the live site does not change.
+- After changing anything, bump `VERSION` in `public/sw.js`, or installed
+  iPhones keep serving the old cache. This is still the rule that bites.
+- Scheduling lives in `src/scheduler.ts` and is covered by `npm test`
+  (23 checks against Anki's defaults). Change the scheduler and the tests tell
+  you what you broke.
+- Data is in IndexedDB (Dexie, database `ipe-cards`). The old lesson progress in
+  `localStorage` under `ipe-progress-v1` is untouched but nothing reads it.
+- Local test: `npm run dev`.

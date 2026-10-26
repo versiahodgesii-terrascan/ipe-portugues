@@ -1,0 +1,1 @@
+{"root":["./src/add.tsx","./src/app.tsx","./src/browse.tsx","./src/review.tsx","./src/settings.tsx","./src/stats.tsx","./src/backup.ts","./src/db.ts","./src/main.tsx","./src/queue.ts","./src/scheduler.test.ts","./src/scheduler.ts","./src/vite-env.d.ts","./vite.config.ts"],"version":"5.9.3"}
